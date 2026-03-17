@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+* {
+  scroll-behavior: smooth;
+  user-select: none;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+  color: #b7ab98;
+  background-color: #0d0d0d;
+  width: 100%;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.scroller_none::-webkit-scrollbar {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.padding {
+  padding-inline: 1rem;
+  padding-block: 1.5rem;
+}
+@media (min-width: 750px) {
+  .padding {
+    padding: 2.5rem;
+    padding-block: 3rem;
+  }
+}
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#smooth-wrapper {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+#smooth-content {
+  will-change: transform;
+}
+
+.bg-pattern {
+  background-color: #0d0d0d;
+  background-image:
+    linear-gradient(0deg, #b7ab98 1px, transparent 1px),
+    linear-gradient(90deg, #b7ab98 1px, transparent 1px);
+  background-size:
+    100% 2rem,
+    2rem 100%;
+  background-position:
+    0 0.8rem,
+    0 0;
+  background-repeat: repeat-y, repeat-x;
+}
+
+.hero-search-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0% auto auto 50%;
+  overflow: hidden;
+  transform: translate(-50%);
+}
+
+.line-break {
+  width: calc(100% - 5rem);
+  margin: 0 auto;
+  height: 1px;
+  background-color: #eb5939;
+  border-radius: 100%;
+}

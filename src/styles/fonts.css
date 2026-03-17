@@ -1,0 +1,29 @@
+@font-face {
+  font-family: swizzy;
+  src: url(../../public/fonts/68ad8a274502a69dfd5cd0ba_Swizzy-Medium.woff2);
+}
+@font-face {
+  font-family: pp_neue;
+  src: url(../../public/fonts/68ad8a274502a69dfd5cd0b0_PPNeueMontrealMono-Book.woff2);
+}
+@font-face {
+  font-family: comm;
+  src: url(../../public/fonts/CommercialGraphik-Upright-VF_wght-Web.20c08f0.woff2);
+}
+
+html,
+body {
+  font-size: 14px;
+  font-family: comm, Arial, sans-serif;
+}
+
+@media (min-width: 750px) {
+  html,
+  body {
+    font-size: 1vw;
+  }
+}
+
+.pp_neue {
+  font-family: pp_neue, Arial, Helvetica, sans-serif;
+}
