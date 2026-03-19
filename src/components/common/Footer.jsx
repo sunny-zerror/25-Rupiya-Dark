@@ -7,8 +7,6 @@ const Footer = () => {
       <div className="w-full padding py-5! space-y-20 ">
         <p className='text-5xl font-medium  leading-none'> <br /> Made for<span className=' ml-1 bg-pattern text-[#eb5939]'>  Designers.</span>  <br />Built for Storytellers.</p>
 
-
-
         <div className=" grid grid-cols-5 gap-x-20">
           <div className=" col-span-2 space-y-5">
             <p className="font-thin uppercase pp_neue text-sm">Subscribe for Newsletter</p>
@@ -26,7 +24,7 @@ const Footer = () => {
           </div>
           <div className=""></div>
           <div className="space-y-5">
-            <p className="font-thin uppercase pp_neue text-sm">Company</p>
+            <p className="font-thin uppercase pp_neue text-sm text-[#eb5939]">Company</p>
 
             <div className="font-medium">
               <p>Home</p>
@@ -38,7 +36,7 @@ const Footer = () => {
 
           </div>
           <div className="space-y-5">
-            <p className="font-thin uppercase pp_neue text-sm">Socials</p>
+            <p className="font-thin uppercase pp_neue text-sm text-[#eb5939]">Socials</p>
 
             <div className="font-medium">
               <p>Instagram</p>
