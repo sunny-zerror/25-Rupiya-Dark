@@ -64,7 +64,7 @@ const MaskHome = () => {
             </div>
 
             {/* About */}
-            <div className=" text-center space-y-10 pt-32 ">
+            <div className=" text-center space-y-10 pt-44 ">
                 <p className="font-thin uppercase pp_neue text-sm">About us</p>
 
                 <div className="mask-trigger relative">
@@ -151,7 +151,7 @@ const MaskHome = () => {
 
             {/* Services */}
             <div >
-                <div className=" padding pt-20! grid grid-cols-3 ">
+                <div className=" padding pt-32! grid grid-cols-3 ">
                     <div className="col-span-2">
                         <p className=" text-8xl uppercase leading-none  font-semibold ">
                             Creative <br />services

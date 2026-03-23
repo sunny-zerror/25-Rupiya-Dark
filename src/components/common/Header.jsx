@@ -40,11 +40,11 @@ const Header = () => {
           </div>
           <div className={` shrink-0 overflow-hidden transition-all duration-300  ${openMenu ? "space-y-5 max-h-[25vh] opacity-100" : "space-y-0 max-h-0 opacity-0"}  `}>
             <div className="flex items-center justify-between">
-              <div className="text-2xl flex flex-col gap-y-5">
+              <nav className="text-2xl flex flex-col gap-y-5">
                 {navLinks.map((item, index) => (
-                  <a key={index} onClick={() => setOpenMenu(false)} href={item.href} className='cursor-pointer font-medium transition-all duration-300 hover:underline'>{item.name}</a>
+                  <Link key={index} onClick={() => setOpenMenu(false)} href={item.href} className='cursor-pointer font-medium transition-all duration-300 hover:underline'>{item.name}</Link>
                 ))}
-              </div>
+              </nav>
               <div className="w-1/2  aspect-video">
                 <video loop autoPlay muted playsInline className='cover' src="/videos/showreel_compress.mp4"></video>
               </div>

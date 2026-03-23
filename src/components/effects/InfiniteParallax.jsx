@@ -11,7 +11,8 @@ export default function InfiniteParallax({
   const containerRef = useRef(null);
   const trackRef = useRef(null);
   const isTouchRef = useRef(false);
-
+  const dragStarted = useRef(false);
+  const dragThreshold = 6; // px
   const [contentHeight, setContentHeight] = useState(0);
 
   const position = useRef(0);
@@ -39,9 +40,9 @@ export default function InfiniteParallax({
     if (!contentHeight) return;
     if (!introStarted.current) {
       introStarted.current = true;
-      const friction = 0.10; 
-      const targetDistance = window.innerHeight * 2.302; 
-      velocity.current = -(targetDistance * (1 - friction)); 
+      const friction = 0.10;
+      const targetDistance = window.innerHeight * 2.302;
+      velocity.current = -(targetDistance * (1 - friction));
     }
 
     let raf;
@@ -166,20 +167,32 @@ export default function InfiniteParallax({
 
     const onPointerDown = (e) => {
       if (e.pointerType === "mouse" && e.button !== 0) return;
+
       isDragging.current = true;
+      dragStarted.current = false;
       lastY.current = e.clientY;
       isTouchRef.current = e.pointerType === "touch";
+
       isSnapping.current = false;
       snapTarget.current = null;
       hasSettled.current = false;
-      el.setPointerCapture(e.pointerId);
-      el.classList.remove("cursor-grab");
-      el.classList.add("cursor-grabbing");
     };
 
     const onPointerMove = (e) => {
       if (!isDragging.current) return;
+
       const delta = e.clientY - lastY.current;
+
+      // ⭐ START REAL DRAG ONLY AFTER THRESHOLD
+      if (!dragStarted.current && Math.abs(delta) > dragThreshold) {
+        dragStarted.current = true;
+        el.setPointerCapture(e.pointerId);
+        el.classList.remove("cursor-grab");
+        el.classList.add("cursor-grabbing");
+      }
+
+      if (!dragStarted.current) return;
+
       const multiplier = isTouchRef.current ? 2.5 : 0.6;
       velocity.current = delta * multiplier;
       position.current += delta;
@@ -188,7 +201,10 @@ export default function InfiniteParallax({
 
     const stopDrag = (e) => {
       isDragging.current = false;
+      dragStarted.current = false;
+
       try { el.releasePointerCapture(e.pointerId); } catch { }
+
       el.classList.remove("cursor-grabbing");
       el.classList.add("cursor-grab");
     };

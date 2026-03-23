@@ -4,18 +4,20 @@ import { useEffect, useRef } from "react";
 import Matter from "matter-js";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from 'gsap/dist/SplitText';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SHAPES = [
-    { type: "square", size: 128, color: "#21935b", bgPattern: true },
-    { type: "circle", size: 80 },
+    { type: "square", size: 128, color: "#21935b" },
+    { type: "circle", size: 80, color: "#fecc33" },
     { type: "pill", text: "Founded in 2023", size: 28 },
     { type: "square", size: 128, color: "#fecc33" },
     { type: "pill", text: "24hr Turnaround", size: 28 },
     { type: "pill", text: "100M+ Views", size: 48 },
-    { type: "circle", size: 176, bgPattern: true },
-    { type: "triangle", size: 140, bgPattern: true },
+    { type: "circle", size: 176, color: "#b7ab98" },
+    { type: "triangle", size: 140, color: "#b7ab98" },
     { type: "pill", text: "50+ Projects", size: 28 },
     { type: "hexagon", size: 240, color: "#30a81d" },
     { type: "pill", text: "15k+ Ads", size: 28 },
@@ -212,16 +214,47 @@ export default function PhysicsSection() {
         };
     }, []);
 
+    useGSAP(() => {
+
+        const split = SplitText.create(".text_anim", {
+            type: "words",
+            wordsClass: "word"
+        });
+
+        split.words.forEach((word) => {
+
+            const wrapper = document.createElement("span");
+
+            wrapper.style.display = "inline-block";
+            wrapper.style.overflow = "hidden";
+            wrapper.style.verticalAlign = "top";
+
+            word.parentNode.insertBefore(wrapper, word);
+            wrapper.appendChild(word);
+
+        });
+
+        gsap.from(split.words, {
+            yPercent: 120,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            stagger: 0.08
+        });
+
+    });
+
+
     return (
         <>
             <div ref={sectionRef} className=" physics_fall padding relative w-full h-screen  flex flex-col justify-center  overflow-hidden">
-                <p className="text-8xl leading-none uppercase  font-semibold mb-20">
+                <p className=" text_anim text-8xl w-fit mask-trigger  relative z-10 leading-none uppercase  font-semibold mb-20">
                     WHO <br /> <span className="text-[#eb5939]">we</span> ARE
                 </p>
-                <p className="w-[25%] text-xl leading-none font-medium">
+                <p className=" text_anim w-[25%]  text-xl  leading-none font-medium">
                     Our name is a playful nod to the idea that world-class production doesn&apos;t have to cost a fortune.
                 </p>
-                <p className="w-[25%] mt-5 text-xl leading-none font-medium">
+                <p className=" text_anim w-[25%]  mt-5 text-xl leading-none font-medium">
                     we bring the same obsessive attention to detail to every project.
                 </p>
                 <div
@@ -246,10 +279,10 @@ function Shape({ shape }) {
     if (shape.type === "pill") {
         return (
             <div
-                className={`${base} ${patternClass} rounded-full text-4xl w-fit whitespace-nowrap text-[#b7ab98] font-medium`}
+                className={`${base} ${patternClass} border-2 rounded-full text-4xl w-fit whitespace-nowrap text-[#000000] font-medium`}
                 style={{
                     padding: "1rem 2rem",
-                    backgroundColor: "#000",
+                    backgroundColor: "#eb5939",
                 }}
             >
                 {shape.text}
@@ -286,7 +319,7 @@ function Shape({ shape }) {
     if (shape.type === "triangle") {
         return (
             <div
-                className={`${base} ${patternClass} triangle_shape`}
+                className={`${base} ${patternClass} triangle_shape bg-[#eb5939]`}
                 style={{
                     width: shape.size,
                     height: shape.size,

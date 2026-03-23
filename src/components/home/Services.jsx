@@ -36,7 +36,7 @@ const SERVICES = [
 const Services = () => {
     return (
         <>
-            <div className=" padding pt-20! grid grid-cols-3 ">
+            <div className=" padding pt-32! grid grid-cols-3 ">
                 <div className="col-span-2">
                     <p className=" mask-trigger w-fit text-8xl uppercase leading-none  font-semibold ">
                        Stories <br /> <span className='text-[#eb5939]'>we</span> craft

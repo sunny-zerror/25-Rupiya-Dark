@@ -5,7 +5,8 @@ import { RiCloseLine, RiExpandUpDownFill } from "@remixicon/react";
 import gsap from "gsap";
 import Flip from "gsap/dist/Flip";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import VideoPlayer from "./VideoPlayer";
 
 gsap.registerPlugin(Flip, ScrollTrigger);
 
@@ -19,6 +20,8 @@ const categories = [
 ]
 
 const FeaturedWork = () => {
+    const [isVideoOpen, setIsVideoOpen] = useState(false)
+    const [selectedWork, setSelectedWork] = useState()
     const originalParent = useRef(null);
     const activeEl = useRef(null);
     const [activeWork, setActiveWork] = useState(null);
@@ -26,6 +29,27 @@ const FeaturedWork = () => {
     const container = useRef(null);
     const [selectedCategory, setSelectedCategory] = useState("All")
     const filteredWorks = works.filter(el => el.category === selectedCategory || selectedCategory === "All")
+
+    const handleWork = (work) => {
+        setSelectedWork(work)
+        setIsVideoOpen(true)
+    }
+
+    useEffect(() => {
+        if (isVideoOpen === false) {
+            setSelectedWork(null)
+        }
+    }, [isVideoOpen])
+
+    useEffect(() => {
+        if (window.lenis) {
+            if (isVideoOpen) {
+                window.lenis.stop();
+            } else {
+                window.lenis.start();
+            }
+        }
+    }, [isVideoOpen])
 
     useGSAP(() => {
         const source = container.current.querySelector(".intro-platform-images");
@@ -75,74 +99,18 @@ const FeaturedWork = () => {
         });
     }, { scope: container });
 
-    const openWork = (e, item) => {
-        const el = e.currentTarget;
-
-        activeEl.current = el;
-        originalParent.current = el.parentNode;
-
-        const state = Flip.getState(el);
-
-        modalRef.current.appendChild(el);
-
-        Flip.from(state, {
-            duration: 0.8,
-            ease: "power3.inOut",
-            absolute: true
-        });
-
-        setActiveWork(item);
-    };
-
-    const closeWork = () => {
-        const el = activeEl.current;
-
-        const state = Flip.getState(el);
-
-        originalParent.current.appendChild(el);
-
-        Flip.from(state, {
-            duration: 0.8,
-            ease: "power3.inOut",
-            absolute: true
-        });
-
-        setActiveWork(null);
-    };
 
     return (
-        <div ref={container}>
+        <div ref={container} className=" relative w-full">
 
-            <div
-                ref={modalRef}
-                className={` preview_fix fixed top-0 left-0 w-full h-screen center transition-all duration-500 z-[9999] ${activeWork ? "opacity-100 backdrop-blur-md pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-            >
-
-                {activeWork && (
-                    <>
-                        <button
-                            onClick={closeWork}
-                            className="absolute z-10 top-5 right-5 bg-[#141414] px-4 py-2 rounded-lg  hover:text-white transition-all"
-                        >
-                            X
-                        </button>
-                        {/* <div className="w-[80%] aspect-video">
-                            <video
-                                src={activeWork.video}
-                                autoPlay
-                                loop
-                                muted
-                                className="cover"
-                            />
-                        </div> */}
-                    </>
-                )}
-
-            </div>
+            <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
+            {/* <div className={`w-full h-full z-10 absolute top-0 left-0 gradient_bg pointer-events-none  ${isVideoOpen ? "opacity-0" : "opacity-100"} `}></div> */}
 
             <div className="intro-platform-images relative w-full h-[30vh] my-20">
                 {works.slice(0, 4).map((item, i) => (
-                    <div onClick={(e) => openWork(e, item)} key={i} className={`intro-platform-image aspect-video group intro-platform-image-${i + 1} ${selectedCategory === "All" || selectedCategory === item.category ? "opacity-100 grayscale-0 blur-none pointer-events-auto" : "opacity-30 blur-[1px] grayscale-100 pointer-events-none"} hover:p-2  transition-[opacity,filter,padding] duration-300`}>
+                    <div onClick={(e) => {
+                        handleWork(item)
+                    }} key={i} className={`intro-platform-image aspect-video group intro-platform-image-${i + 1} ${selectedCategory === "All" || selectedCategory === item.category ? "opacity-100 grayscale-0 blur-none pointer-events-auto" : "opacity-30 blur-[1px] grayscale-100 pointer-events-none"} hover:p-2  transition-[opacity,filter,padding] duration-300`}>
                         <img className="cover" src={item.img} />
                     </div>
                 ))}
@@ -189,7 +157,9 @@ const FeaturedWork = () => {
                         {works.slice(4).map((item, i) => (
                             <div
                                 key={i}
-                                onClick={(e) => openWork(e, item)}
+                                onClick={(e) => {
+                                    handleWork(item)
+                                }}
                                 className={` work w-full aspect-video group cursor-pointer overflow-hidden hover:p-2 ${selectedCategory === "All" || selectedCategory === item.category ? "opacity-100 grayscale-0 blur-none pointer-events-auto" : "opacity-30 blur-[1px] grayscale-100 pointer-events-none"}  transition-[opacity,filter,padding] duration-300  `}
                                 style={{
                                     gridColumn: `${item.colStart} / span ${item.colSpan || 1}`,

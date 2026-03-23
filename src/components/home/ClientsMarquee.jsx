@@ -14,11 +14,11 @@ const clientsData = [
 const ClientsMarquee = () => {
     return (
         <div>
-            <div className="w-full center text-center pt-32">
+            <div className="w-full center text-center pt-44">
                 <p className='uppercase font-thin pp_neue text-sm text-[#eb5939] '>Trusted by the brands shaping culture</p>
             </div>
             <Marquee speed={200}>
-                <div className=" my-20 flex gap-x-[8.5rem]">
+                <div className=" my-20 mb-32 flex gap-x-[8.5rem]">
                 {clientsData.map((client, index) => (
                     <div key={index} className="">
                         <img src={client} alt="client logo  " className='invert-50' />

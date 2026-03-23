@@ -269,7 +269,8 @@ background: linear-gradient(
   black 100%
 );
 }
-.gradient_bg::after {
+.gradient_bg::after,
+.video_skeleton::before {
   content: "";
   position: absolute;
   inset: -50%;              
@@ -286,4 +287,33 @@ background: linear-gradient(
   50%  { transform: translate3d(5%, -5%,0); }
   75%  { transform: translate3d(-5%, -5%,0); }
   100% { transform: translate3d(5%, 5%,0); }
+}
+
+
+.video_skeleton {
+  background: #000;
+  overflow: hidden;
+  position: absolute;
+}
+
+.video_skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(255,255,255,0) 20%,
+    rgba(255,255,255,0.08) 40%,
+    rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0.08) 60%,
+    rgba(255,255,255,0) 80%
+  );
+  transform: translateX(-100%);
+  animation: skeletonMove 1.4s linear infinite;
+}
+
+@keyframes skeletonMove {
+  100% {
+    transform: translateX(100%);
+  }
 }

@@ -24,17 +24,16 @@ const Testimonials = () => {
                 <Swiper
                     slidesPerView={"auto"}
                     centeredSlides={true}
-                    spaceBetween={200}
                     className="mySwiper   relative cursor-grab active:cursor-grabbing mt-20">
 
                     {TestimonialsData.map((item, i) => (
-                        <SwiperSlide key={i} className='w-[90vw]! md:w-[40vw]!'>
+                        <SwiperSlide key={i} className={`w-[90vw]! md:w-[45vw]! pl-20  border-r last:border-r-0 border-[#eb5939] pr-12`}>
                             <div className="">
                                 <img src={item.image} alt="" className='invert-75' />
                             </div>
                             <p className='text-3xl'>{item.desc}</p>
                             <div className=" pt-8">
-                                <p className='text-xl font-medium'>{item.name}</p>
+                                <p className='text-xl font-medium text-[#eb5939]'>{item.name}</p>
                                 <p className='text-xl opacity-50  font-medium'>{item.post}</p>
                             </div>
                         </SwiperSlide>

@@ -160,39 +160,79 @@ const Hero = () => {
                 cycleTL.current = tl;
             };
 
-            // -----------------------------
-            // LOOP CONTROL
-            // -----------------------------
             const startLoop = () => {
                 playCycle();
                 intervalRef.current = setInterval(playCycle, 5000);
             };
 
-            startLoop();
+            setTimeout(() => {
+                startLoop();
+            }, 3000);
 
-            return () => {
-                ScrollTrigger.getAll().forEach(t => t.kill());
-            };
         },
         { scope: root }
     );
 
+
+    useGSAP(() => {
+
+        const split = SplitText.create(".text_anim", {
+            type: "words",
+            wordsClass: "word"
+        });
+
+        split.words.forEach((word) => {
+
+            const wrapper = document.createElement("span");
+
+            wrapper.style.display = "inline-block";
+            wrapper.style.overflow = "hidden";
+            wrapper.style.verticalAlign = "top";
+
+            word.parentNode.insertBefore(wrapper, word);
+            wrapper.appendChild(word);
+
+        });
+
+        const tl = gsap.timeline()
+        tl.from(split.words, {
+            yPercent: 120,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            stagger: 0.08
+        });
+
+        tl.to(".hero-search-background",{
+            opacity:1,
+            ease: "power3.out",
+        })
+        tl.to(".search_btn_paren",{
+            opacity:1,
+            ease: "power3.out",
+        })
+
+
+
+    });
+
+
     return (
         <div ref={root}>
             <div className=" padding w-full h-[40vh]  flex items-end justify-between">
-                <h1 className='text-9xl font-semibold flex flex-col uppercase leading-[.7] '>
-                    25 Rupiya <br />
+                <h1 className=' text_anim text-9xl font-semibold leading-0 uppercase '>
+                    <span className='leading-[6rem] '>25 Rupiya</span> <br />
                     <span className=' w-full flex justify-end text-[1.828rem] leading-9 text-[#eb5939] uppercase'>Production</span>
                 </h1>
                 <div className="pr-36">
-                    <p className='mask-trigger text-2xl font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
+                    <p className=' text_anim mask-trigger text-2xl font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
                 </div>
             </div>
 
             <div className="w-full h-screen relative">
-                <div className="hero-search-background bg-pattern">
+                <div className="hero-search-background opacity-0 bg-pattern">
 
-                    <div className="search_btn_paren flex items-center p-2 justify-between z-10 absolute top-1/2 left-1/2 w-[50%] h-20 rounded-full bg-[#b7ab98] -translate-x-1/2 -translate-y-1/2">
+                    <div className="search_btn_paren flex opacity-0 items-center p-2 justify-between z-10 absolute top-1/2 left-1/2 w-[50%] h-20 rounded-full bg-[#b7ab98] -translate-x-1/2 -translate-y-1/2">
                         <div className="flex items-center pl-7 tracking-wider whitespace-nowrap pp_neue uppercase text-sm h-full relative">
                             {HERO_GROUPS.map(({ term }) => (
                                 <div key={term} className="absolute text-black font-semibold hero-term opacity-0">

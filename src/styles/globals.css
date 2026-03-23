@@ -21,13 +21,12 @@ body::-webkit-scrollbar {
   width: 4px;
   background-color: #2e2e2e;
   border-radius: 10px;
-
 }
 .custom_scroller::-webkit-scrollbar-thumb {
   background-color: #b7ab98;
   border-radius: 10px;
 }
-button {
+a,button {
   cursor: pointer;
 }
 .center {
@@ -69,13 +68,13 @@ body {
 .bg-pattern {
   background-color: #0d0d0d;
   background-image:
-    linear-gradient(0deg, #b7ab98 1px, transparent 1px),
-    linear-gradient(90deg, #b7ab98 1px, transparent 1px);
+    linear-gradient(0deg, #b7ab9852 1px, transparent 1px),
+    linear-gradient(90deg, #b7ab9852 1px, transparent 1px);
   background-size:
     100% 2rem,
     2rem 100%;
   background-position:
-    0 0.8rem,
+    0 0rem,
     0 0;
   background-repeat: repeat-y, repeat-x;
 }
@@ -95,4 +94,24 @@ body {
   height: 1px;
   background-color: #eb5939;
   border-radius: 100%;
+}
+
+
+
+::view-transition-old(root) {
+  animation: page-fade-out 0.5s ease-in forwards;
+}
+
+::view-transition-new(root) {
+  animation: page-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes page-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

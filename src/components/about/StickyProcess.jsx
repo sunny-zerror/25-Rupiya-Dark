@@ -70,15 +70,14 @@ const StickyProcess = () => {
                 });
         }
 
-        return () => ScrollTrigger.getAll().forEach(t => t.kill());
     });
 
     return (
         <div ref={wrapperRef} className="w-full h-[calc(100vh+103vw+10rem)] flex">
 
             {/* LEFT (Sticky) */}
-            <div className="w-1/2 sticky top-0 h-screen bg-pattern bg-[#30A81D]! flex items-center justify-center">
-                <div className="w-[88%] aspect-square overflow-hidden flex items-center justify-center rounded-full bg-[#0d0d0d]">
+            <div className="w-1/2 sticky top-0 h-screen bg-pattern bg-[#eb5939]! flex items-center justify-center">
+                <div className="w-[88%] aspect-square overflow-hidden flex items-center justify-center rounded-full  bg-[#0d0d0d]">
                     <video
                         loop autoPlay muted playsInline
                         ref={videoRef}
@@ -90,7 +89,7 @@ const StickyProcess = () => {
             </div>
 
             {/* RIGHT */}
-            <div className="w-1/2 px-20  bg-[#0d0d0d]">
+            <div className="w-1/2 px-20  ">
 
                 <div className="h-screen space-y-10 flex flex-col justify-center">
                     <p className="text-8xl uppercase font-semibold leading-none">

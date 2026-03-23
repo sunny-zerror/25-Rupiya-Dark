@@ -114,7 +114,7 @@ export default function MaskReveal({ children }) {
     return (
         <div
             ref={maskRef}
-            className="mask-layer opacity-0 absolute inset-0"
+            className="mask-layer opacity-0 z-20 absolute inset-0"
         >
             {children}
         </div>
