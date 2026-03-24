@@ -26,7 +26,6 @@ const ContactForm = () => {
 
     }, [step]);
 
-
     const next = () => {
         if (step < 2) setStep(step + 1);
     };
@@ -89,39 +88,39 @@ const ContactForm = () => {
         <div className="w-full padding grid grid-cols-5">
             <div className="w-full pr-10 space-y-12 col-span-2">
                 <div className="">
-                    <p className=' uppercase text-[#eb5939]'>Email</p>
-                    <p className='text-2xl'>hello@gmail.com</p>
+                    <p className=' text-sm uppercase text-[#eb5939]'>Email</p>
+                    <p className='text-lg'>hello@gmail.com</p>
                 </div>
                 <div className="">
-                    <p className=' uppercase text-[#eb5939]'>contact</p>
-                    <p className='text-2xl'>+91 0000000000</p>
+                    <p className=' text-sm uppercase text-[#eb5939]'>contact</p>
+                    <p className='text-lg'>+91 0000000000</p>
                 </div>
                 <div className="">
-                    <p className=' uppercase text-[#eb5939]'>Address</p>
-                    <p className='text-2xl'>zerror studios, Mumbai</p>
+                    <p className=' text-sm uppercase text-[#eb5939]'>Address</p>
+                    <p className='text-lg'>zerror studios, Mumbai</p>
                 </div>
             </div>
             <div className="w-full col-span-3 pr-36 ">
-                <p className='text-5xl uppercase font-semibold mb-10'>Tell Us More</p>
-                <p>Fill out the form and we&apos;ll get back to you as soon as possible. Prefer to talk to us directly? Give us a call or send an email.</p>
+                <p className='text-4xl uppercase font-semibold mb-3'>Tell Us More</p>
+                <p className='w-[80%] text-lg leading-tight'>Fill out the form and we&apos;ll get back to you as soon as possible. Prefer to talk to us directly? Give us a call or send an email.</p>
 
-                <div className="relative mt-5 flex bg-[#202020]  gap-x-5 w-fit p-2 rounded-lg">
+                <div className="relative mt-6 flex bg-[#202020]  gap-x-5 w-fit p-2 rounded-lg">
 
                     <div
-                        className={`absolute h-[75%] top-1/2 -translate-y-1/2 w-1/2 bg-[#eb5939] rounded-lg transition-all duration-300 ${active === "project" ? "left-3" : "left-[64%] w-[33%]"
+                        className={`absolute h-[75%] top-1/2 -translate-y-1/2 w-1/2 bg-[#eb5939] rounded-lg transition-all duration-300 ${active === "project" ? "left-2" : "left-[64%] w-[33%]"
                             }`}
                     />
 
                     <button
                         onClick={() => setActive("project")}
-                        className={`text-lg center relative z-10 px-6 py-2 ${active === "project" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
+                        className={` text-sm pp_neue translate-y-[1px] uppercase center relative z-10 px-6 py-2 ${active === "project" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
                     >
                         New Project
                     </button>
 
                     <button
                         onClick={() => setActive("other")}
-                        className={`text-lg center relative z-10 px-6 py-2  ${active === "other" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
+                        className={` text-sm uppercase pp_neue translate-y-[1px] center relative z-10 px-6 py-2  ${active === "other" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
                     >
                         Other
                     </button>
@@ -155,10 +154,10 @@ const ContactForm = () => {
                             <div ref={form1Ref} className="space-y-10">
 
                                 <div className="space-y-3">
-                                    <p className="text-xl">I need :</p>
+                                    <p className="text-lg">I need :</p>
                                     <div className="flex gap-3 flex-wrap">
                                         {["Branding", "Print", "Web Design", "Other"].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 border border-[#202020]">
+                                            <button type="button" key={i} className="px-4 py-2 text-sm border border-[#202020]">
                                                 {item}
                                             </button>
                                         ))}
@@ -166,10 +165,10 @@ const ContactForm = () => {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <p className="text-xl">Do you have a budget in mind?</p>
+                                    <p className="text-lg">Do you have a budget in mind?</p>
                                     <div className="flex gap-3">
                                         {["Yes", "No"].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 border border-[#202020]">
+                                            <button type="button" key={i} className="px-4 py-2 text-sm border border-[#202020]">
                                                 {item}
                                             </button>
                                         ))}
@@ -177,7 +176,7 @@ const ContactForm = () => {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <p className="text-xl">Budget ?</p>
+                                    <p className="text-lg">Budget ?</p>
                                     <div className="flex gap-3 flex-wrap">
                                         {[
                                             "Less than €2,500",
@@ -188,7 +187,7 @@ const ContactForm = () => {
                                             "€20,000 - €30,000",
                                             "More than €30,000"
                                         ].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 border border-[#202020]">
+                                            <button type="button" key={i} className="px-4 py-2 text-sm border border-[#202020]">
                                                 {item}
                                             </button>
                                         ))}
@@ -196,8 +195,8 @@ const ContactForm = () => {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <p className="text-xl">Tell us about your project :</p>
-                                    <textarea className="border-b w-full h-32 outline-none resize-none" />
+                                    <p className="text-lg">Tell us about your project :</p>
+                                    <textarea className="border-b w-full h-32 text-sm outline-none resize-none" />
                                 </div>
 
                             </div>
@@ -208,19 +207,19 @@ const ContactForm = () => {
                             <div ref={form2Ref} className="space-y-10">
 
                                 <div className="w-full   grid grid-cols-2">
-                                    <p className='text-xl'>Name :</p>
+                                    <p className='text-lg'>Name :</p>
                                     <input type="text" name="" id="" placeholder='Enter Name ' className='outline-none border-b ' />
                                 </div>
                                 <div className="w-full   grid grid-cols-2">
-                                    <p className='text-xl'>Email :</p>
+                                    <p className='text-lg'>Email :</p>
                                     <input type="text" name="" id="" placeholder='Enter Email ' className='outline-none border-b ' />
                                 </div>
                                 <div className="w-full   grid grid-cols-2">
-                                    <p className='text-xl'>Company Name :</p>
+                                    <p className='text-lg'>Company Name :</p>
                                     <input type="text" name="" id="" placeholder='Enter Email ' className='outline-none border-b ' />
                                 </div>
                                 <div className="w-full   grid grid-cols-2">
-                                    <p className='text-xl'>Contact :</p>
+                                    <p className='text-lg'>Contact :</p>
                                     <input type="text" name="" id="" placeholder='+91 0000000000' className='outline-none border-b ' />
                                 </div>
 
@@ -228,20 +227,26 @@ const ContactForm = () => {
                         )}
 
 
-                        <div className="w-full flex gap-x-5 mt-12 justify-end">
+                        <div className="w-full flex gap-x-5 text-sm mt-12 justify-end">
                             {step !== 1 && (
-                                <button type="button" onClick={prev} className="bg-[#202020] text-white py-3 px-10 rounded-lg">
-                                    Prev
+                                <button type="button" onClick={prev} className="bg-[#202020] text-white py-3 px-10 pp_neue  uppercase rounded-lg">
+                                    <p className='translate-y-[1px]'>
+                                        Prev
+                                    </p>
                                 </button>
                             )}
 
                             {step !== 2 ? (
-                                <button type="button" onClick={next} className="bg-[#eb5939] text-[#0d0d0d] font-semibold py-3 px-10 rounded-lg">
-                                    Next
+                                <button type="button" onClick={next} className="bg-[#eb5939] text-[#0d0d0d] font-semibold py-3 pp_neue  uppercase px-10 rounded-lg">
+                                    <p className='translate-y-[1px]'>
+                                        Next
+                                    </p>
                                 </button>
                             ) : (
-                                <button className="bg-[#eb5939] text-[#0d0d0d] font-semibold py-3 px-10 rounded-lg">
-                                    Submit
+                                <button className="bg-[#eb5939] text-[#0d0d0d] font-semibold py-3 px-10 rounded-lg pp_neue  uppercase">
+                                    <p className='translate-y-[1px]'>
+                                        Submit
+                                    </p>
                                 </button>
                             )}
                         </div>
@@ -250,23 +255,27 @@ const ContactForm = () => {
 
                     <form ref={contactFormRef} action="" className=' contact_form absolute top-0 left-0 opacity-0 pointer-events-none space-y-10 w-full  '>
                         <div className="w-full   grid grid-cols-2">
-                            <p className='text-xl'>Name :</p>
+                            <p className='text-lg'>Name :</p>
                             <input type="text" name="" id="" placeholder='Enter Name ' className='outline-none border-b ' />
                         </div>
                         <div className="w-full   grid grid-cols-2">
-                            <p className='text-xl'>Email :</p>
+                            <p className='text-lg'>Email :</p>
                             <input type="text" name="" id="" placeholder='Enter Email ' className='outline-none border-b ' />
                         </div>
                         <div className="w-full   grid grid-cols-2">
-                            <p className='text-xl'>Contact :</p>
+                            <p className='text-lg'>Contact :</p>
                             <input type="text" name="" id="" placeholder='+91 0000000000' className='outline-none border-b ' />
                         </div>
                         <div className="w-full   grid grid-cols-2">
-                            <p className='text-xl'>Message :</p>
+                            <p className='text-lg'>Message :</p>
                             <textarea data-lenis-prevent type="text" name="" id="" placeholder='Enter your message' className='outline-none border-b resize-none h-32  custom_scroller pr-5 ' />
                         </div>
                         <div className="w-full flex justify-end">
-                            <button className=' bg-[#eb5939] text-[#0d0d0d] pp_neue  font-semibold py-3 px-10 rounded-lg'>Send</button>
+                            <button className=' bg-[#eb5939] uppercase text-sm text-[#0d0d0d] pp_neue  font-semibold py-3 px-10 rounded-lg'>
+                                <p className='translate-y-[1px]'>
+                                    Send
+                                </p>
+                            </button>
                         </div>
                     </form>
                 </div>

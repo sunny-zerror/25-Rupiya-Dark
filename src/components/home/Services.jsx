@@ -38,12 +38,12 @@ const Services = () => {
         <>
             <div className=" padding pt-32! grid grid-cols-3 ">
                 <div className="col-span-2">
-                    <p className=" mask-trigger w-fit text-8xl uppercase leading-none  font-semibold ">
-                       Stories <br /> <span className='text-[#eb5939]'>we</span> craft
+                    <p className=" mask-trigger w-fit text-7xl uppercase leading-none  font-semibold ">
+                        Stories <br /> <span className='text-[#eb5939]'>we</span> craft
                     </p>
                 </div>
                 <div className="h-full flex items-end pr-36">
-                    <p className=' mask-trigger text-2xl font-medium pt-12 pl-3 leading-none'>From concept to final cut—AI-assisted storytelling that scales. Fast turnarounds, cinematic finish.</p>
+                    <p className=' mask-trigger text-lg font-medium pt-12 pl-3 leading-none'>From concept to final cut—AI-assisted storytelling that scales. Fast turnarounds, cinematic finish.</p>
                 </div>
             </div>
             <div className="w-full grid grid-cols-3 gap-x-5 gap-y-20 padding">
@@ -54,12 +54,12 @@ const Services = () => {
                                 <video autoPlay loop muted playsInline className='cover rounded-xl ' src={service.vid} alt="" />
                             )}
                         </div>
-                            <div className=" mask-trigger pt-2">
-                                <p className="font-thin uppercase pp_neue mb-2 ">    {service.id}             </p>
-                                <p className='uppercase font-medium text-3xl mb-2'>
-                                    {service.title}
-                                </p>
-                                <p className='leading-tight text-lg '>{service.desc}</p>
+                        <div className=" mask-trigger pt-2">
+                            <p className="font-thin uppercase pp_neue mb-2 ">{service.id} </p>
+                            <p className='uppercase font-medium text-2xl mb-2'>
+                                {service.title}
+                            </p>
+                            <p className='leading-tight'>{service.desc}</p>
                         </div>
                     </div>
                 ))}

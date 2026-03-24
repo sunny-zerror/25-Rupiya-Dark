@@ -187,8 +187,8 @@ export default function InfiniteParallax({
       if (!dragStarted.current && Math.abs(delta) > dragThreshold) {
         dragStarted.current = true;
         el.setPointerCapture(e.pointerId);
-        el.classList.remove("cursor-grab");
-        el.classList.add("cursor-grabbing");
+        // el.classList.remove("cursor-grab");
+        // el.classList.add("cursor-grabbing");
       }
 
       if (!dragStarted.current) return;
@@ -205,8 +205,8 @@ export default function InfiniteParallax({
 
       try { el.releasePointerCapture(e.pointerId); } catch { }
 
-      el.classList.remove("cursor-grabbing");
-      el.classList.add("cursor-grab");
+      // el.classList.remove("cursor-grabbing");
+      // el.classList.add("cursor-grab");
     };
 
     el.addEventListener("pointerdown", onPointerDown);
@@ -230,7 +230,7 @@ export default function InfiniteParallax({
       role="marquee"
       aria-live="off"
       aria-label={ariaLabel}
-      className={`h-full overflow-y-clip marquee-no-select ${draggable ? "cursor-grab" : ""} ${className}`}
+      className={`h-full overflow-y-clip marquee-no-select ${draggable ? "" : ""} ${className}`}
     >
       <div ref={trackRef} className="flex flex-col select-none will-change-transform">
         {children}

@@ -18,7 +18,7 @@ const Footer = () => {
       scrollTrigger: {
         trigger: ".footer_paren",
         start: "20% bottom",
-        end: "top top",
+        end: "bottom bottom",
         scrub: true,
         // markers: true
       }
@@ -38,8 +38,8 @@ const Footer = () => {
       })
       .to(".footer_inner", {
         opacity: 1,
-        duration: 0.1
-      }, "<0.05")
+        duration: 0.05,
+      }, "<0.08")
 
   })
 
@@ -47,12 +47,12 @@ const Footer = () => {
     <>
       <div className=" footer_paren w-full relative">
         <div className=" footer_dot size-5  pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 bg-[#eb5939] "></div>
-        <div className=" footer_inner w-full padding py-5! space-y-20 relative z-10 opacity-0 text-[#0d0d0d] ">
-          <p className='text-5xl font-medium  leading-none'> <br /> Made for<span className=' ml-1 bg-pattern text-[#eb5939]'>  Designers.</span>  <br />Built for Storytellers.</p>
+        <div className=" footer_inner w-full padding py-5! pb-0! space-y-20 relative z-10 opacity-0 text-[#0d0d0d] ">
+          <p className='text-4xl font-medium'> <br /> Made By  <span className=' bg-[#0d0d0d] text-[#eb5939] px-4'>  Designers.</span>  <br />Built for Storytellers.</p>
 
           <div className=" grid grid-cols-5 gap-x-20">
             <div className=" col-span-2 space-y-5">
-              <p className="font-semibold uppercase pp_neue text-sm">Subscribe for Newsletter</p>
+              <p className="font-semibold uppercase pp_neue text-xs">Subscribe for Newsletter</p>
               <div className="   search_btn_paren flex items-center p-2 justify-between  h-14 rounded-full bg-[#b7ab98] ">
                 <div className="flex items-center pl-4 tracking-wider whitespace-nowrap pp_neue uppercase w-full pr-10 text-sm h-full relative">
                   <input type="text" name="" placeholder='Enter Your Email Address' className='outline-none w-full font-semibold border-none' id="" />
@@ -60,7 +60,7 @@ const Footer = () => {
                 </div>
 
                 <div className="bg-[#0d0d0d] text-[#b7ab98]  h-full px-5 rounded-full center">
-                  <p className="uppercase tracking-wide text-sm  pp_neue">
+                  <p className="uppercase tracking-wide text-xs translate-y-[-1px]  pp_neue">
                     Submit
                   </p>
                 </div>
@@ -68,9 +68,9 @@ const Footer = () => {
             </div>
             <div className=""></div>
             <div className="space-y-5">
-              <p className="font-semibold uppercase pp_neue text-sm">Company</p>
+              <p className="font-semibold uppercase pp_neue text-sm pl-1">Company</p>
 
-              <div className=" flex flex-col font-medium">
+              <div className=" flex flex-col font-medium capitalize">
                 <Link href={"/"} className='flex items-center gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>Home</Link>
                 <Link href={"/about"} className='flex items-center gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>About Us</Link>
                 <Link href={"/work"} className='flex items-center gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>work</Link>
@@ -79,9 +79,9 @@ const Footer = () => {
 
             </div>
             <div className="space-y-5">
-              <p className="font-semibold uppercase pp_neue text-sm">Socials</p>
+              <p className="font-semibold uppercase pp_neue text-sm pl-1">Socials</p>
 
-              <div className=" flex flex-col font-medium">
+              <div className=" flex flex-col font-medium capitalize">
                 <Link href={"/"} className='flex items-center gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>Instagram</Link>
                 <Link href={"/"} className='flex items-center gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>Facebook</Link>
                 <Link href={"/"} className='flex items-center gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>Youtube</Link>
@@ -91,8 +91,8 @@ const Footer = () => {
           </div>
 
           <div className="w-full justify-between flex items-center">
-            <p className="font-semibold uppercase pp_neue text-sm">Developed by zerror studios</p>
-            <p className="font-semibold uppercase pp_neue text-sm">© 25 Rupiya Production, all rights reserved, {new Date().getFullYear()}</p>
+            <p className="font-semibold uppercase pp_neue text-xs">Developed by zerror studios</p>
+            <p className="font-semibold uppercase pp_neue text-xs">© 25 Rupiya Production, all rights reserved, {new Date().getFullYear()}</p>
           </div>
 
           <div className="w-full text-center">

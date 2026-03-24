@@ -5,13 +5,13 @@ const MaskAbout = () => {
     return (
         <>
             <div className=" physics_fall padding relative w-full h-screen  flex flex-col justify-center  overflow-hidden">
-                <p className="text-8xl leading-none uppercase  font-semibold mb-20">
+                <p className="text-7xl leading-none uppercase  font-semibold mb-20">
                     WHO <br /> Let us cook
                 </p>
-                <p className="w-[25%] text-xl leading-none font-medium">
+                <p className="w-[25%] text-lg leading-none font-medium">
                     We make things look expensive… even when your budget is emotionally struggling.
                 </p>
-                <p className="w-[25%] mt-5 text-xl leading-none font-medium">
+                <p className="w-[25%] mt-5 text-lg leading-none font-medium">
                     Strategy in brain, creativity in veins, and deadlines chasing us daily.
                 </p>
             </div>
@@ -23,12 +23,12 @@ const MaskAbout = () => {
             <div className="">
                 <div className="padding grid grid-cols-3 mt-12 w-full">
                     <div className="col-span-2">
-                        <p className="text-8xl uppercase leading-none  font-semibold ">
+                        <p className="text-7xl uppercase leading-none  font-semibold ">
                             The<br />Crew
                         </p>
                     </div>
                     <div className="h-full flex items-end pr-36">
-                        <p className='text-2xl font-medium pt-12 pl-3 leading-none'>  Small squad. Loud ideas. AI in the toolkit, chaos in the group chat. We move fast and make it look expensive.
+                        <p className='text-lg font-medium pt-12 pl-3 leading-none'>  Small squad. Loud ideas. AI in the toolkit, chaos in the group chat. We move fast and make it look expensive.
                         </p>
                     </div>
                 </div>

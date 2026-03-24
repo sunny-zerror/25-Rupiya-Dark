@@ -62,7 +62,7 @@ const KeyProjects = () => {
                             <div className="absolute flex justify-between items-end opacity-0 group-hover:opacity-100 duration-300 transition-all bottom-0 left-0 text-black w-full">
                                 <div className="">
                                     <p className="uppercase font-thin pp_neue text-xs">{project.category}</p>
-                                    <p className="text-xl font-semibold tracking-wide">{project.title}</p>
+                                    <p className="text-lg font-semibold tracking-wide">{project.title}</p>
                                 </div>
                                 <RiArrowRightUpLine className=' cursor-pointer hover:scale-110' />
                             </div>

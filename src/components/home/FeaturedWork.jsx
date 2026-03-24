@@ -132,7 +132,7 @@ const FeaturedWork = () => {
 
                         </div>
                         <div className="flex w-full py-6  gap-x-10">
-                            <p className=" font-medium uppercase flex items-center gap-x-4 text-xl leading-none">Our Works</p>
+                            <p className=" font-medium uppercase flex items-center gap-x-4 text-lg leading-none">Our Works</p>
                             {/* <div className=" border-b pb-1 border-black/30 flex items-center justify-between w-[20vw]">
                                 <p className="opacity-90 text-sm leading-none">Explore More Work</p>
                                 <div className="bg-[#E9E9E9]  px-3 py-1.5  rounded-full center">

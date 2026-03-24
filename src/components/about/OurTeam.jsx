@@ -35,12 +35,12 @@ const OurTeam = () => {
     <>
       <div className="padding grid grid-cols-3 mt-12 w-full">
         <div className="col-span-2">
-          <p className="text-8xl w-fit mask-trigger uppercase leading-none  font-semibold ">
+          <p className="text-7xl w-fit mask-trigger uppercase leading-none  font-semibold ">
             Our<br /> <span className='text-[#eb5939]'>Team</span>
           </p>
         </div>
         <div className="h-full flex items-end pr-36">
-          <p className='text-2xl mask-trigger font-medium pt-12 pl-3 leading-none'>From concept to final cut—AI-assisted storytelling that scales. Fast turnarounds, cinematic finish.</p>
+          <p className='text-lg mask-trigger font-medium pt-12 pl-3 leading-none'>From concept to final cut—AI-assisted storytelling that scales. Fast turnarounds, cinematic finish.</p>
         </div>
       </div>
 
@@ -60,9 +60,9 @@ const OurTeam = () => {
                 className={`aspect-3/4  w-full relative overflow-hidden transition-transform duration-300 ${isDragging ? "scale-[0.98]" : "scale-100"
                   }`}
               >
-                <div className="relative z-10 h-full flex flex-col justify-between p-10 text-white">
-                  <p className="text-3xl">{team.name}</p>
-                  <p className="text-xl">{team.post}</p>
+                <div className="relative z-10 h-full flex flex-col justify-between p-5 text-white">
+                  <p className="text-2xl">{team.name}</p>
+                  <p className="">{team.post}</p>
                 </div>
 
                 {team.img && (

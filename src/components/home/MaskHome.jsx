@@ -11,7 +11,7 @@ const SERVICES = [
         id: "01",
         title: "LOUD VISUALS",
         vid: "/videos/music_vid.mp4",
-        desc: "Concept → shoot → edit → drop. Loud visuals, fast turnarounds, and music videos built to hit harder than the track.",
+        desc: "From concept development to shoot and final delivery, we move at internet speed. High-impact visuals crafted, edited, and posted in days — not dragged out for weeks.",
         bgColor: "#fecc33"
     },
     , {},
@@ -34,7 +34,7 @@ const SERVICES = [
         id: "04",
         title: "SOCIAL CUTS",
         vid: "/videos/ai_social.mp4",
-        desc: "Short-form edits engineered for every platform. Same cinematic vibe, optimized for scroll speed and algorithm love.",
+        desc: "From concept development to shoot and final delivery, we move at internet speed. High-impact visuals crafted, edited, and posted in days — not dragged out for weeks.",
         bgColor: "#fecc33"
     }
 ];
@@ -46,12 +46,12 @@ const MaskHome = () => {
             {/* Home */}
             <div >
                 <div className=" padding w-full h-[40vh]  flex items-end justify-between">
-                    <h1 className='text-9xl font-semibold flex flex-col uppercase leading-[.7] '>
-                        25 Rupiya <br />
-                        <span className=' w-full flex justify-end text-[1.828rem] leading-9 uppercase'>Production</span>
+                    <h1 className=' text_anim text-8xl font-semibold leading-0 uppercase '>
+                        <span className='leading-[5rem] '>25 Rupiya</span> <br />
+                        <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                     </h1>
                     <div className="pr-36">
-                        <p className="text-2xl font-medium leading-none">
+                        <p className="text-lg font-medium leading-none">
                             AI powered cinematic production
                             <br />
                             made for screens, not excuses.
@@ -71,31 +71,15 @@ const MaskHome = () => {
                     <p className="text-4xl font-medium">
                         Tiny crew.
                         Loud visuals.
-                        <span className="bg-pattern inline-flex w-16  p-3  mx-1">
-                            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="30" fill="#FECC33"></circle>
-                            </svg>
-                        </span>
                         No boring stuff. <br />
-
-                        <span className="bg-pattern text-[#b7ab98] my-2">25 Rupiya Productions</span>
+                        <span className=" text-[#b7ab98]"> 25 Rupiya Productions </span>
                         mixes Bollywood drama <br />
-
-                        <span className="bg-pattern inline-flex p-2">✨</span>
-                        with AI-driven imagination
-
-                        <span className="bg-pattern inline-flex w-14  p-3  mx-1">
-                            <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M27 27L0 54V0L27 27Z" fill="#21935b"></path>
-                                <path d="M54 27L27 54V0L54 27Z" fill="#21935b"></path>
-                            </svg>
-                        </span>
-
+                        with AI-driven
+                        <span className=" text-[#b7ab98]"> imagination </span>
                         to craft <br />
                         cinematic moments
-
-                        <span className="bg-pattern inline-flex  p-2">🎬</span>
-                        made for screens, scrolls, and the internet.
+                        made for screens, scrolls, and
+                        <span className=" text-[#b7ab98]"> the internet. </span>
                     </p>
                 </div>
             </div>
@@ -118,7 +102,7 @@ const MaskHome = () => {
                                 </div>
                             </div>
                             <div className="flex w-full py-6  gap-x-10">
-                                <p className=" font-medium uppercase flex items-center gap-x-4 text-xl leading-none">Our Works</p>
+                                <p className=" font-medium uppercase flex items-center gap-x-4 text-lg leading-none">Our Works</p>
                                 <div className=" flex  flex-wrap  gap-x-2">
                                     {[1, 2, 3, 4, 5, 5, 6].map((item, i) => (
                                         <div key={i} className={`px-3 py-1  pp_neue text-xs rounded-full  `}>
@@ -153,12 +137,12 @@ const MaskHome = () => {
             <div >
                 <div className=" padding pt-32! grid grid-cols-3 ">
                     <div className="col-span-2">
-                        <p className=" text-8xl uppercase leading-none  font-semibold ">
+                        <p className=" text-7xl uppercase leading-none  font-semibold ">
                             Creative <br />services
                         </p>
                     </div>
                     <div className="h-full flex items-end pr-36">
-                        <p className='text-2xl font-medium pt-12 pl-3 leading-none'>
+                        <p className='text-lg font-medium pt-12 pl-3 leading-none'>
                             Concept → cut → screen. AI tools. Cinematic stories. Internet speed.
                         </p>
                     </div>
@@ -170,10 +154,10 @@ const MaskHome = () => {
                             </div>
                             <div className="pt-2">
                                 <p className="font-thin uppercase pp_neue mb-2 ">{service.id}             </p>
-                                <p className=' uppercase font-medium text-3xl mb-2'>
+                                <p className=' uppercase font-medium text-2xl mb-2'>
                                     {service.title}
                                 </p>
-                                <p className='leading-tight text-lg '>{service.desc}</p>
+                                <p className='leading-tight '>{service.desc}</p>
                             </div>
                         </div>
                     ))}
@@ -187,12 +171,12 @@ const MaskHome = () => {
                 <div className="padding mt-4 w-full">
                     <div className=" w-full grid grid-cols-3">
                         <div className="col-span-2">
-                            <p className="text-8xl uppercase leading-none  font-semibold ">
-                            Good <br />things said
+                            <p className="text-7xl uppercase leading-none  font-semibold ">
+                                Good <br />things said
                             </p>
                         </div>
                         <div className="h-full flex items-end pr-36">
-                            <p className='text-2xl font-medium pt-12 pl-3 leading-none'>Kind words from brands that trusted us with their stories.</p>
+                            <p className='text-lg font-medium pt-12 pl-3 leading-none'>Kind words from brands that trusted us with their stories.</p>
                         </div>
                     </div>
                     <div
@@ -202,10 +186,10 @@ const MaskHome = () => {
                                 <div className="">
                                     <img src={item.image} alt="" />
                                 </div>
-                                <p className='text-3xl'>{item.desc}</p>
+                                <p className='text-2xl leading-tight'>{item.desc}</p>
                                 <div className=" pt-8">
-                                    <p className='text-xl font-medium'>{item.name}</p>
-                                    <p className='text-xl opacity-50  font-medium'>{item.post}</p>
+                                    <p className='text-lg font-medium'>{item.name}</p>
+                                    <p className='text-lg opacity-50  font-medium'>{item.post}</p>
                                 </div>
                             </div>
                         ))}

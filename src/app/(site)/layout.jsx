@@ -30,6 +30,8 @@ export default function SiteLayout({ children }) {
   return (
     <ViewTransitions>
       <LenisScroll>
+        
+
         <header>
           <Header />
         </header>

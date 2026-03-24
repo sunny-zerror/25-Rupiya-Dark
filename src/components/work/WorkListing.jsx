@@ -71,11 +71,11 @@ export default function WorkListing() {
         setIsVideoOpen(true)
     }
     useEffect(() => {
-        if(isVideoOpen === false){
+        if (isVideoOpen === false) {
             setSelectedWork(null)
         }
     }, [isVideoOpen])
-    
+
 
     return (
         <div className=" relative w-full h-screen center bg-[#0d0d0d]">
@@ -86,20 +86,22 @@ export default function WorkListing() {
             <InfiniteParallax>
                 <div className="w-full">
                     {worksData.map((item, i) => (
-                        <div key={i} className="parallax-slide opacity-0  text-[#b7ab98] relative w-[90vw] mt-10 h-[70vh] overflow-hidden rounded-4xl  select-none">
+                        <div onClick={(e) => {
+                            handleWork(item)
+                        }} key={i} className="parallax-slide opacity-0  text-[#b7ab98] relative w-[90vw] mt-10 h-[70vh] overflow-hidden rounded-4xl  select-none">
                             <div data-parallax="0.4" className="w-full top-0 left-0 z-10 flex justify-between absolute p-10 h-full">
                                 <div className="h-full flex flex-col justify-between">
                                     <p className="font-medium text-2xl">{item.year}</p>
                                     <div className="">
-                                        <p className="pp_neue uppercase text-sm">category</p>
-                                        <h2 className="text-5xl uppercase w-[25vw] font-semibold">{item.title}</h2>
+                                        <p className="pp_neue uppercase text-xs">category</p>
+                                        <h2 className="text-4xl uppercase w-[25vw] font-semibold">{item.title}</h2>
                                     </div>
                                 </div>
                                 <div className="h-full flex flex-col justify-between">
                                     <div className="pp_neue uppercase">
                                         {item.tags.map((tag, i) => (
                                             <div key={i} className="tag overflow-hidden">
-                                                <span className="block">{tag}</span>
+                                                <span className="block text-sm">{tag}</span>
                                             </div>
                                         ))}
                                     </div>

@@ -63,8 +63,8 @@ const Faq = () => {
 
       <div className="w-full padding grid grid-cols-5 pb-32!">
         <div className="col-span-2 pr-20">
-          <p className='text-5xl font-semibold mb-4'>FREQUENTLY <span className='text-[#eb5939]'> ASKED</span> <br /> QUESTIONS</p>
-          <p className='text-xl'>This is different we get that, you may have questions, here are some answers.</p>
+          <p className='text-4xl font-semibold mb-3'>FREQUENTLY <span className='text-[#eb5939]'> ASKED</span> <br /> QUESTIONS</p>
+          <p className='text-lg w-[80%] leading-tight'>This is different we get that, you may have questions, here are some answers.</p>
         </div>
         <div className="w-full col-span-3 pr-36">
           {faqData.map((item, i) => (
@@ -73,13 +73,13 @@ const Faq = () => {
               onClick={() =>
                 setOpenFaqId((prev) => (prev === item.id ? null : item.id))
               }
-              className="w-full cursor-pointer border-b pt-6 border-white/10 ">
-              <div className="w-full pb-5 flex justify-between">
-                <p className='text-3xl'>{item.question}</p>
+              className="w-full cursor-pointer border-b pt-4 border-white/10 ">
+              <div className="w-full pb-4 flex justify-between">
+                <p className='text-2xl'>{item.question}</p>
                 <RiCloseLine className={`transition-all duration-300 ${openFaqId === item.id ? "rotate-0" : "rotate-45"}`} />
               </div>
               <div className={` w-full h-0 transition-all duration-300 ${openFaqId === item.id ? "h-20" : "h-0"} overflow-hidden`}>
-                <p className='text-xl w-[80%]'>{item.answer}</p>
+                <p className=' w-[70%]'>{item.answer}</p>
               </div>
             </div>
           ))}

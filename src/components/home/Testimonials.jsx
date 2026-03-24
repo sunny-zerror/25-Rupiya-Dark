@@ -13,12 +13,12 @@ const Testimonials = () => {
             <div className="padding mt-4 w-full">
                 <div className=" w-full grid grid-cols-3">
                     <div className="col-span-2">
-                        <p className=" mask-trigger w-fit text-8xl uppercase leading-none  font-semibold ">
-                             What <br />they <span className='text-[#eb5939]'> say</span>
+                        <p className=" mask-trigger w-fit text-7xl uppercase leading-none  font-semibold ">
+                            What <br />they <span className='text-[#eb5939]'> say</span>
                         </p>
                     </div>
                     <div className="h-full flex items-end pr-36">
-                        <p className=' mask-trigger text-2xl font-medium pt-12 pl-3 leading-none'> Real feedback from the people brave enough to trust us with their visuals.</p>
+                        <p className=' mask-trigger text-lg font-medium pt-12 pl-3 leading-none'> Real feedback from the people brave enough to trust us with their visuals.</p>
                     </div>
                 </div>
                 <Swiper
@@ -31,10 +31,10 @@ const Testimonials = () => {
                             <div className="">
                                 <img src={item.image} alt="" className='invert-75' />
                             </div>
-                            <p className='text-3xl'>{item.desc}</p>
+                            <p className='text-2xl leading-tight'>{item.desc}</p>
                             <div className=" pt-8">
-                                <p className='text-xl font-medium text-[#eb5939]'>{item.name}</p>
-                                <p className='text-xl opacity-50  font-medium'>{item.post}</p>
+                                <p className='text-lg font-medium text-[#eb5939]'>{item.name}</p>
+                                <p className='text-lg opacity-50  font-medium'>{item.post}</p>
                             </div>
                         </SwiperSlide>
                     ))}

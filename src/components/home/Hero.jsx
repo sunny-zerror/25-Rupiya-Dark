@@ -167,7 +167,7 @@ const Hero = () => {
 
             setTimeout(() => {
                 startLoop();
-            }, 3000);
+            }, 5500);
 
         },
         { scope: root }
@@ -194,7 +194,7 @@ const Hero = () => {
 
         });
 
-        const tl = gsap.timeline()
+        const tl = gsap.timeline({delay:0.5});
         tl.from(split.words, {
             yPercent: 120,
             opacity: 0,
@@ -206,7 +206,7 @@ const Hero = () => {
         tl.to(".hero-search-background",{
             opacity:1,
             ease: "power3.out",
-        })
+        },"<+=4.0")
         tl.to(".search_btn_paren",{
             opacity:1,
             ease: "power3.out",
@@ -220,12 +220,12 @@ const Hero = () => {
     return (
         <div ref={root}>
             <div className=" padding w-full h-[40vh]  flex items-end justify-between">
-                <h1 className=' text_anim text-9xl font-semibold leading-0 uppercase '>
-                    <span className='leading-[6rem] '>25 Rupiya</span> <br />
-                    <span className=' w-full flex justify-end text-[1.828rem] leading-9 text-[#eb5939] uppercase'>Production</span>
+                <h1 className=' text_anim text-8xl font-semibold leading-0 uppercase '>
+                    <span className='leading-[5rem] '>25 Rupiya</span> <br />
+                    <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                 </h1>
                 <div className="pr-36">
-                    <p className=' text_anim mask-trigger text-2xl font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
+                    <p className=' text_anim mask-trigger text-lg font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
                 </div>
             </div>
 

@@ -212,12 +212,12 @@ const VideoPlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
                         <p className="uppercase">Read {openDesc ? "Less" : "More"}  </p>
                         <RiCloseLine size={18} className={`${openDesc ? "rotate-0" : "rotate-45"} transition-all duration-300`} />
                     </div>
-                    <div onClick={(() => { setIsVideoOpen(false), setIsVideoLoaded(false) })} className="  h-14 p-5 w-fit pointer-events-auto cursor-pointer  flex items-center gap-5 bg-[#b7ab98] text-black  justify-between rounded-2xl">
+                    <div onClick={(() => { setOpenDesc(false), setIsVideoOpen(false), setIsVideoLoaded(false) })} className="  h-14 p-5 w-fit pointer-events-auto cursor-pointer  flex items-center gap-5 bg-[#b7ab98] text-black  justify-between rounded-2xl">
                         <RiCloseLine />
                     </div>
                 </div>
                 <div className={`w-1/2 ${openDesc ? "h-[50vh] py-8" : "h-0 py-0"} px-8 transition-all duration-300 ${openDesc ? "opacity-100" : "opacity-0"}  overflow-hidden  bg-[#b7ab98] text-black  space-y-10 rounded-2xl`}>
-                    <p className="text-xl leading-tight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ipsum minima exercitationem repudiandae tempora sed rem recusandae maxime pariatur deserunt, quaerat quas suscipit, autem est obcaecati optio, accusantium iste! Sapiente.</p>
+                    <p className="text-lg leading-tight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ipsum minima exercitationem repudiandae tempora sed rem recusandae maxime pariatur deserunt, quaerat quas suscipit, autem est obcaecati optio, accusantium iste! Sapiente.</p>
                     <div className="  grid grid-cols-2  items-end">
                         <div className="">
                             <p className="uppercase font-semibold text-sm mb-2">Skills</p>

@@ -1,10 +1,13 @@
+import MaskReveal from '@/components/common/MaskReveal'
 import WorkListing from '@/components/work/WorkListing'
 import React from 'react'
 
 const WorkPage = () => {
   return (
     <>
-    <WorkListing/>
+      <WorkListing />
+      <MaskReveal>
+      </MaskReveal>
     </>
   )
 }

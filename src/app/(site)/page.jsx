@@ -1,3 +1,4 @@
+import Introloader from '@/components/common/Introloader'
 import MaskReveal from '@/components/common/MaskReveal'
 import About from '@/components/home/About'
 import ClientsMarquee from '@/components/home/ClientsMarquee'
@@ -12,6 +13,7 @@ import React from 'react'
 const HomePage = () => {
   return (
     <div className='relative'>
+      <Introloader/>
       <div className="front-view">
         <Hero />
         <About />

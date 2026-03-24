@@ -41,7 +41,7 @@ const ContactHero = () => {
     return (
         <>
             <div className="w-full h-screen flex items-center pt-44! padding">
-                <h1 className='text_anim mask-trigger w-fit text-8xl uppercase leading-none  font-semibold '>We'd  love to hear <br /> about 
+                <h1 className='text_anim mask-trigger w-fit text-7xl uppercase leading-none  font-semibold '>We'd  love to hear <br /> about 
                   <span className='text-[#eb5939]'>  your  project !</span></h1>
             </div>
         </>
