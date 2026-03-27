@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const SHAPES = [
     { type: "square", size: 128, color: "#21935b" },
+    { type: "circle", size: 38, color: "#21935b" },
     { type: "circle", size: 80, color: "#fecc33" },
     { type: "circle", size: 100, color: "#eb5939" },
     { type: "pill", text: "Founded in 2023", size: 28 },
@@ -20,7 +21,6 @@ const SHAPES = [
     { type: "circle", size: 176, color: "#b7ab98" },
     { type: "triangle", size: 140, color: "#b7ab98" },
     { type: "pill", text: "50+ Projects", size: 28 },
-    { type: "hexagon", size: 240, color: "#30a81d" },
     { type: "pill", text: "15k+ Ads", size: 28 },
 ];
 
@@ -105,8 +105,8 @@ export default function PhysicsSection() {
                 {
                     restitution: 0.8,
                     friction: 0.05,
-                    frictionAir: 0.01,
-                    density: 0.002,
+                    frictionAir: 0.02,
+                    density: Body.create().density,
                 }
             );
 
@@ -126,7 +126,7 @@ export default function PhysicsSection() {
 
         const mouseConstraint = MouseConstraint.create(engine, {
             mouse,
-            constraint: { stiffness: 0.6 },
+            constraint: { stiffness: 0.9 },
         });
 
         World.add(engine.world, mouseConstraint);
@@ -266,7 +266,7 @@ export default function PhysicsSection() {
                     className="absolute flex  right-0 w-full h-full"
                 >
                     {SHAPES.map((s, i) => (
-                        <div key={i} className=" object physics_inner  absolute w-max select-none cursor-grab active:cursor-grabbing">
+                        <div key={i} className=" object physics_inner  absolute w-max select-none ">
                             <Shape shape={s} />
                         </div>
                     ))}
@@ -344,20 +344,6 @@ function Shape({ shape }) {
         );
     }
 
-    if (shape.type === "hexagon") {
-        return (
-            <svg
-                viewBox="0 0 374 324"
-                className={`${base} ${patternClass}`}
-                style={{ width: size }}
-            >
-                <path
-                    d="M374 161.947L280.5 323.894H93.5L0 161.947L93.5 0L280.5 0L374 161.947Z"
-                    fill={shape.color || "#30a81d"}
-                />
-            </svg>
-        );
-    }
 
     return null;
 }

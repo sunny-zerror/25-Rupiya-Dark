@@ -59,25 +59,51 @@ export default function MaskReveal({ children }) {
 
         gsap.ticker.add(render);
 
-        const enter = () => {
-            gsap.killTweensOf(cursor.current);
+const enter = () => {
+    gsap.killTweensOf(cursor.current);
 
-            gsap.to(cursor.current, {
-                size: 450,
-                duration: 0.6,
-                ease: "power3.out"
-            });
-        };
+    gsap.to(cursor.current, {
+        size: 450,
+        duration: 0.6,
+        ease: "power3.out"
+    });
 
-        const leave = () => {
-            gsap.killTweensOf(cursor.current);
+    gsap.to(maskRef.current, {
+        opacity: 1,
+        ease: "power3.out"
+    });
 
-            gsap.to(cursor.current, {
-                size: 30,
-                duration: 0.6,
-                ease: "power3.out"
-            });
-        };
+    // 👇 HIDE CUSTOM CURSOR
+    gsap.to(".window_custom_cursor", {
+        scale: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.out"
+    });
+};
+
+const leave = () => {
+    gsap.killTweensOf(cursor.current);
+
+    gsap.to(cursor.current, {
+        size: 30,
+        duration: 0.6,
+        ease: "power3.out"
+    });
+
+    gsap.to(maskRef.current, {
+        opacity: 0,
+        ease: "power3.out"
+    });
+
+    // 👇 SHOW CUSTOM CURSOR
+    gsap.to(".window_custom_cursor", {
+        scale: 1,
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out"
+    });
+};
 
         const triggers = document.querySelectorAll(".mask-trigger");
 
@@ -102,19 +128,11 @@ export default function MaskReveal({ children }) {
         cursor.current.target.y = y;
     }, [x, y]);
 
-    useEffect(() => {
-        window.addEventListener("mousemove", () => {
-            gsap.to(maskRef.current, {
-                opacity: 1,
-                delay: .5
-            })
-        })
-    }, []);
 
     return (
         <div
             ref={maskRef}
-            className=" max-sm:hidden  mask-layer opacity-0 z-20 absolute inset-0"
+            className=" max-sm:hidden  mask-layer opacity-0 z-20 absolute inset-0 pointer-events-none"
         >
             {children}
         </div>

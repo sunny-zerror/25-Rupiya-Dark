@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { ViewTransitions } from "next-view-transitions";
+import CustomCursor from "@/components/common/CustomCursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,6 +31,8 @@ export default function SiteLayout({ children }) {
   return (
     <ViewTransitions>
       <LenisScroll>
+
+        <CustomCursor/>
         
 
         <header>

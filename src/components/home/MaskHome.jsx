@@ -51,7 +51,7 @@ const MaskHome = () => {
                         <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                     </h1>
                     <div className="pr-36">
-                        <p className="text-lg font-medium leading-none">
+                        <p className="text-xl font-medium leading-none">
                             AI powered cinematic production
                             <br />
                             made for screens, not excuses.
@@ -67,20 +67,21 @@ const MaskHome = () => {
             <div className=" text-center space-y-10 pt-44 ">
                 <p className="font-thin uppercase pp_neue text-sm">About us</p>
 
-                <div className="mask-trigger relative">
-                    <p className="text-3xl md:text-4xl font-medium">
-                        Tiny crew.
-                        Loud visuals.
-                        No boring stuff. <br />
-                        <span className=" text-[#b7ab98]"> 25 Rupiya Productions </span>
-                        mixes Bollywood drama <br />
-                        with AI-driven
-                        <span className=" text-[#b7ab98]"> imagination </span>
-                        to craft <br />
-                        cinematic moments
-                        made for screens, scrolls, and
-                        <span className=" text-[#b7ab98]"> the internet. </span>
-                    </p>
+                <div className="  w-full flex-col px-5 leading-tight center   relative">
+                    <>
+                        <p className=" md:w-[60%] mask-trigger text-3xl md:text-4xl font-medium">
+                            An intimate collective delivering monumental visual fidelity.
+                            No compromises, just unparalleled execution.
+                            <span className=" text-[#eb5939]"> 25 Rupiya Productions </span>
+                            curates a seamless synthesis of classic Bollywood grandeur and cutting-edge AI
+                            <span className=" text-[#eb5939]"> innovation. </span>
+                        </p>
+
+                        <p className=" md:w-[60%] mask-trigger text-3xl md:text-4xl font-medium mt-6">
+                            We craft bespoke cinematic narratives tailored specifically for the modern digital
+                            <span className=" text-[#eb5939]"> zeitgeist. </span>
+                        </p>
+                    </>
                 </div>
             </div>
 
@@ -180,7 +181,7 @@ const MaskHome = () => {
                         </div>
                     </div>
                     <div
-                        className="mySwiper opacity-0 flex   overflow-x-scroll  scroller_none relative cursor-grab active:cursor-grabbing mt-20">
+                        className="mySwiper opacity-0 flex   overflow-x-scroll  scroller_none relative  mt-20">
                         {TestimonialsData.map((item, i) => (
                             <div key={i} className='w-[90vw]! md:w-[40vw]!'>
                                 <div className="">

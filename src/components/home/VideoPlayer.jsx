@@ -211,22 +211,42 @@ const VideoPlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
         }
     }, [isVideoOpen])
 
+    useEffect(() => {
+        if (!isVideoOpen) {
+            const video = videoRef.current;
+
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+
+            cancelAnimationFrame(rafRef.current);
+            setIsPlaying(false);
+            setIsVideoLoaded(false);
+        }
+    }, [isVideoOpen]);
+
     return (
-        <div ref={playerRef} className={`w-full h-[100vh] center bg-[#0d0d0d] overflow-hidden fixed top-0 left-0 z-[9999] md:z-100 transition-all duration-300 ${isVideoOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}  `}>
+        <div ref={playerRef} className={`w-full h-[100vh] center bg-[#0d0d0d] overflow-hidden fixed top-0 left-0 z-[9999] md:z-100 transition-all duration-300 ${isVideoOpen ? "opacity-100 pointer-events-auto visible" : "opacity-0 pointer-events-none invisible"}  `}>
 
             <div onClick={(() => setOpenDesc(false))} className={` w-full h-full absolute top-0 left-0 bg-black/40 backdrop-blur-sm z-10 transition-all duration-300 ${openDesc ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} `}></div>
 
             <div className=" w-full  z-10 absolute top-0 space-y-5 p-5 px-2 md:px-10 pointer-events-none">
                 <div className="w-full flex items-center max-sm:text-sm justify-between">
-                    <div onClick={() => setOpenDesc(!openDesc)} className="  cursor-pointer pointer-events-auto h-12 md:h-14 p-5 w-44 justify-between  flex items-center gap-5 bg-[#b7ab98] text-black  rounded-lg md:rounded-2xl ">
+                    <div onClick={() => setOpenDesc(!openDesc)} className="  cursor-pointer pointer-events-auto h-12 md:h-14 p-5 w-44 justify-between  flex items-center gap-5 bg-[#D7CAB5] text-black  rounded-lg md:rounded-2xl ">
                         <p className="uppercase">Read {openDesc ? "Less" : "More"}  </p>
                         <RiCloseLine size={18} className={`${openDesc ? "rotate-0" : "rotate-45"} transition-all duration-300`} />
                     </div>
-                    <div onClick={(() => { setOpenDesc(false), setIsVideoOpen(false), setIsVideoLoaded(false) })} className="  h-12 md:h-14 p-3 md:p-5 w-fit pointer-events-auto cursor-pointer  flex items-center gap-5 bg-[#b7ab98] text-black  justify-between rounded-lg md:rounded-2xl">
+                    <div onClick={() => {
+                        setOpenDesc(false);
+                        setIsVideoOpen(false);
+                        setIsVideoLoaded(false);
+                    }}
+                        className="  h-12 md:h-14 p-3 md:p-5 w-fit pointer-events-auto cursor-pointer  flex items-center gap-5 bg-[#D7CAB5] text-black  justify-between rounded-lg md:rounded-2xl">
                         <RiCloseLine />
                     </div>
                 </div>
-                <div className={` w-full md:w-1/2 ${openDesc ? " h-[40vh] md:h-[50vh] py-4 md:py-8" : "h-0 py-0"} px-4 md:px-8 transition-all duration-300 ${openDesc ? "opacity-100" : "opacity-0"}  overflow-hidden  bg-[#b7ab98] text-black  space-y-10 rounded-lg md:rounded-2xl`}>
+                <div className={` w-full md:w-1/2 ${openDesc ? " h-[40vh] md:h-[50vh] py-4 md:py-8" : "h-0 py-0"} px-4 md:px-8 transition-all duration-300 ${openDesc ? "opacity-100" : "opacity-0"}  overflow-hidden  bg-[#D7CAB5] text-black  space-y-10 rounded-lg md:rounded-2xl`}>
                     <p className="md:text-lg leading-tight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ipsum minima exercitationem repudiandae tempora sed rem recusandae maxime pariatur deserunt, quaerat quas suscipit, autem est obcaecati optio, accusantium iste! Sapiente.</p>
                     <div className="  grid grid-cols-2  items-end">
                         <div className="">
@@ -256,6 +276,7 @@ const VideoPlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
             <video
                 ref={videoRef}
                 src={work?.video}
+                autoPlay
                 className={`w-full transition-all duration-300  ${isVideoLoaded ? "opacity-100" : "opacity-0"}   `}
                 preload="metadata"
                 onLoadedData={() => {

@@ -363,9 +363,27 @@
   background: linear-gradient(
     90deg,
     rgba(13, 13, 13, 1) 0%,
-    rgba(13, 13, 13, 0.5) 10%,
+    rgba(13, 13, 13, 0.7) 10%,
     rgba(13, 13, 13, 0) 50%,
-    rgba(13, 13, 13, 0.5) 90%,
+    rgba(13, 13, 13, 0.7) 90%,
     rgba(13, 13, 13, 1) 100%
   );
+}
+
+.physics_inner {
+  will-change: transform;
+}
+
+.object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0px, 0px); 
+  will-change: transform;
+}
+
+.physics_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

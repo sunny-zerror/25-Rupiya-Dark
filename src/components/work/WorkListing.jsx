@@ -88,7 +88,7 @@ export default function WorkListing() {
                     {worksData.map((item, i) => (
                         <div onClick={(e) => {
                             handleWork(item)
-                        }} key={i} className="parallax-slide opacity-0  text-[#b7ab98] relative w-[95vw] md:w-[90vw] mt-10 h-[70vh] overflow-hidden rounded-xl md:rounded-4xl  select-none">
+                        }} key={i} className="parallax-slide opacity-0  text-[#D7CAB5] relative w-[95vw] md:w-[90vw] mt-10 h-[70vh] overflow-hidden rounded-xl md:rounded-4xl  select-none">
                             <div data-parallax="0.4" className="w-full top-0 left-0 z-10 flex justify-between absolute p-5 md:p-10 h-full">
                                 <div className="h-full flex flex-col justify-between">
                                     <p className="font-medium text-2xl">{item.year}</p>

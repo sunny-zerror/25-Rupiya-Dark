@@ -163,16 +163,16 @@ const ContactForm = () => {
                 <div className={`w-full h-[2px] bg-[#202020] relative rounded-full mt-10 opacity-0 ${active === "project" ? "opacity-100" : ""}  `}>
 
                     <div className={`size-4 absolute top-1/2 -translate-y-1/2 rounded-full transition-all duration-500
-                ${step >= 1 ? "bg-[#b7ab98]" : "bg-[#202020]"}`} />
+                ${step >= 1 ? "bg-[#D7CAB5]" : "bg-[#202020]"}`} />
 
                     <div className={`size-4 left-1/2 -translate-x-1/2 absolute top-1/2 -translate-y-1/2 rounded-full transition-all duration-500
-                ${step >= 2 ? "bg-[#b7ab98]" : "bg-[#202020]"}`} />
+                ${step >= 2 ? "bg-[#D7CAB5]" : "bg-[#202020]"}`} />
 
                     <div className="size-4 right-0 translate-x-1/2 absolute top-1/2 -translate-y-1/2 rounded-full bg-[#202020]" />
 
                     <div
                         ref={progressRef}
-                        className="w-0 h-full absolute left-0 bg-[#b7ab98]"
+                        className="w-0 h-full absolute left-0 bg-[#D7CAB5]"
                     />
                 </div>
 

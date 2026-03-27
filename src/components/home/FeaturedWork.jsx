@@ -143,7 +143,7 @@ const FeaturedWork = () => {
                             </div> */}
                             <div className=" mt-5 md:mt-0 flex  flex-wrap  gap-2">
                                 {categories.map((item, i) => (
-                                    <div onClick={() => setSelectedCategory(item)} key={i} className={`px-3 py-1  pp_neue text-xs rounded-full  ${selectedCategory === item ? "bg-[#b7ab98] text-[#0d0d0d] border border-transparent" : "bg-[#0d0d0d] border border-[#eb5939]"} transition-all duration-300  `}>
+                                    <div onClick={() => setSelectedCategory(item)} key={i} className={`px-3 py-1  pp_neue text-xs rounded-full  ${selectedCategory === item ? "bg-[#D7CAB5] text-[#0d0d0d] border border-transparent" : "bg-[#0d0d0d] border border-[#eb5939]"} transition-all duration-300  `}>
                                         <button className="capitalize">{item}</button>
                                     </div>
                                 ))}

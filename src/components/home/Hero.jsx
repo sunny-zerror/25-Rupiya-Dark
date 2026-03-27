@@ -256,8 +256,9 @@ const Hero = () => {
             stagger: 0.08
         });
 
-        tl.to(".search_btn_paren", {
+        tl.to([ ".hero-search-background",".search_btn_paren"], {
             opacity: 1,
+            stagger:0.1,
             ease: "power3.out",
         }, "<+=4.0")
         tl.to(".sqre", {
@@ -285,35 +286,30 @@ const Hero = () => {
                     <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                 </h1>
                 <div className="pr-36">
-                    <p className=' text_anim mask-trigger text-lg font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
+                    <p className=' text_anim mask-trigger text-xl font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
                 </div>
             </div>
 
-            <div className="w-full h-screen relative">
-                <div className="hero-search-background  bg-pattern">
-                    <div className=" grid_bg w-full h-full absolute pointer-events-none  top-0 left-0">
-                        {[...Array(1200)].map((_, i) => (
-                            <div key={i} className="sqre bg-[#0d0d0d] shrink-0 aspect-square size-8"></div>
-                        ))}
-                    </div>
+            <div className="w-full h-[80vh] md:h-screen relative">
+                <div className="hero-search-background  bg-pattern opacity-0">
 
-                    <div className="search_btn_paren  opacity-100 space-y-3  z-10 absolute top-1/2 left-1/2 w-[95%] md:w-[50%]  -translate-x-1/2 -translate-y-1/2">
+                    <div className="search_btn_paren  opacity-0 space-y-3  z-10 absolute top-1/2 left-1/2 w-[95%] md:w-[50%]  -translate-x-1/2 -translate-y-1/2">
 
-                        <div className={`w-full text-black  bg-[#b7ab98] rounded-lg overflow-hidden transition-all duration-300 ${openSearch ? "max-h-[40vh] p-4" : "max-h-0 p-0"} `}>
-                            <p className='uppercase text-xs  md:text-sm pp_neue font-semibold'>Prompt suggestions for you</p>
+                        <div className={`w-full absolute bottom-18 text-black  bg-[#D7CAB5] rounded-lg overflow-hidden transition-all duration-300 px-4 ${openSearch ? "max-h-[40vh] p-4" : "max-h-0 p-0"} `}>
+                            <p className='uppercase text-xs  md:text-sm pp_neue font-extrabold'> suggested Prompts for you:</p>
                             <div className="flex flex-wrap gap-2 mt-3">
                                 {promptWork.map((item, i) => (
                                     <div onClick={(e) => {
                                         handleWork(item)
                                     }} key={i} className=" cursor-pointer border w-fit px-4 leading-tight rounded-full text-xs  md:text-sm uppercase py-2 hover:bg-[#eb5939] transition-all duration-300 flex items-center gap-x-2">
                                         <img className='w-4' src="https://cdn-icons-png.flaticon.com/512/12301/12301908.png" alt="" />
-                                        <p>{item.title}</p>
+                                        <p className='font-medium'>{item.title}</p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <div onClick={(() => setOpenSearch(!openSearch))} className={` cursor-pointer w-full p-2 flex items-center justify-between  bg-[#b7ab98]  transition-all duration-300  ${openSearch ? "rounded-lg h-14 md:h-16" : " rounded-[3rem] h-16 md:h-20"} `}>
+                        <div onClick={(() => setOpenSearch(!openSearch))} className={` cursor-pointer w-full p-2 flex items-center justify-between  bg-[#D7CAB5]  transition-all duration-300 h-16 md:h-18  ${openSearch ? "rounded-lg" : " rounded-2xl "} `}>
                             <div className="flex items-center pl-7 tracking-wider whitespace-nowrap pp_neue uppercase text-xs md:text-sm h-full relative">
                                 {HERO_GROUPS.map(({ term }) => (
                                     <div key={term} className="absolute text-black font-semibold hero-term opacity-0">
@@ -321,7 +317,7 @@ const Hero = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className={`bg-[#eb5939] text-black h-full px-6 md:px-10 center transition-all duration-300 ${openSearch ? "rounded-lg " : " rounded-[2rem]"} `}>
+                            <div className={`bg-[#eb5939] text-black h-full px-6 md:px-10 center transition-all duration-300 ${openSearch ? "rounded-lg " : " rounded-xl"} `}>
                                 <p className="uppercase tracking-wide text-xs  md:text-sm font-semibold pp_neue">
                                     Search ⌘/
                                 </p>

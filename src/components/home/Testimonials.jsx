@@ -39,13 +39,14 @@ const Testimonials = () => {
                     <Swiper
                         slidesPerView={"auto"}
                         centeredSlides={true}
+                        spaceBetween={15}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        className="mySwiper   relative cursor-grab active:cursor-grabbing mt-20">
+                        className="mySwiper flex items-stretch   relative  mt-20">
 
                         {TestimonialsData.map((item, i) => (
-                            <SwiperSlide key={i} className={`w-[90vw]! md:w-[45vw]! pl-5 md:pl-20  border-r last:border-r-0 border-[#eb5939] pr-12`}>
+                            <SwiperSlide key={i} className={`w-[95vw]!  text-black md:w-[40vw]! h-full  p-10 pt-0 bg-[#D7CAB5] rounded-lg overflow-hidden `}>
                                 <div className="">
-                                    <img src={item.image} alt="" className='invert-75' />
+                                    <img src={item.image} alt="" className='' />
                                 </div>
                                 <p className=' text-lg md:text-2xl leading-tight'>{item.desc}</p>
                                 <div className=" pt-4 md:pt-8">
@@ -57,12 +58,12 @@ const Testimonials = () => {
 
                     </Swiper>
                     <div className="md:w-full absolute pointer-events-none z-10 right-0 top-[-4rem] md:top-1/2 md:-translate-y-1/2 flex gap-x-3 md:justify-between items-center">
-                        <button onClick={goPrev} className=' pointer-events-auto cursor-pointer border size-10 rounded-full center hover:bg-[#eb5939] hover:text-black border-[#eb5939] transition-all duration-300'>
+                        <button onClick={goPrev} className=' pointer-events-auto cursor-pointer border size-10 rounded-full center bg-[#eb5939] text-black hover:scale-[.8] transition-all duration-300'>
                             <p className='leading-0 -translate-y-[2px]'>
                                 ←
                             </p>
                         </button>
-                        <button onClick={goNext} className=' pointer-events-auto  cursor-pointer border size-10 rounded-full center hover:bg-[#eb5939] hover:text-black border-[#eb5939] transition-all duration-300'>
+                        <button onClick={goNext} className=' pointer-events-auto  cursor-pointer border size-10 rounded-full center bg-[#eb5939] text-black hover:scale-[.8] transition-all duration-300'>
                             <p className='leading-0 -translate-y-[2px]'>
                                 →
                             </p>
