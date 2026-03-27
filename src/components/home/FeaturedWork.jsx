@@ -117,8 +117,8 @@ const FeaturedWork = () => {
             </div>
 
             <div className="platform_images_paren w-full center">
-                <div className="w-[80%]  bg-[#0d0d0d] border border-[#eb5939] rounded-2xl overflow-hidden ">
-                    <div className="p-5">
+                <div className=" w-[95%] md:w-[80%]  bg-[#0d0d0d] border border-[#eb5939] rounded-lg md:rounded-2xl overflow-hidden ">
+                    <div className="  p-3 md:p-5">
                         <div className="w-full group flex gap-x-3">
                             <div className="size-4  cursor-pointer aspect-square center p-[0.1rem] shrink-0 rounded-full bg-[#F85656]">
                                 <RiCloseLine className=" group-hover:opacity-100 opacity-0 transition-all duration-150   " />
@@ -131,7 +131,7 @@ const FeaturedWork = () => {
                             </div>
 
                         </div>
-                        <div className="flex w-full py-6  gap-x-10">
+                        <div className="md:flex w-full py-6  gap-x-10">
                             <p className=" font-medium uppercase flex items-center gap-x-4 text-lg leading-none">Our Works</p>
                             {/* <div className=" border-b pb-1 border-black/30 flex items-center justify-between w-[20vw]">
                                 <p className="opacity-90 text-sm leading-none">Explore More Work</p>
@@ -141,7 +141,7 @@ const FeaturedWork = () => {
                                     </p>
                                 </div>
                             </div> */}
-                            <div className=" flex  flex-wrap  gap-x-2">
+                            <div className=" mt-5 md:mt-0 flex  flex-wrap  gap-2">
                                 {categories.map((item, i) => (
                                     <div onClick={() => setSelectedCategory(item)} key={i} className={`px-3 py-1  pp_neue text-xs rounded-full  ${selectedCategory === item ? "bg-[#b7ab98] text-[#0d0d0d] border border-transparent" : "bg-[#0d0d0d] border border-[#eb5939]"} transition-all duration-300  `}>
                                         <button className="capitalize">{item}</button>

@@ -1,5 +1,7 @@
 "use client";
+import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import SplitText from 'gsap/dist/SplitText';
 import React, { useEffect, useRef, useState } from 'react'
 
 const ContactForm = () => {
@@ -84,9 +86,41 @@ const ContactForm = () => {
 
     }, [active]);
 
+    useGSAP(() => {
+
+        const split = SplitText.create(".text_anim", {
+            type: "words",
+            wordsClass: "word"
+        });
+
+        split.words.forEach((word) => {
+
+            const wrapper = document.createElement("span");
+
+            wrapper.style.display = "inline-block";
+            wrapper.style.overflow = "hidden";
+            wrapper.style.verticalAlign = "top";
+
+            word.parentNode.insertBefore(wrapper, word);
+            wrapper.appendChild(word);
+
+        });
+
+        gsap.from(split.words, {
+            yPercent: 120,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            stagger: 0.08
+        });
+
+    });
     return (
-        <div className="w-full padding grid grid-cols-5">
-            <div className="w-full pr-10 space-y-12 col-span-2">
+        <div className="w-full padding pt-44! md:pt-52! md:grid grid-cols-5">
+            <div className="w-full pr-10 space-y-5 md:space-y-12 col-span-2">
+                <h1 className='text_anim mask-trigger w-fit mb-28 md:mb-36 text-5xl md:text-7xl uppercase leading-none  font-semibold '>We'd
+                    <span className='text-[#eb5939]'>  love </span> <br />to hear
+                </h1>
                 <div className="">
                     <p className=' text-sm uppercase text-[#eb5939]'>Email</p>
                     <p className='text-lg'>hello@gmail.com</p>
@@ -100,9 +134,9 @@ const ContactForm = () => {
                     <p className='text-lg'>zerror studios, Mumbai</p>
                 </div>
             </div>
-            <div className="w-full col-span-3 pr-36 ">
-                <p className='text-4xl uppercase font-semibold mb-3'>Tell Us More</p>
-                <p className='w-[80%] text-lg leading-tight'>Fill out the form and we&apos;ll get back to you as soon as possible. Prefer to talk to us directly? Give us a call or send an email.</p>
+            <div className="w-full mt-20 md:mt-0 col-span-3 md:pr-36 pb-10">
+                <p className='text_anim text-3xl md:text-4xl uppercase font-semibold mb-3'>Tell Us More</p>
+                <p className='md:w-[80%] text-lg leading-tight'>Fill out the form and we&apos;ll get back to you as soon as possible. Prefer to talk to us directly? Give us a call or send an email.</p>
 
                 <div className="relative mt-6 flex bg-[#202020]  gap-x-5 w-fit p-2 rounded-lg">
 
@@ -142,7 +176,7 @@ const ContactForm = () => {
                     />
                 </div>
 
-                <div className="relative h-[90vh] w-full mt-10">
+                <div className={`relative ${active === "project" ? "h-[90vh]" : "h-[50vh]"} ${step === 2 ? "h-[40vh]!" : ""} transition-all duration-300 w-full mt-10`}>
 
                     <form onSubmit={(e) => {
                         e.preventDefault();
@@ -151,7 +185,7 @@ const ContactForm = () => {
                         className=" project_form absolute top-0 left-0 w-full">
 
                         {step === 1 && (
-                            <div ref={form1Ref} className="space-y-10">
+                            <div ref={form1Ref} className="space-y-6 md:space-y-10">
 
                                 <div className="space-y-3">
                                     <p className="text-lg">I need :</p>
@@ -204,7 +238,7 @@ const ContactForm = () => {
 
 
                         {step === 2 && (
-                            <div ref={form2Ref} className="space-y-10">
+                            <div ref={form2Ref} className="space-y-6 md:space-y-10">
 
                                 <div className="w-full   grid grid-cols-2">
                                     <p className='text-lg'>Name :</p>
@@ -227,7 +261,7 @@ const ContactForm = () => {
                         )}
 
 
-                        <div className="w-full flex gap-x-5 text-sm mt-12 justify-end">
+                        <div className="w-full flex gap-x-5 text-sm mt-6 md:mt-12 justify-end">
                             {step !== 1 && (
                                 <button type="button" onClick={prev} className="bg-[#202020] text-white py-3 px-10 pp_neue  uppercase rounded-lg">
                                     <p className='translate-y-[1px]'>
@@ -253,7 +287,7 @@ const ContactForm = () => {
 
                     </form>
 
-                    <form ref={contactFormRef} action="" className=' contact_form absolute top-0 left-0 opacity-0 pointer-events-none space-y-10 w-full  '>
+                    <form ref={contactFormRef} action="" className=' contact_form absolute top-0 left-0 opacity-0 pointer-events-none space-y-6 md:space-y-10 w-full  '>
                         <div className="w-full   grid grid-cols-2">
                             <p className='text-lg'>Name :</p>
                             <input type="text" name="" id="" placeholder='Enter Name ' className='outline-none border-b ' />

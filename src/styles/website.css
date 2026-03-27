@@ -189,6 +189,23 @@
   right: 10%;
 }
 
+@media (max-width:750px) {
+  
+.intro-platform-images .intro-platform-image-1 {
+  width: 30%;
+}
+.intro-platform-images .intro-platform-image-2 {
+  width: 30%;
+}
+.intro-platform-images .intro-platform-image-3 {
+  width: 30%;
+}
+.intro-platform-images .intro-platform-image-4 {
+  width: 25%;
+}
+  
+}
+
 /* after scroll images position */
 .platform-images .intro-platform-image-1 {
   grid-column: 1 / span 2;
@@ -242,14 +259,16 @@
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 
-  -webkit-mask-position: calc(var(--x) - var(--size)/2) calc(var(--y) - var(--size)/2);
-  mask-position: calc(var(--x) - var(--size)/2) calc(var(--y) - var(--size)/2);
+  -webkit-mask-position: calc(var(--x) - var(--size) / 2)
+    calc(var(--y) - var(--size) / 2);
+  mask-position: calc(var(--x) - var(--size) / 2)
+    calc(var(--y) - var(--size) / 2);
 
   -webkit-mask-size: var(--size);
   mask-size: var(--size);
 }
 
-.parallax-img{
+.parallax-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -257,38 +276,47 @@
   will-change: transform;
 }
 
-.gradient_bg{
+.gradient_bg {
   overflow: hidden;
-background: linear-gradient(
-  to bottom,
-  black 0%,
-  black 2%,
-  transparent 30%,
-  transparent 70%,
-  black 98%,
-  black 100%
-);
+  background: linear-gradient(
+    to bottom,
+    black 0%,
+    black 2%,
+    transparent 30%,
+    transparent 70%,
+    black 98%,
+    black 100%
+  );
 }
 .gradient_bg::after,
 .video_skeleton::before {
   content: "";
   position: absolute;
-  inset: -50%;              
+  inset: -50%;
   background-image: url("../../public/images/noise.webp");
   background-repeat: repeat;
-  opacity: 0.1;              
+  opacity: 0.1;
   pointer-events: none;
-  animation: noiseMove .5s steps(4) infinite;
+  animation: noiseMove 0.5s steps(4) infinite;
 }
 
 @keyframes noiseMove {
-  0%   { transform: translate3d(0,0,0); }
-  25%  { transform: translate3d(-5%, 5%,0); }
-  50%  { transform: translate3d(5%, -5%,0); }
-  75%  { transform: translate3d(-5%, -5%,0); }
-  100% { transform: translate3d(5%, 5%,0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-5%, 5%, 0);
+  }
+  50% {
+    transform: translate3d(5%, -5%, 0);
+  }
+  75% {
+    transform: translate3d(-5%, -5%, 0);
+  }
+  100% {
+    transform: translate3d(5%, 5%, 0);
+  }
 }
-
 
 .video_skeleton {
   background: #000;
@@ -302,11 +330,11 @@ background: linear-gradient(
   inset: 0;
   background: linear-gradient(
     110deg,
-    rgba(255,255,255,0) 20%,
-    rgba(255,255,255,0.08) 40%,
-    rgba(255,255,255,0.18) 50%,
-    rgba(255,255,255,0.08) 60%,
-    rgba(255,255,255,0) 80%
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.08) 60%,
+    rgba(255, 255, 255, 0) 80%
   );
   transform: translateX(-100%);
   animation: skeletonMove 1.4s linear infinite;
@@ -318,14 +346,26 @@ background: linear-gradient(
   }
 }
 
-.str_img{
+.str_img {
   animation: rotate 5s infinite linear;
 }
 @keyframes rotate {
-  from{
+  from {
     transform: rotate(0deg);
   }
-  to{
+  to {
     transform: rotate(360deg);
   }
+}
+
+.swiper_gradient {
+  background: #0d0d0d;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 13, 13, 1) 0%,
+    rgba(13, 13, 13, 0.5) 10%,
+    rgba(13, 13, 13, 0) 50%,
+    rgba(13, 13, 13, 0.5) 90%,
+    rgba(13, 13, 13, 1) 100%
+  );
 }

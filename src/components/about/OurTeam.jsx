@@ -25,37 +25,37 @@ const OurTeam = () => {
       }
     });
 
-    tl.from(".team_crd",{
-      xPercent:100,
-      stagger:0.1,
-      opacity:0
+    tl.from(".team_crd", {
+      xPercent: 100,
+      stagger: 0.1,
+      opacity: 0
     })
   })
   return (
     <>
-      <div className="padding grid grid-cols-3 mt-12 w-full">
+      <div className="padding md:grid grid-cols-3 mt-12 w-full">
         <div className="col-span-2">
-          <p className="text-7xl w-fit mask-trigger uppercase leading-none  font-semibold ">
+          <p className="text-5xl md:text-7xl w-fit mask-trigger uppercase leading-none  font-semibold ">
             Our<br /> <span className='text-[#eb5939]'>Team</span>
           </p>
         </div>
-        <div className="h-full flex items-end pr-36">
-          <p className='text-lg mask-trigger font-medium pt-12 pl-3 leading-none'>From concept to final cut—AI-assisted storytelling that scales. Fast turnarounds, cinematic finish.</p>
+        <div className="h-full flex items-end md:pr-36">
+          <p className='text-lg mask-trigger font-medium pt-3 md:pt-12 md:pl-3 leading-none'>From concept to final cut—AI-assisted storytelling that scales. Fast turnarounds, cinematic finish.</p>
         </div>
       </div>
 
       <div className="padding team_paren">
         <Swiper
-        spaceBetween={20}
+          spaceBetween={20}
           slidesPerView={"auto"}
-          className="mySwiper relative cursor-grab active:cursor-grabbing mt-10"
+          className="mySwiper relative cursor-grab active:cursor-grabbing md:mt-10"
           onTouchStart={() => setIsDragging(true)}
           onTouchEnd={() => setIsDragging(false)}
           onSliderFirstMove={() => setIsDragging(true)}
           onTransitionEnd={() => setIsDragging(false)}
         >
           {Teams.map((team, i) => (
-            <SwiperSlide key={i} className=" team_crd w-[28vw]!">
+            <SwiperSlide key={i} className=" team_crd w-[70vw]! md:w-[28vw]!">
               <div
                 className={`aspect-3/4  w-full relative overflow-hidden transition-transform duration-300 ${isDragging ? "scale-[0.98]" : "scale-100"
                   }`}

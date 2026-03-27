@@ -9,6 +9,9 @@ const Showreel = () => {
     const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
     useGSAP(() => {
+
+        if(window.innerWidth < 750) return
+
         gsap.fromTo(".showreel_video", {
             y: -400
         }, {
@@ -26,7 +29,7 @@ const Showreel = () => {
 
     return (
         <>
-            <div className=" showreel_video_paren w-full relative h-screen overflow-hidden">
+            <div className=" showreel_video_paren w-full relative aspect-video overflow-hidden">
                 {!isVideoLoaded && (
                     <div className="w-full video_skeleton absolute h-screen top-0 left-0 pointer-events-none z-10 bg-black"></div>
                 )}

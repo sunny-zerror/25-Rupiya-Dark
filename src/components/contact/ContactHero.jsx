@@ -6,7 +6,7 @@ import React from 'react'
 
 const ContactHero = () => {
 
-    
+
     useGSAP(() => {
 
         const split = SplitText.create(".text_anim", {
@@ -40,9 +40,10 @@ const ContactHero = () => {
 
     return (
         <>
-            <div className="w-full h-screen flex items-center pt-44! padding">
-                <h1 className='text_anim mask-trigger w-fit text-7xl uppercase leading-none  font-semibold '>We'd  love to hear <br /> about 
-                  <span className='text-[#eb5939]'>  your  project !</span></h1>
+            <div className="w-full h-[40vh] flex items-center  padding">
+                <h1 className='text_anim mask-trigger w-fit text-5xl md:text-7xl uppercase leading-none  font-semibold '>We'd  love to hear <br /> about
+                    <span className='text-[#eb5939]'>  your  project !</span>
+                </h1>
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const SHAPES = [
     { type: "square", size: 128, color: "#21935b" },
     { type: "circle", size: 80, color: "#fecc33" },
+    { type: "circle", size: 100, color: "#eb5939" },
     { type: "pill", text: "Founded in 2023", size: 28 },
     { type: "square", size: 128, color: "#fecc33" },
     { type: "pill", text: "24hr Turnaround", size: 28 },
@@ -36,19 +37,6 @@ export default function PhysicsSection() {
         const container = containerRef.current;
         if (!section || !container) return;
 
-        const config = {
-            gravity: { x: 0, y: 1 },
-            restitution: 0.5,
-            friction: 0.15,
-            frictionAir: 0.02,
-            density: 0.002,
-            wallThickness: 200,
-            mouseStiffness: 0.6,
-        };
-
-        const clamp = (val, min, max) =>
-            Math.max(min, Math.min(max, val));
-
         const {
             Engine,
             World,
@@ -56,15 +44,18 @@ export default function PhysicsSection() {
             Runner,
             Mouse,
             MouseConstraint,
+            Body,
         } = Matter;
 
-        // 🔹 Create engine ONCE
         const engine = Engine.create();
-        engine.gravity = config.gravity;
+        engine.gravity.y = 1;
+
         engineRef.current = engine;
 
         const containerRect = container.getBoundingClientRect();
-        const wallThickness = config.wallThickness;
+
+        // ⭐ Walls
+        const wallThickness = 200;
 
         const walls = [
             Bodies.rectangle(
@@ -78,21 +69,24 @@ export default function PhysicsSection() {
                 -wallThickness / 2,
                 containerRect.height / 2,
                 wallThickness,
-                containerRect.height + wallThickness * 2,
+                containerRect.height * 2,
                 { isStatic: true }
             ),
             Bodies.rectangle(
                 containerRect.width + wallThickness / 2,
                 containerRect.height / 2,
                 wallThickness,
-                containerRect.height + wallThickness * 2,
+                containerRect.height * 2,
                 { isStatic: true }
             ),
         ];
 
         World.add(engine.world, walls);
 
+        // ⭐ Create Bodies
         const objects = container.querySelectorAll(".object");
+
+        bodiesRef.current = [];
 
         objects.forEach((obj, index) => {
             const rect = obj.getBoundingClientRect();
@@ -101,7 +95,7 @@ export default function PhysicsSection() {
                 Math.random() * (containerRect.width - rect.width) +
                 rect.width / 2;
 
-            const startY = -200;
+            const startY = -200 - index * 120 - Math.random() * 150;
 
             const body = Bodies.rectangle(
                 startX,
@@ -109,10 +103,10 @@ export default function PhysicsSection() {
                 rect.width,
                 rect.height,
                 {
-                    frictionAir: config.frictionAir,
-                    friction: config.friction,
-                    density: config.density,
-                    restitution: config.restitution,
+                    restitution: 0.8,
+                    friction: 0.05,
+                    frictionAir: 0.01,
+                    density: 0.002,
                 }
             );
 
@@ -121,25 +115,30 @@ export default function PhysicsSection() {
                 element: obj,
                 width: rect.width,
                 height: rect.height,
+                index,
             });
 
             World.add(engine.world, body);
         });
 
+        // ⭐ Mouse Drag
         const mouse = Mouse.create(container);
 
         const mouseConstraint = MouseConstraint.create(engine, {
             mouse,
-            constraint: { stiffness: config.mouseStiffness },
+            constraint: { stiffness: 0.6 },
         });
 
         World.add(engine.world, mouseConstraint);
 
-        // 🔹 Runner created but NOT started
+        // ⭐ Runner
         const runner = Runner.create();
         runnerRef.current = runner;
 
-        // 🔹 DOM Sync
+        // ⭐ DOM Sync Loop
+        const clamp = (val, min, max) =>
+            Math.max(min, Math.min(max, val));
+
         const update = () => {
             bodiesRef.current.forEach(
                 ({ body, element, width, height }) => {
@@ -167,21 +166,26 @@ export default function PhysicsSection() {
 
         update();
 
+        // ⭐ Reset Bodies (Stagger Drop)
         const resetBodies = () => {
-            bodiesRef.current.forEach(({ body, width }) => {
-                const startX =
-                    Math.random() * (containerRect.width - width) +
-                    width / 2;
+            bodiesRef.current.forEach(
+                ({ body, width, index }) => {
+                    const startX =
+                        Math.random() * (containerRect.width - width) +
+                        width / 2;
 
-                const startY = -200;
+                    const startY =
+                        -200 - index * 120 - Math.random() * 150;
 
-                Matter.Body.setPosition(body, { x: startX, y: startY });
-                Matter.Body.setVelocity(body, { x: 0, y: 0 });
-                Matter.Body.setAngularVelocity(body, 0);
-                Matter.Body.setAngle(body, 0);
-            });
+                    Body.setPosition(body, { x: startX, y: startY });
+                    Body.setVelocity(body, { x: 0, y: 0 });
+                    Body.setAngularVelocity(body, 0);
+                    Body.setAngle(body, 0);
+                }
+            );
         };
 
+        // ⭐ ScrollTrigger
         ScrollTrigger.create({
             trigger: section,
             start: "top center",
@@ -247,14 +251,14 @@ export default function PhysicsSection() {
 
     return (
         <>
-            <div ref={sectionRef} className=" physics_fall padding relative w-full h-screen  flex flex-col justify-center  overflow-hidden">
-                <p className=" text_anim text-7xl w-fit mask-trigger  relative z-10 leading-none uppercase  font-semibold mb-20">
+            <div ref={sectionRef} className=" physics_fall padding relative w-full h-[100svh]  flex flex-col justify-center  overflow-hidden">
+                <p className=" text_anim text-5xl md:text-7xl w-fit mask-trigger  relative z-10 leading-none uppercase  font-semibold mb-20">
                     WHO <br /> <span className="text-[#eb5939]">we</span> ARE
                 </p>
-                <p className=" text_anim w-[25%]  text-lg  leading-none font-medium">
+                <p className=" text_anim md:w-[25%]  text-lg  leading-none font-medium">
                     Our name is a playful nod to the idea that world-class production doesn&apos;t have to cost a fortune.
                 </p>
-                <p className=" text_anim w-[25%]  mt-5 text-lg leading-none font-medium">
+                <p className=" text_anim md:w-[25%]  mt-5 text-lg leading-none font-medium">
                     we bring the same obsessive attention to detail to every project.
                 </p>
                 <div
@@ -275,15 +279,27 @@ export default function PhysicsSection() {
 function Shape({ shape }) {
     const base = "physics_item flex items-center justify-center";
     const patternClass = shape.bgPattern ? "bg-pattern" : "";
+    const [size, setSize] = useState(shape.size); // SAME as server initially
+
+    useEffect(() => {
+        const check = () => {
+            if (window.innerWidth < 768) {
+                setSize(shape.size / 2);
+            } else {
+                setSize(shape.size);
+            }
+        };
+
+        check(); // run once
+        window.addEventListener("resize", check);
+
+        return () => window.removeEventListener("resize", check);
+    }, [shape.size]);
 
     if (shape.type === "pill") {
         return (
             <div
-                className={`${base} ${patternClass} border-2 rounded-full text-4xl w-fit whitespace-nowrap text-[#000000] font-medium`}
-                style={{
-                    padding: "1rem 2rem",
-                    backgroundColor: "#eb5939",
-                }}
+                className={`${base} ${patternClass}  border-2 px-4 md:px-8 py-2 md:py-4 bg-[#eb5939] rounded-full text-base md:text-4xl w-fit whitespace-nowrap text-[#000000] font-medium`}
             >
                 {shape.text}
             </div>
@@ -295,8 +311,8 @@ function Shape({ shape }) {
             <div
                 className={`${base} ${patternClass} rounded-full`}
                 style={{
-                    width: shape.size,
-                    height: shape.size,
+                    width: size,
+                    height: size,
                     backgroundColor: shape.color || "",
                 }}
             />
@@ -308,8 +324,8 @@ function Shape({ shape }) {
             <div
                 className={`${base} ${patternClass}`}
                 style={{
-                    width: shape.size,
-                    height: shape.size,
+                    width: size,
+                    height: size,
                     backgroundColor: shape.color || "",
                 }}
             />
@@ -321,8 +337,8 @@ function Shape({ shape }) {
             <div
                 className={`${base} ${patternClass} triangle_shape bg-[#eb5939]`}
                 style={{
-                    width: shape.size,
-                    height: shape.size,
+                    width: size,
+                    height: size,
                 }}
             />
         );
@@ -333,7 +349,7 @@ function Shape({ shape }) {
             <svg
                 viewBox="0 0 374 324"
                 className={`${base} ${patternClass}`}
-                style={{ width: shape.size }}
+                style={{ width: size }}
             >
                 <path
                     d="M374 161.947L280.5 323.894H93.5L0 161.947L93.5 0L280.5 0L374 161.947Z"

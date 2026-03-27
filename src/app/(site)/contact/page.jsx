@@ -10,7 +10,7 @@ const page = () => {
     <>
       <div className='relative'>
         <div className="front-view">
-          <ContactHero />
+          {/* <ContactHero /> */}
           <ContactForm />
           <Faq />
         </div>

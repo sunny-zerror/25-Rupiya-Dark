@@ -46,7 +46,7 @@ const MaskHome = () => {
             {/* Home */}
             <div >
                 <div className=" padding w-full h-[40vh]  flex items-end justify-between">
-                    <h1 className=' text_anim text-8xl font-semibold leading-0 uppercase '>
+                    <h1 className=' text_anim text-7xl md:text-8xl font-semibold leading-0 uppercase '>
                         <span className='leading-[5rem] '>25 Rupiya</span> <br />
                         <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                     </h1>
@@ -68,7 +68,7 @@ const MaskHome = () => {
                 <p className="font-thin uppercase pp_neue text-sm">About us</p>
 
                 <div className="mask-trigger relative">
-                    <p className="text-4xl font-medium">
+                    <p className="text-3xl md:text-4xl font-medium">
                         Tiny crew.
                         Loud visuals.
                         No boring stuff. <br />
@@ -137,7 +137,7 @@ const MaskHome = () => {
             <div >
                 <div className=" padding pt-32! grid grid-cols-3 ">
                     <div className="col-span-2">
-                        <p className=" text-7xl uppercase leading-none  font-semibold ">
+                        <p className=" text-5xl md:text-7xl uppercase leading-none  font-semibold ">
                             Creative <br />services
                         </p>
                     </div>
@@ -171,7 +171,7 @@ const MaskHome = () => {
                 <div className="padding mt-4 w-full">
                     <div className=" w-full grid grid-cols-3">
                         <div className="col-span-2">
-                            <p className="text-7xl uppercase leading-none  font-semibold ">
+                            <p className="text-5xl md:text-7xl uppercase leading-none  font-semibold ">
                                 Good <br />things said
                             </p>
                         </div>

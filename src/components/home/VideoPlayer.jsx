@@ -201,23 +201,33 @@ const VideoPlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
     }, []);
 
 
+    useEffect(() => {
+        if (window.lenis) {
+            if (isVideoOpen) {
+                window.lenis.stop();
+            } else {
+                window.lenis.start();
+            }
+        }
+    }, [isVideoOpen])
+
     return (
-        <div ref={playerRef} className={`w-full h-screen center bg-[#0d0d0d] overflow-hidden fixed top-0 left-0 z-100 transition-all duration-300 ${isVideoOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}  `}>
+        <div ref={playerRef} className={`w-full h-[100vh] center bg-[#0d0d0d] overflow-hidden fixed top-0 left-0 z-[9999] md:z-100 transition-all duration-300 ${isVideoOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}  `}>
 
             <div onClick={(() => setOpenDesc(false))} className={` w-full h-full absolute top-0 left-0 bg-black/40 backdrop-blur-sm z-10 transition-all duration-300 ${openDesc ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} `}></div>
 
-            <div className=" w-full  z-10 absolute top-0 space-y-5 p-5 px-10 pointer-events-none">
-                <div className="w-full flex items-center justify-between">
-                    <div onClick={() => setOpenDesc(!openDesc)} className="  cursor-pointer pointer-events-auto h-14 p-5 w-44 justify-between  flex items-center gap-5 bg-[#b7ab98] text-black  rounded-2xl ">
+            <div className=" w-full  z-10 absolute top-0 space-y-5 p-5 px-2 md:px-10 pointer-events-none">
+                <div className="w-full flex items-center max-sm:text-sm justify-between">
+                    <div onClick={() => setOpenDesc(!openDesc)} className="  cursor-pointer pointer-events-auto h-12 md:h-14 p-5 w-44 justify-between  flex items-center gap-5 bg-[#b7ab98] text-black  rounded-lg md:rounded-2xl ">
                         <p className="uppercase">Read {openDesc ? "Less" : "More"}  </p>
                         <RiCloseLine size={18} className={`${openDesc ? "rotate-0" : "rotate-45"} transition-all duration-300`} />
                     </div>
-                    <div onClick={(() => { setOpenDesc(false), setIsVideoOpen(false), setIsVideoLoaded(false) })} className="  h-14 p-5 w-fit pointer-events-auto cursor-pointer  flex items-center gap-5 bg-[#b7ab98] text-black  justify-between rounded-2xl">
+                    <div onClick={(() => { setOpenDesc(false), setIsVideoOpen(false), setIsVideoLoaded(false) })} className="  h-12 md:h-14 p-3 md:p-5 w-fit pointer-events-auto cursor-pointer  flex items-center gap-5 bg-[#b7ab98] text-black  justify-between rounded-lg md:rounded-2xl">
                         <RiCloseLine />
                     </div>
                 </div>
-                <div className={`w-1/2 ${openDesc ? "h-[50vh] py-8" : "h-0 py-0"} px-8 transition-all duration-300 ${openDesc ? "opacity-100" : "opacity-0"}  overflow-hidden  bg-[#b7ab98] text-black  space-y-10 rounded-2xl`}>
-                    <p className="text-lg leading-tight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ipsum minima exercitationem repudiandae tempora sed rem recusandae maxime pariatur deserunt, quaerat quas suscipit, autem est obcaecati optio, accusantium iste! Sapiente.</p>
+                <div className={` w-full md:w-1/2 ${openDesc ? " h-[40vh] md:h-[50vh] py-4 md:py-8" : "h-0 py-0"} px-4 md:px-8 transition-all duration-300 ${openDesc ? "opacity-100" : "opacity-0"}  overflow-hidden  bg-[#b7ab98] text-black  space-y-10 rounded-lg md:rounded-2xl`}>
+                    <p className="md:text-lg leading-tight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ipsum minima exercitationem repudiandae tempora sed rem recusandae maxime pariatur deserunt, quaerat quas suscipit, autem est obcaecati optio, accusantium iste! Sapiente.</p>
                     <div className="  grid grid-cols-2  items-end">
                         <div className="">
                             <p className="uppercase font-semibold text-sm mb-2">Skills</p>
@@ -255,7 +265,7 @@ const VideoPlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
                 }} />
 
             <div className="absolute bottom-4 left-0 w-full center">
-                <div className="flex items-center gap-5 text-white backdrop-blur-xl px-5 py-3 rounded-xl w-[80%]">
+                <div className="flex items-center gap-5 text-white backdrop-blur-xl px-5 py-3 rounded-xl w-[95%] md:w-[80%]">
                     <button onClick={togglePlay} className="hover:scale-110 transition-all duration-150" >
                         {isPlaying ? <RiPauseLine size={26} /> : <RiPlayLine size={26} />}
                     </button>

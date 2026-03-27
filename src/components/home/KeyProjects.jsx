@@ -44,7 +44,7 @@ const KeyProjects = () => {
 
             <div className="w-full text-center mt-32 padding">
                 <p className="font-thin uppercase pp_neue text-sm">Key Projects</p>
-                <p className="text-8xl leading-none font-semibold mb-10">
+                <p className="text-7xl md:text-8xl leading-none font-semibold mb-10">
                     Explore our work
                 </p>
             </div>

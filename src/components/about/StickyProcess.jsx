@@ -338,10 +338,10 @@ const StickyProcess = () => {
   }, { scope: wrapperRef });
 
   return (
-    <div ref={wrapperRef} className="w-full h-[calc(100vh+103vw+10rem)] flex ">
+    <div ref={wrapperRef} className="w-full md:h-[calc(100vh+103vw+10rem)] md:flex ">
 
-      <div className="w-1/2 sticky top-0 h-screen bg-[#eb5939] flex items-center justify-center">
-        <div className="w-[88%] aspect-square overflow-hidden flex items-center justify-center rounded-full bg-[#0d0d0d] relative">
+      <div className=" w-full md:w-1/2 sticky top-20 md:top-0 h-[50svh]  md:h-screen bg-[#eb5939] flex items-center justify-center">
+        <div className=" w-[80%] md:w-[88%] aspect-square overflow-hidden flex items-center justify-center rounded-full bg-[#0d0d0d] relative">
           <div className="w-[75%] relative center h-[75%]">
             <BriefSVG />
             <ConceptSVG />
@@ -351,13 +351,16 @@ const StickyProcess = () => {
         </div>
       </div>
 
-      <div className="w-1/2 px-20 border border-[#eb5939] border-b">
+      <div className=" w-full md:w-1/2 px-5 p-5  md:px-20 border border-[#eb5939] border-b">
 
-        <div className="h-screen space-y-10 flex flex-col justify-center">
-          <p className="text-7xl uppercase font-semibold leading-none">
+        <div className=" h-[50vh]  md:h-screen space-y-5 md:space-y-10 flex flex-col justify-center">
+          <p className=" max-sm:hidden text-5xl md:text-7xl uppercase font-semibold leading-none">
             Why <br /> <span className="text-[#eb5939]">Choose</span> <br />Us
           </p>
-          <p className="text-lg w-[80%]">
+          <p className=" md:hidden text-5xl md:text-7xl uppercase font-semibold leading-none">
+            Why <span className="text-[#eb5939]">Choose</span> Us
+          </p>
+          <p className="text-lg md:w-[80%] leading-tight">
             From concept to final cut—AI-assisted storytelling that scales.
             Fast turnarounds, cinematic finish.
           </p>
@@ -366,10 +369,10 @@ const StickyProcess = () => {
         {process.map((service, i) => (
           <div
             key={i}
-            className="serv_slide h-[25vw] flex flex-col justify-center space-y-5"
+            className="serv_slide h-[30vh] md:h-[25vw] flex flex-col justify-center space-y-5"
           >
             <p className="font-thin uppercase pp_neue text-sm">Step {i + 1}</p>
-            <p className="text-4xl text-[#eb5939] leading-none font-medium">
+            <p className="text-3xl md:text-4xl text-[#eb5939] leading-none font-medium">
               {service.title}
             </p>
             <p className="text-lg leading-tight w-[80%]">

@@ -61,12 +61,12 @@ const Faq = () => {
     <>
       <div className="line-break"></div>
 
-      <div className="w-full padding grid grid-cols-5 pb-32!">
-        <div className="col-span-2 pr-20">
-          <p className='text-4xl font-semibold mb-3'>FREQUENTLY <span className='text-[#eb5939]'> ASKED</span> <br /> QUESTIONS</p>
-          <p className='text-lg w-[80%] leading-tight'>This is different we get that, you may have questions, here are some answers.</p>
+      <div className="w-full padding md:grid mt-5 md:mt-0 grid-cols-5 pb-32!">
+        <div className="col-span-2 md:pr-20">
+          <p className='text-3xl md:text-4xl font-semibold mb-3'>FREQUENTLY <span className='text-[#eb5939]'> ASKED</span> <br /> QUESTIONS</p>
+          <p className='text-lg md:w-[80%] leading-tight'>This is different we get that, you may have questions, here are some answers.</p>
         </div>
-        <div className="w-full col-span-3 pr-36">
+        <div className="w-full mt-10 md:mt-0 col-span-3 md:pr-36">
           {faqData.map((item, i) => (
             <div
               key={i}

@@ -1,5 +1,5 @@
-text-7xl
-text-4xl
+text-5xl md:text-7xl
+text-3xl md:text-4xl
 text-2xl
 text-lg
 text-base

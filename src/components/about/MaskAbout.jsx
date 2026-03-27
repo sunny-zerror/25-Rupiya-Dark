@@ -5,7 +5,7 @@ const MaskAbout = () => {
     return (
         <>
             <div className=" physics_fall padding relative w-full h-screen  flex flex-col justify-center  overflow-hidden">
-                <p className="text-7xl leading-none uppercase  font-semibold mb-20">
+                <p className="text-5xl md:text-7xl leading-none uppercase  font-semibold mb-20">
                     WHO <br /> Let us cook
                 </p>
                 <p className="w-[25%] text-lg leading-none font-medium">
@@ -23,7 +23,7 @@ const MaskAbout = () => {
             <div className="">
                 <div className="padding grid grid-cols-3 mt-12 w-full">
                     <div className="col-span-2">
-                        <p className="text-7xl uppercase leading-none  font-semibold ">
+                        <p className="text-5xl md:text-7xl uppercase leading-none  font-semibold ">
                             The<br />Crew
                         </p>
                     </div>

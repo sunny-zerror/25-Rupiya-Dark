@@ -3,7 +3,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import SplitText from 'gsap/dist/SplitText';
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import VideoPlayer from './VideoPlayer';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -70,11 +71,63 @@ const HERO_GROUPS = [
     },
 ];
 
+const promptWork = [
+    {
+        id: 1,
+        title: "Generate a video for Rafi 100 Concert by Sonu Nigam.",
+        video: "/videos/showreel_compress.mp4",
+    },
+    {
+        id: 2,
+        title: "Generate a short video of Haunted Tales.",
+        video: "/videos/showreel_compress.mp4",
+    },
+    {
+        id: 3,
+        title: "An episode of born of vishnulok.",
+        video: "/videos/showreel_compress.mp4",
+    },
+    {
+        id: 4,
+        title: "A short movie of ramayan named as ramleela.",
+        video: "/videos/showreel_compress.mp4",
+    },
+    {
+        id: 5,
+        title: "Generate a short video against war of Kaju katli and soan papdi.",
+        video: "/videos/showreel_compress.mp4",
+    },
+]
+
 const Hero = () => {
 
     const root = useRef(null);
     const cycleTL = useRef(null);
     const intervalRef = useRef(null);
+    const [isVideoOpen, setIsVideoOpen] = useState(false)
+    const [selectedWork, setSelectedWork] = useState()
+    const [openSearch, setOpenSearch] = useState(false)
+
+    const handleWork = (work) => {
+        setSelectedWork(work)
+        setIsVideoOpen(true)
+    }
+
+    useEffect(() => {
+        if (isVideoOpen === false) {
+            setSelectedWork(null)
+        }
+    }, [isVideoOpen])
+
+    useEffect(() => {
+        if (window.lenis) {
+            if (isVideoOpen) {
+                window.lenis.stop();
+            } else {
+                window.lenis.start();
+            }
+        }
+    }, [isVideoOpen])
 
     useGSAP(
         () => {
@@ -167,7 +220,7 @@ const Hero = () => {
 
             setTimeout(() => {
                 startLoop();
-            }, 5500);
+            }, 5000);
 
         },
         { scope: root }
@@ -194,7 +247,7 @@ const Hero = () => {
 
         });
 
-        const tl = gsap.timeline({delay:0.5});
+        const tl = gsap.timeline({ delay: 0.5 });
         tl.from(split.words, {
             yPercent: 120,
             opacity: 0,
@@ -203,14 +256,18 @@ const Hero = () => {
             stagger: 0.08
         });
 
-        tl.to(".hero-search-background",{
-            opacity:1,
+        tl.to(".search_btn_paren", {
+            opacity: 1,
             ease: "power3.out",
-        },"<+=4.0")
-        tl.to(".search_btn_paren",{
-            opacity:1,
-            ease: "power3.out",
-        })
+        }, "<+=4.0")
+        tl.to(".sqre", {
+            opacity: 0,
+            stagger: {
+                each: 0.003,
+                from: "random"
+            },
+            ease: "expo.out",
+        }, "<")
 
 
 
@@ -218,9 +275,12 @@ const Hero = () => {
 
 
     return (
-        <div ref={root}>
-            <div className=" padding w-full h-[40vh]  flex items-end justify-between">
-                <h1 className=' text_anim text-8xl font-semibold leading-0 uppercase '>
+        <div ref={root} className='relative w-full'>
+
+            <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
+
+            <div className=" padding w-full pt-32! md:h-[40vh]  md:flex items-end justify-between">
+                <h1 className=' text_anim text-7xl md:text-8xl font-semibold leading-0 uppercase '>
                     <span className='leading-[5rem] '>25 Rupiya</span> <br />
                     <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                 </h1>
@@ -230,21 +290,42 @@ const Hero = () => {
             </div>
 
             <div className="w-full h-screen relative">
-                <div className="hero-search-background opacity-0 bg-pattern">
+                <div className="hero-search-background  bg-pattern">
+                    <div className=" grid_bg w-full h-full absolute pointer-events-none  top-0 left-0">
+                        {[...Array(1200)].map((_, i) => (
+                            <div key={i} className="sqre bg-[#0d0d0d] shrink-0 aspect-square size-8"></div>
+                        ))}
+                    </div>
 
-                    <div className="search_btn_paren flex opacity-0 items-center p-2 justify-between z-10 absolute top-1/2 left-1/2 w-[50%] h-20 rounded-full bg-[#b7ab98] -translate-x-1/2 -translate-y-1/2">
-                        <div className="flex items-center pl-7 tracking-wider whitespace-nowrap pp_neue uppercase text-sm h-full relative">
-                            {HERO_GROUPS.map(({ term }) => (
-                                <div key={term} className="absolute text-black font-semibold hero-term opacity-0">
-                                    <p>{term}</p>
-                                </div>
-                            ))}
+                    <div className="search_btn_paren  opacity-100 space-y-3  z-10 absolute top-1/2 left-1/2 w-[95%] md:w-[50%]  -translate-x-1/2 -translate-y-1/2">
+
+                        <div className={`w-full text-black  bg-[#b7ab98] rounded-lg overflow-hidden transition-all duration-300 ${openSearch ? "max-h-[40vh] p-4" : "max-h-0 p-0"} `}>
+                            <p className='uppercase text-xs  md:text-sm pp_neue font-semibold'>Prompt suggestions for you</p>
+                            <div className="flex flex-wrap gap-2 mt-3">
+                                {promptWork.map((item, i) => (
+                                    <div onClick={(e) => {
+                                        handleWork(item)
+                                    }} key={i} className=" cursor-pointer border w-fit px-4 leading-tight rounded-full text-xs  md:text-sm uppercase py-2 hover:bg-[#eb5939] transition-all duration-300 flex items-center gap-x-2">
+                                        <img className='w-4' src="https://cdn-icons-png.flaticon.com/512/12301/12301908.png" alt="" />
+                                        <p>{item.title}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
-                        <div className="bg-[#eb5939] text-black h-full px-10 rounded-full center">
-                            <p className="uppercase tracking-wide text-sm font-semibold pp_neue">
-                                Search ⌘/
-                            </p>
+                        <div onClick={(() => setOpenSearch(!openSearch))} className={` cursor-pointer w-full p-2 flex items-center justify-between  bg-[#b7ab98]  transition-all duration-300  ${openSearch ? "rounded-lg h-14 md:h-16" : " rounded-[3rem] h-16 md:h-20"} `}>
+                            <div className="flex items-center pl-7 tracking-wider whitespace-nowrap pp_neue uppercase text-xs md:text-sm h-full relative">
+                                {HERO_GROUPS.map(({ term }) => (
+                                    <div key={term} className="absolute text-black font-semibold hero-term opacity-0">
+                                        <p>{term}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className={`bg-[#eb5939] text-black h-full px-6 md:px-10 center transition-all duration-300 ${openSearch ? "rounded-lg " : " rounded-[2rem]"} `}>
+                                <p className="uppercase tracking-wide text-xs  md:text-sm font-semibold pp_neue">
+                                    Search ⌘/
+                                </p>
+                            </div>
                         </div>
                     </div>
 

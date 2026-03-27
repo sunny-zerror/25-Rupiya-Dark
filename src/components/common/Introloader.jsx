@@ -7,29 +7,38 @@ import CountUp from '../effects/CountUp'
 const Introloader = () => {
 
     useGSAP(() => {
-        const tl = gsap.timeline()
-        tl.to(".introloader_paren",{
-            opacity:0,
-            delay:4
+        gsap.to(".introloader_paren", {
+            opacity: 0,
+            delay: 3
+        })
+        gsap.to(".loader_bar", {
+            width: "100%",
+            ease: "expo.inOut",
+            duration: 3
+        })
+        gsap.to(".introloader_paren", {
+            display: "none",
+            delay: 5
         })
     })
 
     return (
         <>
-            <div className=" introloader_paren w-full flex h-screen  fixed  z-[99999] pointer-events-none bg-[#0d0d0d]">
-                <div className=" padding w-full h-[40vh]  flex items-end justify-between">
-                    <h1 className=' text_anim text-8xl font-semibold leading-0 uppercase '>
+            <div className=" introloader_paren w-full flex h-[100svh]  fixed  z-[99999] pointer-events-none bg-[#0d0d0d]">
+                <div className=" padding w-full pt-32! md:h-[40vh]  md:flex items-end justify-between">
+                    <h1 className=' text_anim text-7xl md:text-8xl font-semibold leading-0 uppercase '>
                         <span className='  leading-[5rem] '>25 Rupiya</span> <br />
-                        <span className=' opacity-0 w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
+                        <span className='w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                     </h1>
                 </div>
-                <div className="absolute bottom-5 right-5 pp_neue text-8xl font-semibold text-[#eb5939]">
+                <div className=" loader_bar w-0 absolute h-1 bg-[#eb5939] bottom-0 left-0"></div>
+                <div className="absolute bottom-5 right-5 pp_neue text-7xl md:text-8xl font-semibold text-[#eb5939]">
                     <CountUp
                         from={0}
                         to={100}
                         separator=","
                         direction="up"
-                        duration={1}
+                        duration={.4}
                         className="count-up-text"
                         startCounting={false}
                     />
