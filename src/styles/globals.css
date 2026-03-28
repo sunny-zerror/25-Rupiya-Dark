@@ -10,10 +10,14 @@ body {
   color: #d7cab5;
   background-color: #0d0d0d;
   width: 100%;
-  cursor: none;
 }
-.cursor-pointer {
-  cursor: none;
+@media (min-width: 1020px) {
+  body {
+    cursor: none;
+  }
+  .cursor-pointer {
+    cursor: none;
+  }
 }
 body::-webkit-scrollbar {
   display: none;

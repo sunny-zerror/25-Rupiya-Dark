@@ -263,7 +263,7 @@ export default function PhysicsSection() {
                 </p>
                 <div
                     ref={containerRef}
-                    className="absolute flex  right-0 w-full h-full"
+                    className="absolute flex  right-0 w-full h-full max-sm:pointer-events-none max-sm:z-[-5] "
                 >
                     {SHAPES.map((s, i) => (
                         <div key={i} className=" object physics_inner  absolute w-max select-none ">

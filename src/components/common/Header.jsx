@@ -30,7 +30,7 @@ const Header = () => {
 
       <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed top-0 left-0 z-[99] bg-black/20 backdrop-blur-xs ${openMenu ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} transition-all duration-300 `}></div>
       <div className="w-full center fixed z-1000 top-0 p-3 md:p-5 pointer-events-none">
-        <div className={` px-8 pointer-events-auto  transition-all duration-300 text-black ${openMenu ? " w-full md:w-[45vw] rounded-2xl pb-8 bg-[#D7CAB5]" : "  w-full md:w-[30vw] rounded-2xl bg-[#D7CAB5]"} `}>
+        <div className={` px-6 md:px-8 pointer-events-auto  transition-all duration-300 text-black ${openMenu ? " w-full md:w-[45vw] rounded-2xl pb-6 md:pb-8 bg-[#D7CAB5]" : "  w-full md:w-[30vw] rounded-2xl bg-[#D7CAB5]"} `}>
           <div onClick={() => setOpenMenu(!openMenu)} className=" cursor-pointer rounded-full h-14 flex items-center justify-between">
             <p className='pp_neue uppercase text-sm font-thin'>Logo</p>
             <div className=" block w-fit relative h-full center">
@@ -52,7 +52,7 @@ const Header = () => {
                 </div>
               </nav>
               <div className=" w-full mt-5 md:mt-0 md:w-1/2  aspect-video">
-                <video loop autoPlay muted playsInline className='cover' src="/videos/showreel_compress.mp4"></video>
+                <video loop autoPlay muted playsInline className='cover rounded-lg' src="/videos/showreel_compress.mp4"></video>
               </div>
             </div>
           </div>

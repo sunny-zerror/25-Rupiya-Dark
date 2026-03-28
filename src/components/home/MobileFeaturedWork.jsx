@@ -1,5 +1,4 @@
 "use client";
-import { works } from "@/app/utils/WorksData";
 import { useGSAP } from "@gsap/react";
 import { RiCloseLine, RiExpandUpDownFill } from "@remixicon/react";
 import gsap from "gsap";
@@ -19,7 +18,23 @@ const categories = [
     "music videos"
 ]
 
-const FeaturedWork = () => {
+const works = [
+
+    { category: "Ai video", video: "/videos/vid_1.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15a_knight-1.avif", colStart: 1, rowStart: 1, colSpan: 2, rowSpan: 2 },
+    { category: "Ai video", video: "/videos/vid_2.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15b_knight-8.avif", colStart: 3, rowStart: 1 },
+    { category: "video editing", video: "/videos/vid_1.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd157_knight-6.avif", colStart: 3, rowStart: 2 },
+
+    { category: "video production", video: "/videos/vid_2.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd113_knight-3.avif", colStart: 1, rowStart: 3 },
+    { category: "Ai movie", video: "/videos/vid_2.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd116_knight-10.avif", colStart: 1, rowStart: 4 },
+    { category: "music videos", video: "/videos/vid_1.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd112_knight-5.avif", colStart: 2, rowStart: 3, colSpan: 2, rowSpan: 2 },
+
+    { category: "Ai video", video: "/videos/vid_2.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15c_knight-7.avif", colStart: 1, rowStart: 5, colSpan: 2, rowSpan: 2 },
+    { category: "video production", video: "/videos/vid_2.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd117_knight-9.avif",colStart: 3, rowStart: 5},
+    { category: "video editing", video: "/videos/vid_1.mp4", img: "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd114_knight-2.avif", colStart: 3, rowStart: 6},
+];
+
+const MobileFeaturedWork = () => {
+
     const [isVideoOpen, setIsVideoOpen] = useState(false)
     const [selectedWork, setSelectedWork] = useState()
     const originalParent = useRef(null);
@@ -50,73 +65,11 @@ const FeaturedWork = () => {
             }
         }
     }, [isVideoOpen])
-
-    useGSAP(() => {
-        const source = container.current.querySelector(".intro-platform-images");
-        const target = container.current.querySelector(".platform-images");
-
-        const images = Array.from(
-            container.current.querySelectorAll(".intro-platform-image")
-        );
-
-        ScrollTrigger.create({
-            trigger: container.current.querySelector(".platform_images_paren"),
-            start: "top 70%",
-
-            onEnter: () => {
-                images.forEach(el => el.getBoundingClientRect());
-
-                const state = Flip.getState(images);
-
-                images.forEach(el => target.appendChild(el));
-
-                Flip.from(state, {
-                    duration: 1.2,
-                    ease: "power2.inOut",
-                    stagger: 0.08,
-                    borderRadius: 0,
-                    absolute: true,
-                    simple: true,
-                });
-            },
-
-            onLeaveBack: () => {
-                images.forEach(el => el.getBoundingClientRect());
-
-                const state = Flip.getState(images);
-
-                images.forEach(el => source.appendChild(el));
-
-                Flip.from(state, {
-                    duration: 1.2,
-                    ease: "power2.inOut",
-                    stagger: 0.08,
-                    borderRadius: "1rem",
-                    absolute: true,
-                    simple: true,
-                });
-            },
-        });
-    }, { scope: container });
-
-
     return (
-        <div ref={container} className=" max-sm:hidden relative w-full">
-
+        <div className="md:hidden">
             <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
-            {/* <div className={`w-full h-full z-10 absolute top-0 left-0 gradient_bg pointer-events-none  ${isVideoOpen ? "opacity-0" : "opacity-100"} `}></div> */}
 
-            <div className="intro-platform-images relative w-full h-[30vh] my-20">
-                {works.slice(0, 4).map((item, i) => (
-                    <div onClick={(e) => {
-                        handleWork(item)
-                    }} key={i} className={`intro-platform-image aspect-video group intro-platform-image-${i + 1} ${selectedCategory === "All" || selectedCategory === item.category ? "opacity-100 grayscale-0 blur-none pointer-events-auto" : "opacity-30 blur-[1px] grayscale-100 pointer-events-none"} hover:p-2  transition-[opacity,filter,padding] duration-300`}>
-                        <img className="cover" src={item.img} />
-                    </div>
-                ))}
-            </div>
-
-            <div className="platform_images_paren w-full center">
+            <div className=" w-full center mt-20">
                 <div className=" w-[95%] md:w-[80%]  bg-[#0d0d0d] border border-[#eb5939] rounded-lg md:rounded-2xl overflow-hidden ">
                     <div className="  p-3 md:p-5">
                         <div className="w-full group flex gap-x-3">
@@ -152,9 +105,8 @@ const FeaturedWork = () => {
                         <p className="uppercase text-xs pp_neue leading-none">Showing {filteredWorks.length} of  {works.length} works</p>
                     </div>
 
-                    <div className="w-full grid  grid-cols-7 ">
-                        <div className="platform-images w-full grid grid-cols-5 grid-rows-2 row-span-2 col-span-5"></div>
-                        {works.slice(4).map((item, i) => (
+                    <div className="w-full grid  grid-cols-3 ">
+                        {works.map((item, i) => (
                             <div
                                 key={i}
                                 onClick={(e) => {
@@ -173,7 +125,8 @@ const FeaturedWork = () => {
                 </div>
             </div>
         </div>
-    );
+
+    )
 }
 
-export default FeaturedWork
+export default MobileFeaturedWork
