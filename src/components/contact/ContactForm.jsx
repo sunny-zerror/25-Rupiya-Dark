@@ -147,14 +147,14 @@ const ContactForm = () => {
 
                     <button
                         onClick={() => setActive("project")}
-                        className={` text-sm pp_neue translate-y-[1px] uppercase center relative z-10 px-6 py-2 ${active === "project" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
+                        className={` text-sm pp_neue cursor-pointer translate-y-[1px] uppercase center relative z-10 px-6 py-2 ${active === "project" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
                     >
                         New Project
                     </button>
 
                     <button
                         onClick={() => setActive("other")}
-                        className={` text-sm uppercase pp_neue translate-y-[1px] center relative z-10 px-6 py-2  ${active === "other" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
+                        className={` text-sm uppercase cursor-pointer pp_neue translate-y-[1px] center relative z-10 px-6 py-2  ${active === "other" ? "text-[#0d0d0d] font-semibold transition-all duration-300" : ""}`}
                     >
                         Other
                     </button>
@@ -191,7 +191,7 @@ const ContactForm = () => {
                                     <p className="text-lg">I need :</p>
                                     <div className="flex gap-3 flex-wrap">
                                         {["Branding", "Print", "Web Design", "Other"].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 text-sm border border-[#202020]">
+                                            <button type="button" key={i} className="px-4 py-2 text-sm cursor-pointer border border-[#202020]">
                                                 {item}
                                             </button>
                                         ))}
@@ -202,7 +202,7 @@ const ContactForm = () => {
                                     <p className="text-lg">Do you have a budget in mind?</p>
                                     <div className="flex gap-3">
                                         {["Yes", "No"].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 text-sm border border-[#202020]">
+                                            <button type="button" key={i} className="px-4 py-2 text-sm border cursor-pointer border-[#202020]">
                                                 {item}
                                             </button>
                                         ))}
@@ -221,7 +221,7 @@ const ContactForm = () => {
                                             "€20,000 - €30,000",
                                             "More than €30,000"
                                         ].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 text-sm border border-[#202020]">
+                                            <button type="button" key={i} className="px-4 py-2 text-sm cursor-pointer border border-[#202020]">
                                                 {item}
                                             </button>
                                         ))}
@@ -263,7 +263,7 @@ const ContactForm = () => {
 
                         <div className="w-full flex gap-x-5 text-sm mt-6 md:mt-12 justify-end">
                             {step !== 1 && (
-                                <button type="button" onClick={prev} className="bg-[#202020] text-white py-3 px-10 pp_neue  uppercase rounded-lg">
+                                <button type="button" onClick={prev} className="bg-[#202020] text-white cursor-pointer py-3 px-10 pp_neue  uppercase rounded-lg">
                                     <p className='translate-y-[1px]'>
                                         Prev
                                     </p>
@@ -271,13 +271,13 @@ const ContactForm = () => {
                             )}
 
                             {step !== 2 ? (
-                                <button type="button" onClick={next} className="bg-[#eb5939] text-[#0d0d0d] font-semibold py-3 pp_neue  uppercase px-10 rounded-lg">
+                                <button type="button" onClick={next} className="bg-[#eb5939] text-[#0d0d0d] font-semibold cursor-pointer py-3 pp_neue  uppercase px-10 rounded-lg">
                                     <p className='translate-y-[1px]'>
                                         Next
                                     </p>
                                 </button>
                             ) : (
-                                <button className="bg-[#eb5939] text-[#0d0d0d] font-semibold py-3 px-10 rounded-lg pp_neue  uppercase">
+                                <button className="bg-[#eb5939] text-[#0d0d0d] font-semibold cursor-pointer py-3 px-10 rounded-lg pp_neue  uppercase">
                                     <p className='translate-y-[1px]'>
                                         Submit
                                     </p>
@@ -305,7 +305,7 @@ const ContactForm = () => {
                             <textarea data-lenis-prevent type="text" name="" id="" placeholder='Enter your message' className='outline-none border-b resize-none h-32  custom_scroller pr-5 ' />
                         </div>
                         <div className="w-full flex justify-end">
-                            <button className=' bg-[#eb5939] uppercase text-sm text-[#0d0d0d] pp_neue  font-semibold py-3 px-10 rounded-lg'>
+                            <button className=' bg-[#eb5939] uppercase text-sm text-[#0d0d0d] pp_neue  cursor-pointer  font-semibold py-3 px-10 rounded-lg'>
                                 <p className='translate-y-[1px]'>
                                     Send
                                 </p>

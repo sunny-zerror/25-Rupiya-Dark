@@ -108,7 +108,7 @@ export default function WorkListing() {
                                     <button onClick={(e) => {
                                         handleWork(item)
                                     }}
-                                        className="pp_neue group relative text-sm uppercase   w-32 h-10 bg-transparent border-none outline-none">
+                                        className="pp_neue group relative text-sm uppercase   w-32 h-10 bg-transparent border-none outline-none cursor-pointer ">
 
                                         <div className="w-full relative z-10 flex items-center">
                                             <div className="w-[70%]">

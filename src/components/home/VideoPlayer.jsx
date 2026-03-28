@@ -287,11 +287,11 @@ const VideoPlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
 
             <div className="absolute bottom-4 left-0 w-full center">
                 <div className="flex items-center gap-5 text-white backdrop-blur-xl px-5 py-3 rounded-xl w-[95%] md:w-[80%]">
-                    <button onClick={togglePlay} className="hover:scale-110 transition-all duration-150" >
+                    <button onClick={togglePlay} className="hover:scale-110 cursor-pointer transition-all duration-150" >
                         {isPlaying ? <RiPauseLine size={26} /> : <RiPlayLine size={26} />}
                     </button>
 
-                    <button onClick={toggleMute} className="hover:scale-110 transition-all duration-150" >
+                    <button onClick={toggleMute} className="hover:scale-110 cursor-pointer transition-all duration-150" >
                         {isMuted ? <RiVolumeMuteLine size={24} /> : <RiVolumeUpLine size={24} />}
                     </button>
 
@@ -311,7 +311,7 @@ const VideoPlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
                         {format(time.current)} / {format(time.duration)}
                     </span>
 
-                    <button onClick={handleFullscreen} className="hover:scale-110 transition-all duration-150" >
+                    <button onClick={handleFullscreen} className="hover:scale-110 transition-all cursor-pointer duration-150" >
                         <RiFullscreenLine size={22} />
                     </button>
                 </div>
