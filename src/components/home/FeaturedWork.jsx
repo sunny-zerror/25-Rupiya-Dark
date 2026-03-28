@@ -110,7 +110,7 @@ const FeaturedWork = () => {
                 {works.slice(0, 4).map((item, i) => (
                     <div onClick={(e) => {
                         handleWork(item)
-                    }} key={i} className={`intro-platform-image aspect-video group intro-platform-image-${i + 1} ${selectedCategory === "All" || selectedCategory === item.category ? "opacity-100 grayscale-0 blur-none pointer-events-auto" : "opacity-30 blur-[1px] grayscale-100 pointer-events-none"} hover:p-2  transition-[opacity,filter,padding] duration-300`}>
+                    }} key={i} className={`intro-platform-image aspect-video group cursor-pointer intro-platform-image-${i + 1} ${selectedCategory === "All" || selectedCategory === item.category ? "opacity-100 grayscale-0 blur-none pointer-events-auto" : "opacity-30 blur-[1px] grayscale-100 pointer-events-none"} hover:p-2  transition-[opacity,filter,padding] duration-300`}>
                         <img className="cover" src={item.img} />
                     </div>
                 ))}

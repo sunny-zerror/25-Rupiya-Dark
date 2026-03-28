@@ -13,6 +13,24 @@ const ContactForm = () => {
     const form2Ref = useRef(null);
     const [active, setActive] = useState("project")
 
+    const [formData, setFormData] = useState({
+        service: "",
+        hasBudget: "",
+        budget: "",
+        projectDetails: "",
+        name: "",
+        email: "",
+        company: "",
+        contact: "",
+    });
+
+    const handleChange = (key, value) => {
+        setFormData((prev) => ({
+            ...prev,
+            [key]: value,
+        }));
+    };
+
     useEffect(() => {
         gsap.to(progressRef.current, {
             width: step === 1 ? "0%" : "50%",
@@ -115,6 +133,7 @@ const ContactForm = () => {
         });
 
     });
+
     return (
         <div className="w-full padding pt-44! md:pt-52! md:grid grid-cols-5">
             <div className="w-full pr-10 space-y-5 md:space-y-12 col-span-2">
@@ -191,7 +210,14 @@ const ContactForm = () => {
                                     <p className="text-lg">I need :</p>
                                     <div className="flex gap-3 flex-wrap">
                                         {["Branding", "Print", "Web Design", "Other"].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 text-sm cursor-pointer border border-[#202020]">
+                                            <button
+                                                type="button"
+                                                key={i}
+                                                onClick={() => handleChange("service", item)}
+                                                className={`px-4 py-2 text-sm border rounded-sm cursor-pointer transition-all duration-300   ${formData.service === item
+                                                    ? "bg-[#eb5939] text-[#0d0d0d] font-semibold border-[#eb5939]"
+                                                    : "border-[#444444] text-[#d7cab5]"}
+                                                         `}>
                                                 {item}
                                             </button>
                                         ))}
@@ -202,7 +228,16 @@ const ContactForm = () => {
                                     <p className="text-lg">Do you have a budget in mind?</p>
                                     <div className="flex gap-3">
                                         {["Yes", "No"].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 text-sm border cursor-pointer border-[#202020]">
+                                            <button
+                                                type="button"
+                                                key={i}
+                                                onClick={() => handleChange("hasBudget", item)}
+                                                className={`px-4 py-2 text-sm border rounded-sm cursor-pointer transition-all duration-300  
+      ${formData.hasBudget === item
+                                                        ? "bg-[#eb5939] text-[#0d0d0d] font-semibold border-[#eb5939]"
+                                                        : "border-[#444444] text-[#d7cab5]"}
+    `}
+                                            >
                                                 {item}
                                             </button>
                                         ))}
@@ -221,7 +256,16 @@ const ContactForm = () => {
                                             "€20,000 - €30,000",
                                             "More than €30,000"
                                         ].map((item, i) => (
-                                            <button type="button" key={i} className="px-4 py-2 text-sm cursor-pointer border border-[#202020]">
+                                            <button
+                                                type="button"
+                                                key={i}
+                                                onClick={() => handleChange("budget", item)}
+                                                className={`px-4 py-2 text-sm border rounded-sm cursor-pointer capitalize transition-all duration-300  
+      ${formData.budget === item
+                                                        ? "bg-[#eb5939] text-[#0d0d0d] font-semibold border-[#eb5939]"
+                                                        : "border-[#444444] text-[#d7cab5]"}
+    `}
+                                            >
                                                 {item}
                                             </button>
                                         ))}
@@ -230,7 +274,8 @@ const ContactForm = () => {
 
                                 <div className="space-y-3">
                                     <p className="text-lg">Tell us about your project :</p>
-                                    <textarea className="border-b w-full h-32 text-sm outline-none resize-none" />
+                                    <textarea value={formData.projectDetails}
+                                        onChange={(e) => handleChange("projectDetails", e.target.value)} className="border-b w-full h-32 text-sm outline-none resize-none" />
                                 </div>
 
                             </div>
@@ -242,19 +287,43 @@ const ContactForm = () => {
 
                                 <div className="w-full   grid grid-cols-2">
                                     <p className='text-lg'>Name :</p>
-                                    <input type="text" name="" id="" placeholder='Enter Name ' className='outline-none border-b ' />
+                                    <input
+                                        type="text"
+                                        placeholder="Enter Name"
+                                        className="outline-none border-b"
+                                        value={formData.name}
+                                        onChange={(e) => handleChange("name", e.target.value)}
+                                    />
                                 </div>
                                 <div className="w-full   grid grid-cols-2">
                                     <p className='text-lg'>Email :</p>
-                                    <input type="text" name="" id="" placeholder='Enter Email ' className='outline-none border-b ' />
+                                    <input
+                                        type="text"
+                                        placeholder="Enter Email"
+                                        className="outline-none border-b"
+                                        value={formData.email}
+                                        onChange={(e) => handleChange("email", e.target.value)}
+                                    />
                                 </div>
                                 <div className="w-full   grid grid-cols-2">
                                     <p className='text-lg'>Company Name :</p>
-                                    <input type="text" name="" id="" placeholder='Enter Email ' className='outline-none border-b ' />
+                                    <input
+                                        type="text"
+                                        placeholder="Enter Company"
+                                        className="outline-none border-b"
+                                        value={formData.company}
+                                        onChange={(e) => handleChange("company", e.target.value)}
+                                    />
                                 </div>
                                 <div className="w-full   grid grid-cols-2">
                                     <p className='text-lg'>Contact :</p>
-                                    <input type="text" name="" id="" placeholder='+91 0000000000' className='outline-none border-b ' />
+                                    <input
+                                        type="text"
+                                        placeholder="+91 0000000000"
+                                        className="outline-none border-b"
+                                        value={formData.contact}
+                                        onChange={(e) => handleChange("contact", e.target.value)}
+                                    />
                                 </div>
 
                             </div>
@@ -263,7 +332,7 @@ const ContactForm = () => {
 
                         <div className="w-full flex gap-x-5 text-sm mt-6 md:mt-12 justify-end">
                             {step !== 1 && (
-                                <button type="button" onClick={prev} className="bg-[#202020] text-white cursor-pointer py-3 px-10 pp_neue  uppercase rounded-lg">
+                                <button type="button" onClick={prev} className="bg-[#202020] text-[#d7cab5] cursor-pointer py-3 px-10 pp_neue  uppercase rounded-lg">
                                     <p className='translate-y-[1px]'>
                                         Prev
                                     </p>

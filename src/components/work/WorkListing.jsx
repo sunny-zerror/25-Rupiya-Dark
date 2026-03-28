@@ -10,7 +10,7 @@ const worksData = [
         id: 1,
         title: "savoy",
         year: "2015",
-        img: "https://cdn.prod.website-files.com/673306db3b111afa559bc378/67923c109ebd8d8a03e4960c_moon.jpg",
+        img: "/images/work/img1.webp",
         video: "/videos/ai_contant.mp4",
         tags: ["Video Editing", "Script Writing", "Art Direction"]
     },
@@ -18,7 +18,7 @@ const worksData = [
         id: 2,
         title: "Outsider freud",
         year: "2016",
-        img: "https://cdn.prod.website-files.com/673306db3b111afa559bc378/675eb903f604a7a856c87467_taboo.webp",
+        img: "/images/work/img2.webp",
         video: "/videos/ai_social.mp4",
         tags: ["Motion Design", "Storytelling"]
     },
@@ -26,7 +26,7 @@ const worksData = [
         id: 3,
         title: "Moon in the 12th House",
         year: "2017",
-        img: "https://cdn.prod.website-files.com/673306db3b111afa559bc378/67923c37a45465ae82ee3f8b_kafka.jpg",
+        img: "/images/work/img3.webp",
         video: "/videos/brand_film.mp4",
         tags: ["Art Direction", "Video Editing", "Brand Film"]
     },
@@ -34,7 +34,7 @@ const worksData = [
         id: 4,
         title: "Taboo",
         year: "2018",
-        img: "https://cdn.prod.website-files.com/673306db3b111afa559bc378/67923c1fa550c616a38131b9_project.jpg",
+        img: "/images/work/img4.webp",
         video: "/videos/brief.mp4",
         tags: ["Script Writing", "Storytelling"]
     },
@@ -42,7 +42,7 @@ const worksData = [
         id: 5,
         title: "Kafka's Revenge",
         year: "2019",
-        img: "https://cdn.prod.website-files.com/673306db3b111afa559bc378/67923c551123732db723b050_ana.jpg",
+        img: "/images/work/img5.webp",
         video: "/videos/deliver.mp4",
         tags: ["Motion Design", "Art Direction"]
     },
@@ -50,7 +50,7 @@ const worksData = [
         id: 6,
         title: "Ana Maxim",
         year: "2020",
-        img: "https://cdn.prod.website-files.com/673306db3b111afa559bc378/67923c44b96499e7828b3f02_freud.jpg",
+        img: "/images/work/img6.webp",
         video: "/videos/music_vid.mp4",
         tags: ["Video Editing", "Storytelling", "Color Grading"]
     },

@@ -281,21 +281,21 @@ const Hero = () => {
             <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
 
             <div className=" padding w-full pt-32! md:h-[40vh]  md:flex items-end justify-between">
-                <h1 className=' text_anim text-7xl md:text-8xl font-semibold leading-0 uppercase '>
-                    <span className='leading-[5rem] '>25 Rupiya</span> <br />
+                <h1 className=' max-sm:w-full text-center  text_anim text-[18vw] whitespace-nowrap md:text-8xl font-semibold leading-0 uppercase '>
+                    <span className='leading-[14vw] md:leading-[5rem]'>25 Rupiya</span> <br />
                     <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
                 </h1>
-                <div className="pr-36">
+                <div className=" max-sm:mt-5 max-sm:w-full md:pr-36">
                     <p className=' text_anim mask-trigger text-xl font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
                 </div>
             </div>
 
-            <div className="w-full h-[80vh] md:h-screen relative">
+            <div className="w-full h-[70vh] md:h-screen relative">
                 <div className="hero-search-background  bg-pattern opacity-0">
 
                     <div className="search_btn_paren  opacity-0 space-y-3  z-10 absolute top-1/2 left-1/2 w-[95%] md:w-[50%]  -translate-x-1/2 -translate-y-1/2">
 
-                        <div className={`w-full absolute bottom-18 text-black  bg-[#D7CAB5] rounded-lg overflow-hidden transition-all duration-300 px-4 ${openSearch ? "max-h-[40vh] p-4" : "max-h-0 p-0"} `}>
+                        <div className={`w-full absolute bottom-17 text-black  bg-[#D7CAB5] rounded-2xl overflow-hidden transition-all duration-300 px-4 ${openSearch ? "max-h-[40vh] p-4" : "max-h-0 p-0"} `}>
                             <p className='uppercase text-xs  md:text-sm pp_neue font-extrabold'> suggested Prompts for you:</p>
                             <div className="flex flex-wrap gap-2 mt-3">
                                 {promptWork.map((item, i) => (
@@ -309,7 +309,7 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        <div onClick={(() => setOpenSearch(!openSearch))} className={` cursor-pointer w-full p-2 flex items-center justify-between  bg-[#D7CAB5]  transition-all duration-300 h-16 md:h-18  ${openSearch ? "rounded-lg" : " rounded-2xl "} `}>
+                        <div onClick={(() => setOpenSearch(!openSearch))} className={` cursor-pointer w-full p-2 flex items-center justify-between  bg-[#D7CAB5]  transition-all duration-300 h-16 md:h-18   rounded-2xl  `}>
                             <div className="flex items-center pl-7 tracking-wider whitespace-nowrap pp_neue uppercase text-xs md:text-sm h-full relative">
                                 {HERO_GROUPS.map(({ term }) => (
                                     <div key={term} className="absolute text-black font-semibold hero-term opacity-0">
@@ -317,7 +317,7 @@ const Hero = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className={`bg-[#eb5939] text-black h-full px-6 md:px-10 center transition-all duration-300 ${openSearch ? "rounded-lg " : " rounded-xl"} `}>
+                            <div className={`bg-[#eb5939] text-black h-full px-6 md:px-8 center transition-all duration-300  rounded-xl`}>
                                 <p className="uppercase tracking-wide text-xs  md:text-sm font-semibold pp_neue">
                                     Search ⌘/
                                 </p>

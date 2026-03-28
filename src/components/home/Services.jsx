@@ -75,12 +75,12 @@ const Services = () => {
                                     />
                                 )}
                             </div>
-                            <div className=" absolute bottom-[-100%] w-full  text-black group-hover:bottom-0 z-10  p-5 bg-[#eb5939] transition-all duration-300">
-                                <p className="font-thin uppercase pp_neue  mb-1  md:mb-2">{service.id}</p>
+                            <div className=" absolute bottom-[-5rem] w-full  text-black group-hover:bottom-0 z-10  p-5 bg-[#eb5939] transition-all duration-300">
+                                {/* <p className="font-thin uppercase pp_neue  mb-1  md:mb-2"></p> */}
                                 <p className="uppercase font-medium text-2xl mb-1  md:mb-2">
-                                    {service.title}
+                                  {service.title}
                                 </p>
-                                <p className="leading-tight">{service.desc}</p>
+                                <p className={`leading-tight w-[35rem]`}>{service.desc}</p>
                             </div>
                         </div>
                     );
@@ -111,15 +111,7 @@ const Services = () => {
                                 />
                             )}
                         </div>
-                        <div className=" max-sm:hidden absolute bottom-[-100%] w-full  text-black group-hover:bottom-0 z-10  p-5 bg-[#eb5939] transition-all duration-300">
-                            <p className="font-thin uppercase pp_neue  mb-1  md:mb-2">{service.id}</p>
-                            <p className="uppercase font-medium text-2xl mb-1  md:mb-2">
-                                {service.title}
-                            </p>
-                            <p className="leading-tight">{service.desc}</p>
-                        </div>
-                        <div className=" md:hidden  w-full h-[20vh]  text-black  z-10  p-5 bg-[#d7cab5] transition-all duration-300">
-                            <p className="font-thin text-sm md:text-base uppercase pp_neue  mb-1  md:mb-2">{service.id}</p>
+                        <div className=" md:hidden  w-full   text-black  z-10  p-3 bg-[#d7cab5] transition-all duration-300">
                             <p className="uppercase font-medium text-xl md:text-2xl mb-1  md:mb-2">
                                 {service.title}
                             </p>

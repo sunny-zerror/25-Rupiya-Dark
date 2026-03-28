@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import useMousePosition from "@/app/utils/useMousePosition";
+import { useGSAP } from "@gsap/react";
 
 export default function CustomCursor() {
   const { x, y } = useMousePosition();
@@ -11,7 +12,7 @@ export default function CustomCursor() {
   const cursorRef = useRef(null);
   const starRef = useRef(null);
   const handRef = useRef(null);
-
+  const [isMask, setIsMask] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
 
   const pos = useRef({
@@ -19,7 +20,6 @@ export default function CustomCursor() {
     target: { x: 0, y: 0 },
   });
 
-  // 🎯 smooth follow
   const render = () => {
     pos.current.current.x = gsap.utils.interpolate(
       pos.current.current.x,
@@ -34,7 +34,12 @@ export default function CustomCursor() {
     );
 
     if (cursorRef.current) {
-      cursorRef.current.style.transform = `translate3d(${pos.current.current.x}px, ${pos.current.current.y}px, 0)`;
+      gsap.set(cursorRef.current, {
+        x: pos.current.current.x,
+        y: pos.current.current.y,
+        xPercent: -50,
+        yPercent: -50,
+      });
     }
   };
 
@@ -48,29 +53,31 @@ export default function CustomCursor() {
     pos.current.target.y = y;
   }, [x, y]);
 
-  // 🎯 detect hover on cursor-pointer elements
   useEffect(() => {
-const handleMove = (e) => {
-  const pointerEl = e.target.closest("button, a, .cursor-pointer");
-  setIsPointer(!!pointerEl);
+    const handleMove = (e) => {
+      
+      const pointerEl = e.target.closest("button, a, .cursor-pointer");
+      setIsPointer(!!pointerEl);
 
-  // 👇 detect background color
-  let el = e.target;
-  let found = false;
+      const maskEl = e.target.closest(".mask-trigger");
+      setIsMask(!!maskEl);
 
-  while (el && el !== document.body) {
-    const bg = window.getComputedStyle(el).backgroundColor;
+      let el = e.target;
+      let found = false;
 
-    if (bg === "rgb(235, 89, 57)") { // #eb5939
-      found = true;
-      break;
-    }
+      while (el && el !== document.body) {
+        const bg = window.getComputedStyle(el).backgroundColor;
 
-    el = el.parentElement;
-  }
+        if (bg === "rgb(235, 89, 57)") {
+          found = true;
+          break;
+        }
 
-  setIsOnOrange(found);
-};
+        el = el.parentElement;
+      }
+
+      setIsOnOrange(found);
+    };
 
     window.addEventListener("mousemove", handleMove);
     window.addEventListener("mouseenter", handleMove);
@@ -79,19 +86,30 @@ const handleMove = (e) => {
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
-useEffect(() => {
-  if (!starRef.current || !handRef.current) return;
 
-  const color = isOnOrange ? "#000000" : "#eb5939";
+  useEffect(() => {
+    if (!cursorRef.current) return;
 
-  gsap.to([starRef.current, handRef.current], {
-    duration: 0.2,
-    ease: "power2.out",
-    filter: isOnOrange
-      ? "brightness(0) saturate(100%)"   // → BLACK
-      : "brightness(1) saturate(100%)",  // → ORIGINAL
-  });
-}, [isOnOrange]);
+    gsap.to(cursorRef.current, {
+      scale: isMask ? 15.5 : 1,
+      duration: 0.6,
+      ease: "power3.out",
+    });
+  }, [isMask]);
+
+  useEffect(() => {
+    if (!starRef.current || !handRef.current) return;
+
+    const color = isOnOrange ? "#000000" : "#eb5939";
+
+    gsap.to([starRef.current, handRef.current], {
+      duration: 0.2,
+      ease: "power2.out",
+      filter: isOnOrange
+        ? "brightness(0) saturate(100%)"   // → BLACK
+        : "brightness(1) saturate(100%)",  // → ORIGINAL
+    });
+  }, [isOnOrange]);
 
   // 🎯 animate svg switch
   useEffect(() => {
@@ -143,7 +161,7 @@ useEffect(() => {
   return (
     <div
       ref={cursorRef}
-      className=" window_custom_cursor pointer-events-none fixed top-0 left-0 z-[99999999] size-10 max-sm:hidden"
+      className=" window_custom_cursor center pointer-events-none fixed top-0 left-0 z-[99999999] size-8 max-sm:hidden!"
       style={{
         transform: "translate3d(0,0,0)",
       }}
@@ -153,7 +171,7 @@ useEffect(() => {
         ref={starRef}
         src="/icons/star.svg"
         alt="cursor"
-        className="absolute  w-8 h-8 -translate-x-1/2 -translate-y-1/2"
+        className="absolute  w-full h-full"
         style={{ opacity: 1 }}
       />
 
@@ -162,7 +180,7 @@ useEffect(() => {
         ref={handRef}
         src="/icons/hand_cursor.svg"
         alt="cursor"
-        className="absolute  w-8 h-8 -translate-x-1/2 -translate-y-1/2"
+        className="absolute  w-full h-full"
         style={{ opacity: 0, transform: "scale(0)" }}
       />
     </div>

@@ -37,15 +37,15 @@ const Footer = () => {
       })
       .to(".footer_inner", {
         opacity: 1,
-        duration: 0.05,
-      }, "<0.2")
+        duration: 0.1,
+      }, "<0.31")
 
   })
 
   return (
     <>
       <div className=" footer_paren w-full h-fit overflow-hidden relative">
-        <div className=" footer_dot size-5  pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 bg-[#eb5939] "></div>
+        <div className=" footer_dot size-5 shrink-0 pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 bg-[#eb5939] "></div>
         <div className=" footer_inner w-full padding py-5! pb-0! space-y-10 md:space-y-20 relative z-10 opacity-0 bg-[#eb5939]  text-[#0d0d0d] ">
           <p className='text-3xl md:text-4xl font-medium'> <br /> Made By  <span className=' bg-[#0d0d0d] text-[#eb5939] px-4'>  Designers.</span>  <br />Built for Storytellers.</p>
           <div className=" grid grid-cols-4 md:grid-cols-10 gap-x-20">
