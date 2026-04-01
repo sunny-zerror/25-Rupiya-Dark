@@ -10,6 +10,7 @@ import Services from '@/components/home/Services'
 import Showreel from '@/components/home/Showreel'
 import Testimonials from '@/components/home/Testimonials'
 import React from 'react'
+import JoinCommunity from '../../components/home/JoinCommunity'
 
 const HomePage = () => {
   
@@ -25,6 +26,7 @@ const HomePage = () => {
         <MobileFeaturedWork/>
         <Services />
         <Testimonials />
+        <JoinCommunity/>
       </div>
       <MaskReveal>
         <MaskHome />
