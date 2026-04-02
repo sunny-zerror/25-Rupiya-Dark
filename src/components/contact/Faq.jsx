@@ -73,7 +73,7 @@ const Faq = () => {
               onClick={() =>
                 setOpenFaqId((prev) => (prev === item.id ? null : item.id))
               }
-              className="w-full cursor-pointer border-b pt-4 border-white/10 ">
+              className={`hover:pl-3 transition-all duration-300 w-full cursor-pointer border-b pt-4 border-white/10 ${openFaqId === item.id ? "pl-3" : ""} `}>
               <div className="w-full pb-4 flex justify-between">
                 <p className='text-2xl'>{item.question}</p>
                 <RiCloseLine className={`transition-all duration-300 ${openFaqId === item.id ? "rotate-0" : "rotate-45"}`} />

@@ -187,8 +187,8 @@ export default function InfiniteParallax({
       if (!dragStarted.current && Math.abs(delta) > dragThreshold) {
         dragStarted.current = true;
         el.setPointerCapture(e.pointerId);
-        // el.classList.remove("cursor-grab");
-        // el.classList.add("cursor-grabbing");
+        el.classList.remove("cursor-grab");
+        el.classList.add("cursor-grabbing");
       }
 
       if (!dragStarted.current) return;
@@ -205,8 +205,8 @@ export default function InfiniteParallax({
 
       try { el.releasePointerCapture(e.pointerId); } catch { }
 
-      // el.classList.remove("cursor-grabbing");
-      // el.classList.add("cursor-grab");
+      el.classList.remove("cursor-grabbing");
+      el.classList.add("cursor-grab");
     };
 
     el.addEventListener("pointerdown", onPointerDown);

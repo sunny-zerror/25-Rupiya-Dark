@@ -13,9 +13,9 @@ const page = () => {
                 <StickyProcess />
                 <OurTeam />
             </div>
-            <MaskReveal>
+            {/* <MaskReveal>
                 <MaskAbout />
-            </MaskReveal>
+            </MaskReveal> */}
         </div>
     )
 }

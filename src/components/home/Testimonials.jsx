@@ -27,7 +27,7 @@ const Testimonials = () => {
     return (
         <>
             <div className="line-break"></div>
-            <div className="testimonials_paren h-[300vh]">
+            <div className="testimonials_paren h-[300vh] mb-14">
                 <div className="testimonials_child mt-4 w-full  sticky top-0 ">
                     <div className=" padding w-full md:grid grid-cols-3">
                         <div className="col-span-2">

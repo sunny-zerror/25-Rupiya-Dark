@@ -12,10 +12,11 @@ body {
   width: 100%;
 }
 @media (min-width: 1020px) {
-  body {
+  .home-page {
     cursor: none;
   }
-  .cursor-pointer {
+
+  .home-page .cursor-pointer {
     cursor: none;
   }
 }

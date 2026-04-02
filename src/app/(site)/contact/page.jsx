@@ -14,9 +14,9 @@ const page = () => {
           <ContactForm />
           <Faq />
         </div>
-        <MaskReveal>
+        {/* <MaskReveal>
           <MaskContact />
-        </MaskReveal>
+        </MaskReveal> */}
       </div>
     </>
   )

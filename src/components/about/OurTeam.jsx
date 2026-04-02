@@ -48,7 +48,7 @@ const OurTeam = () => {
         <Swiper
           spaceBetween={20}
           slidesPerView={"auto"}
-          className="mySwiper relative  md:mt-10"
+          className="mySwiper relative cursor-grab active:cursor-grabbing  md:mt-10"
           onTouchStart={() => setIsDragging(true)}
           onTouchEnd={() => setIsDragging(false)}
           onSliderFirstMove={() => setIsDragging(true)}

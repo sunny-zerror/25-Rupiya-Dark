@@ -13,18 +13,19 @@ const SHAPES = [
     { type: "square", size: 128, color: "#21935b" },
     { type: "circle", size: 38, color: "#21935b" },
     { type: "circle", size: 80, color: "#fecc33" },
-    { type: "circle", size: 100, color: "#eb5939" },
-    { type: "pill", text: "Founded in 2023", size: 28 },
+    { type: "circle", size: 100, color: "#d7cab5" },
     { type: "square", size: 128, color: "#fecc33" },
+    { type: "pill", text: "Founded in 2023", size: 28 },
     { type: "pill", text: "24hr Turnaround", size: 28 },
     { type: "pill", text: "100M+ Views", size: 48 },
-    { type: "circle", size: 176, color: "#b7ab98" },
-    { type: "triangle", size: 140, color: "#b7ab98" },
+    { type: "circle", size: 176, color: "#d7cab5" },
+    { type: "triangle", size: 140, color: "#d7cab5" },
     { type: "pill", text: "50+ Projects", size: 28 },
     { type: "pill", text: "15k+ Ads", size: 28 },
 ];
 
 export default function PhysicsSection() {
+    const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef(null);
     const sectionRef = useRef(null);
     const bodiesRef = useRef([]);
@@ -33,6 +34,19 @@ export default function PhysicsSection() {
     const animationFrameRef = useRef(null);
 
     useEffect(() => {
+        const check = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        check(); // initial
+        window.addEventListener("resize", check);
+
+        return () => window.removeEventListener("resize", check);
+    }, []);
+
+    useEffect(() => {
+        if (!containerRef.current) return;
+        if (isMobile === null) return; // optional safeguard
         const section = sectionRef.current;
         const container = containerRef.current;
         if (!section || !container) return;
@@ -52,8 +66,9 @@ export default function PhysicsSection() {
 
         engineRef.current = engine;
 
-        const containerRect = container.getBoundingClientRect();
+        const getContainerRect = () => container.getBoundingClientRect();
 
+        const containerRect = getContainerRect();
         // ⭐ Walls
         const wallThickness = 200;
 
@@ -90,6 +105,7 @@ export default function PhysicsSection() {
 
         objects.forEach((obj, index) => {
             const rect = obj.getBoundingClientRect();
+            const containerRect = getContainerRect();
 
             const startX =
                 Math.random() * (containerRect.width - rect.width) +
@@ -140,49 +156,47 @@ export default function PhysicsSection() {
             Math.max(min, Math.min(max, val));
 
         const update = () => {
-            bodiesRef.current.forEach(
-                ({ body, element, width, height }) => {
-                    const x = clamp(
-                        body.position.x - width / 2,
-                        0,
-                        containerRect.width - width
-                    );
+            const containerRect = getContainerRect(); // ✅ dynamic
 
-                    const y = clamp(
-                        body.position.y - height / 2,
-                        -height * 3,
-                        containerRect.height - height
-                    );
+            bodiesRef.current.forEach(({ body, element, width, height }) => {
+                const x = clamp(
+                    body.position.x - width / 2,
+                    0,
+                    containerRect.width - width
+                );
 
-                    element.style.left = `${x}px`;
-                    element.style.top = `${y}px`;
-                    element.style.transform = `rotate(${body.angle}rad)`;
-                }
-            );
+                const y = clamp(
+                    body.position.y - height / 2,
+                    -height * 3,
+                    containerRect.height - height
+                );
 
-            animationFrameRef.current =
-                requestAnimationFrame(update);
+                element.style.left = `${x}px`;
+                element.style.top = `${y}px`;
+                element.style.transform = `rotate(${body.angle}rad)`;
+            });
+
+            animationFrameRef.current = requestAnimationFrame(update);
         };
 
         update();
 
-        // ⭐ Reset Bodies (Stagger Drop)
         const resetBodies = () => {
-            bodiesRef.current.forEach(
-                ({ body, width, index }) => {
-                    const startX =
-                        Math.random() * (containerRect.width - width) +
-                        width / 2;
+            const containerRect = getContainerRect(); // ✅ add
 
-                    const startY =
-                        -200 - index * 120 - Math.random() * 150;
+            bodiesRef.current.forEach(({ body, width, index }) => {
+                const startX =
+                    Math.random() * (containerRect.width - width) +
+                    width / 2;
 
-                    Body.setPosition(body, { x: startX, y: startY });
-                    Body.setVelocity(body, { x: 0, y: 0 });
-                    Body.setAngularVelocity(body, 0);
-                    Body.setAngle(body, 0);
-                }
-            );
+                const startY =
+                    -200 - index * 120 - Math.random() * 150;
+
+                Body.setPosition(body, { x: startX, y: startY });
+                Body.setVelocity(body, { x: 0, y: 0 });
+                Body.setAngularVelocity(body, 0);
+                Body.setAngle(body, 0);
+            });
         };
 
         // ⭐ ScrollTrigger
@@ -216,6 +230,15 @@ export default function PhysicsSection() {
             World.clear(engine.world);
             Engine.clear(engine);
         };
+    }, [isMobile]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            resetBodies(); // reflow shapes properly
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     useGSAP(() => {
@@ -252,7 +275,7 @@ export default function PhysicsSection() {
     return (
         <>
             <div ref={sectionRef} className=" physics_fall padding relative w-full h-[100svh]  flex flex-col justify-center  overflow-hidden">
-                <p className=" text_anim text-5xl md:text-7xl w-fit mask-trigger  relative z-10 leading-none uppercase  font-semibold mb-20">
+                <p className=" text_anim text-5xl md:text-7xl w-fit mask-trigger  leading-none uppercase  font-semibold mb-20">
                     WHO <br /> <span className="text-[#eb5939]">we</span> ARE
                 </p>
                 <p className=" text_anim md:w-[25%]  text-lg  leading-none font-medium">
@@ -263,13 +286,20 @@ export default function PhysicsSection() {
                 </p>
                 <div
                     ref={containerRef}
-                    className="absolute flex  right-0 w-full h-full max-sm:pointer-events-none max-sm:z-[-5] "
+                    className="absolute inset-0 w-full h-full max-sm:pointer-events-none max-sm:z-[-5] "
                 >
-                    {SHAPES.map((s, i) => (
-                        <div key={i} className=" object physics_inner  absolute w-max select-none ">
-                            <Shape shape={s} />
-                        </div>
-                    ))}
+                    {SHAPES.map((s, i) => {
+                        const finalShape = {
+                            ...s,
+                            size: isMobile ? s.size / 2 : s.size
+                        };
+
+                        return (
+                            <div key={i} className="object physics_inner absolute w-max select-none">
+                                <Shape shape={finalShape} />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </>
@@ -279,22 +309,6 @@ export default function PhysicsSection() {
 function Shape({ shape }) {
     const base = "physics_item flex items-center justify-center";
     const patternClass = shape.bgPattern ? "bg-pattern" : "";
-    const [size, setSize] = useState(shape.size); // SAME as server initially
-
-    useEffect(() => {
-        const check = () => {
-            if (window.innerWidth < 768) {
-                setSize(shape.size / 2);
-            } else {
-                setSize(shape.size);
-            }
-        };
-
-        check(); // run once
-        window.addEventListener("resize", check);
-
-        return () => window.removeEventListener("resize", check);
-    }, [shape.size]);
 
     if (shape.type === "pill") {
         return (
@@ -311,8 +325,8 @@ function Shape({ shape }) {
             <div
                 className={`${base} ${patternClass} rounded-full`}
                 style={{
-                    width: size,
-                    height: size,
+                    width: shape.size,
+                    height: shape.size,
                     backgroundColor: shape.color || "",
                 }}
             />
@@ -324,8 +338,8 @@ function Shape({ shape }) {
             <div
                 className={`${base} ${patternClass}`}
                 style={{
-                    width: size,
-                    height: size,
+                    width: shape.size,
+                    height: shape.size,
                     backgroundColor: shape.color || "",
                 }}
             />
@@ -337,8 +351,8 @@ function Shape({ shape }) {
             <div
                 className={`${base} ${patternClass} triangle_shape bg-[#eb5939]`}
                 style={{
-                    width: size,
-                    height: size,
+                    width: shape.size,
+                    height: shape.size,
                 }}
             />
         );

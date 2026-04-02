@@ -6,8 +6,8 @@ const WorkPage = () => {
   return (
     <>
       <WorkListing />
-      <MaskReveal>
-      </MaskReveal>
+      {/* <MaskReveal>
+      </MaskReveal> */}
     </>
   )
 }

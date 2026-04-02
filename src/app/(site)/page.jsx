@@ -11,22 +11,24 @@ import Showreel from '@/components/home/Showreel'
 import Testimonials from '@/components/home/Testimonials'
 import React from 'react'
 import JoinCommunity from '../../components/home/JoinCommunity'
+import CustomCursor from '@/components/common/CustomCursor'
 
 const HomePage = () => {
-  
+
   return (
-    <div className='relative'>
-      <Introloader/>
+    <div className='relative home-page'>
+      <Introloader />
+      <CustomCursor />
       <div className="front-view">
         <Hero />
         <About />
         <ClientsMarquee />
         <Showreel />
         <FeaturedWork />
-        <MobileFeaturedWork/>
+        <MobileFeaturedWork />
         <Services />
         <Testimonials />
-        <JoinCommunity/>
+        {/* <JoinCommunity /> */}
       </div>
       <MaskReveal>
         <MaskHome />

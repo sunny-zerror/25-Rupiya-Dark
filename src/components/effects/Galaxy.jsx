@@ -1,5 +1,5 @@
 "use client";
-import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
+// import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
 
 const vertexShader = `
