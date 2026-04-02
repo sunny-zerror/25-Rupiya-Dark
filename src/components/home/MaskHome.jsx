@@ -149,19 +149,29 @@ const MaskHome = () => {
                     </div>
                 </div>
                 <div className="w-full grid grid-cols-3 gap-x-5 gap-y-20 padding">
-                    {SERVICES.map((service, index) => (
-                        <div key={index} className=" group">
-                            <div style={{ backgroundColor: service.bgColor }} className=" opacity-0 w-full aspect-video rounded-xl hover:p-5 overflow-hidden  transition-all duration-300">
+                        {SERVICES.map((service, index) => {
+
+                    return (
+                        <div
+                            key={index}
+                            className={`group cursor-pointer relative overflow-hidden rounded-xl ${service.class} `}
+                        >
+                            <div
+                                style={{ backgroundColor: service.bgColor }}
+                                className="w-full aspect-video md:h-[25vw] group-hover:brightness-[.4]  overflow-hidden transition-all duration-300"
+                            >
+                              
                             </div>
-                            <div className="pt-2">
-                                <p className="font-thin uppercase pp_neue mb-2 ">{service.id}             </p>
-                                <p className=' uppercase font-medium text-2xl mb-2'>
-                                    {service.title}
+                            <div className=" absolute bottom-[-5rem] w-full  text-black group-hover:bottom-0 z-10  p-5 bg-[#eb5939] transition-all duration-300">
+                                {/* <p className="font-thin uppercase pp_neue  mb-1  md:mb-2"></p> */}
+                                <p className="uppercase font-medium text-2xl mb-1  md:mb-2">
+                                  {service.title}
                                 </p>
-                                <p className='leading-tight '>{service.desc}</p>
+                                <p className={`leading-tight w-[35rem]`}>{service.desc}</p>
                             </div>
                         </div>
-                    ))}
+                    );
+                })}
                 </div>
             </div>
 

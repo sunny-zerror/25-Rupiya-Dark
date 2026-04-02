@@ -161,7 +161,7 @@ export default function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className=" window_custom_cursor center pointer-events-none fixed top-0 left-0 z-[99999999] size-8 max-sm:hidden!"
+      className=" window_custom_cursor center pointer-events-none fixed top-0 left-0 z-[999] size-8 max-sm:hidden!"
       style={{
         transform: "translate3d(0,0,0)",
       }}
