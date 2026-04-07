@@ -69,7 +69,7 @@ const MobileFeaturedWork = () => {
         <div className="md:hidden">
             <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
 
-            <div className=" w-full center mt-20">
+            <div className=" w-full center mt-20 pb-4">
                 <div className=" w-[95%] md:w-[80%]  bg-[#0d0d0d] border border-[#eb5939] rounded-lg md:rounded-2xl overflow-hidden ">
                     <div className="  p-3 md:p-5">
                         <div className="w-full group flex gap-x-3">

@@ -39,7 +39,7 @@ const Testimonials = () => {
                             <p className='  text-lg font-medium pt-3 md:pt-12 md:pl-3 leading-none'> Real feedback from the people brave enough to trust us with their visuals.</p>
                         </div>
                     </div>
-                    <div className="  w-full relative mb-12">
+                    <div className="  w-full relative mb-12 overflow-hidden">
                         <div className=" testimonials_slider translate-x-[30vw] gap-x-10 flex items-stretch    relative  mt-20">
                             {TestimonialsData.map((item, i) => (
                                 <div key={i} className={`w-[95vw]!  shrink-0 text-black md:w-[40vw]!   p-5 md:p-8 pt-0 bg-[#D7CAB5] rounded-lg overflow-hidden `}>

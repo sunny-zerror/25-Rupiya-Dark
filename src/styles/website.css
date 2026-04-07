@@ -387,3 +387,8 @@
   align-items: center;
   justify-content: center;
 }
+
+._3d-object-wrap lottie-player {
+  position: absolute;
+  inset: 0;
+}

@@ -116,7 +116,7 @@ const FeaturedWork = () => {
                 ))}
             </div>
 
-            <div className="platform_images_paren w-full center">
+            <div className="platform_images_paren w-full center pb-24">
                 <div className=" w-[95%] md:w-[80%]  bg-[#0d0d0d] border border-[#eb5939] rounded-lg md:rounded-2xl overflow-hidden ">
                     <div className="  p-3 md:p-5">
                         <div className="w-full group flex gap-x-3">

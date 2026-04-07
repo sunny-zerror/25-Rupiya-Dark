@@ -12,6 +12,7 @@ import Testimonials from '@/components/home/Testimonials'
 import React from 'react'
 import JoinCommunity from '../../components/home/JoinCommunity'
 import CustomCursor from '@/components/common/CustomCursor'
+import ServiceLottiePlayer from '@/components/home/ServiceLottiePlayer'
 
 const HomePage = () => {
 
@@ -26,7 +27,8 @@ const HomePage = () => {
         <Showreel />
         <FeaturedWork />
         <MobileFeaturedWork />
-        <Services />
+        {/* <Services /> */}
+        <ServiceLottiePlayer/>
         <Testimonials />
         {/* <JoinCommunity /> */}
       </div>
