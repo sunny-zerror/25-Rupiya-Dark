@@ -134,7 +134,7 @@ export default function ServiceLottiePlayer() {
                     <p className='  text-lg font-medium pt-2 md:pt-12 md:pl-3 leading-none'>From concept to final cut—AI-assisted storytelling that scales. Fast turnarounds, cinematic finish.</p>
                 </div>
             </div>
-            <section ref={sectionRef} className=" text-[#0d0d0d] w-full h-[450vh] md:h-[400vh] flex flex-col-reverse md:flex-row">
+            <section ref={sectionRef} className=" relative text-[#0d0d0d] w-full h-[450vh] md:h-[400vh] flex flex-col-reverse md:flex-row">
 
                 <div className=" w-full md:w-1/2 padding py-0! relative z-10">
                     {Services.map((item, i) => (
@@ -146,12 +146,12 @@ export default function ServiceLottiePlayer() {
                             <h2 className="uppercase  font-semibold text-5xl md:text-7xl"> {item.title}</h2>
                             <div className="">
                                 {item.descArray.map((item, i) => (
-                                    <p key={i} className="leading-tight text-xl md:w-[35rem]">
+                                    <p key={i} className="leading-tight w-full text-xl md:w-[35rem]">
                                         {item}
                                     </p>
                                 ))}
                             </div>
-                            <p className="leading-tight text-xl font-semibold text-[#eb5939]  w-[35rem]">{item.desc}</p>
+                            <p className="leading-tight text-xl font-semibold text-[#eb5939] w-full  md:w-[35rem]">{item.desc}</p>
 
                             <div className="w-full flex items-center justify-between md:pr-24">
                                 {item.tags.map((tag, i) => (
@@ -165,7 +165,7 @@ export default function ServiceLottiePlayer() {
                 </div>
 
                 {/* RIGHT STICKY LOTTIE */}
-                <div className="  w-full md:w-1/2 sticky top-12 md:top-0 h-[50vh] md:h-screen flex items-center justify-center">
+                <div className="  w-full md:w-1/2 left-0 sticky top-12 md:top-0 h-[50vh] md:h-screen flex items-center justify-center">
                     <div className="relative w-full h-full">
                         {Services.map((item, i) => (
                             <lottie-player
