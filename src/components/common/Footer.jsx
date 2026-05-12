@@ -99,9 +99,8 @@ const Footer = () => {
 
           </div>
 
-          <div className="w-full justify-between max-sm:space-y-2 md:flex items-center">
+          <div className="w-full ">
             <p className="font-semibold uppercase pp_neue text-xs">© 25 Rupiya Production, all rights reserved, {new Date().getFullYear()}</p>
-            <p className="font-semibold uppercase pp_neue text-xs">Developed by <Link href="https://www.zerrorstudios.com/" target='_blank' className='underline cursor-pointer'> zerror studios</Link></p>
           </div>
 
           <div className="w-full text-center pb-5">

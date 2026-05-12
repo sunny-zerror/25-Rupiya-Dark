@@ -150,7 +150,7 @@ const ContactForm = () => {
                 </div>
                 <div className="">
                     <p className=' text-sm uppercase text-[#eb5939]'>Address</p>
-                    <p className='text-lg'>zerror studios, Mumbai</p>
+                    <p className='text-lg'>24 Rupiya Production, Mumbai</p>
                 </div>
             </div>
             <div className="w-full mt-20 md:mt-0 col-span-3 md:pr-36 pb-10">
