@@ -1,12 +1,17 @@
 "use client";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import { Link } from 'next-view-transitions';
-import React from 'react'
+import React, { useState } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 
 const Footer = () => {
+
+  const [subscriberEmail, setSubscriberEmail] = useState("");
+  const [subscribing, setSubscribing] = useState(false);
 
   useGSAP(() => {
 
@@ -42,8 +47,62 @@ const Footer = () => {
 
   })
 
+  const handleSubscribe = async () => {
+
+    if (!subscriberEmail.trim()) {
+      toast.error("Email is required");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(subscriberEmail)) {
+      toast.error("Enter valid email");
+      return;
+    }
+
+    try {
+
+      setSubscribing(true);
+
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: subscriberEmail,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+
+        toast.success("Subscribed successfully 🚀");
+        setSubscriberEmail("");
+
+      } else {
+
+        toast.error("Something went wrong");
+
+      }
+
+    } catch (error) {
+
+      console.log(error);
+      toast.error("Server Error");
+
+    } finally {
+
+      setSubscribing(false);
+
+    }
+  };
   return (
     <>
+            <ToastContainer position="top-right" autoClose={3000} />
+
       <div className=" footer_paren w-full h-fit overflow-hidden relative">
         <div className=" footer_dot size-5 shrink-0 pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 bg-[#eb5939] "></div>
         <div className=" footer_inner w-full padding py-5! pb-0! space-y-10 md:space-y-20 relative z-10 opacity-0 bg-[#eb5939]  text-[#0d0d0d] ">
@@ -51,17 +110,31 @@ const Footer = () => {
           <div className=" grid grid-cols-4 md:grid-cols-10 gap-x-20">
             <div className=" col-span-4  md:pr-10  space-y-5">
               <p className="font-semibold uppercase pp_neue text-xs">Subscribe for Newsletter</p>
-              <div className="   search_btn_paren flex items-center p-2 justify-between  h-14 rounded-full bg-[#D7CAB5] ">
-                <div className="flex items-center pl-4 tracking-wider whitespace-nowrap pp_neue uppercase w-full pr-10 text-sm h-full relative">
-                  <input type="text" name="" placeholder='Enter Your Email Address' className='outline-none w-full font-semibold leading-none border-none' id="" />
-                  {/* <p className=' translate-y-[1.5px] text-[#0d0d0d] font-semibold'>Enter Your Email Address</p> */}
+              <div className="search_btn_paren flex items-center p-2 justify-between h-14 rounded-full bg-[#D7CAB5]">
+
+                <div className="flex items-center pl-4 tracking-wider whitespace-nowrap pp_neue uppercase w-full pr-4 text-sm h-full relative">
+
+                  <input
+                    type="text"
+                    placeholder='Enter Your Email Address'
+                    className='outline-none w-full font-semibold leading-none border-none bg-transparent text-[#0d0d0d]'
+                    value={subscriberEmail}
+                    onChange={(e) => setSubscriberEmail(e.target.value)}
+                  />
+
                 </div>
 
-                <div className="bg-[#0d0d0d] text-[#D7CAB5]  h-full px-5 rounded-full center">
-                  <p className="uppercase tracking-wide text-xs md:translate-y-[-1px]  pp_neue">
-                    Submit
+                <button
+                  type="button"
+                  disabled={subscribing}
+                  onClick={handleSubscribe}
+                  className="bg-[#0d0d0d] cursor-pointer hover:px-6 transition-all duration-300 hover:bg-black/70 text-[#D7CAB5] h-full px-5 rounded-full center disabled:opacity-50"
+                >
+                  <p className="uppercase tracking-wide text-xs md:translate-y-[-1px] pp_neue">
+                    {subscribing ? "Sending..." : "Submit"}
                   </p>
-                </div>
+                </button>
+
               </div>
             </div>
             <div className=" max-sm:hidden md:col-span-2"></div>

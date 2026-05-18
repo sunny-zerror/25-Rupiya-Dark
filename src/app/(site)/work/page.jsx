@@ -1,15 +1,17 @@
-import MaskReveal from '@/components/common/MaskReveal'
-import WorkListing from '@/components/work/WorkListing'
 import React from 'react'
+import WorkClient from './WorkClient'
+import { createPageMetadata } from "@/lib/seo";
 
-const WorkPage = () => {
+const page = () => {
   return (
     <>
-      <WorkListing />
-      {/* <MaskReveal>
-      </MaskReveal> */}
+      <WorkClient/>
     </>
   )
 }
 
-export default WorkPage
+export default page
+
+export async function generateMetadata() {
+  return createPageMetadata("/work");
+}

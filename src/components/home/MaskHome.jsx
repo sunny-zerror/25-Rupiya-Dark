@@ -72,14 +72,14 @@ const MaskHome = () => {
                         <p className=" md:w-[60%] mask-trigger text-3xl md:text-4xl font-medium">
                             An intimate collective delivering monumental visual fidelity.
                             No compromises, just unparalleled execution.
-                            <span className=" text-[#eb5939]"> 25 Rupiya Productions </span>
+                            <span className=" text-[#d7cab5]"> 25 Rupiya Productions </span>
                             curates a seamless synthesis of classic Bollywood grandeur and cutting-edge AI
-                            <span className=" text-[#eb5939]"> innovation. </span>
+                            <span className=" text-[#d7cab5]"> innovation. </span>
                         </p>
 
                         <p className=" md:w-[60%] mask-trigger text-3xl md:text-4xl font-medium mt-6">
                             We craft bespoke cinematic narratives tailored specifically for the modern digital
-                            <span className=" text-[#eb5939]"> zeitgeist. </span>
+                            <span className=" text-[#d7cab5]"> zeitgeist. </span>
                         </p>
                     </>
                 </div>
@@ -149,29 +149,29 @@ const MaskHome = () => {
                     </div>
                 </div>
                 <div className="w-full grid grid-cols-3 gap-x-5 gap-y-20 padding">
-                        {SERVICES.map((service, index) => {
+                    {SERVICES.map((service, index) => {
 
-                    return (
-                        <div
-                            key={index}
-                            className={`group cursor-pointer relative overflow-hidden rounded-xl ${service.class} `}
-                        >
+                        return (
                             <div
-                                style={{ backgroundColor: service.bgColor }}
-                                className="w-full aspect-video md:h-[25vw] group-hover:brightness-[.4]  overflow-hidden transition-all duration-300"
+                                key={index}
+                                className={`group cursor-pointer relative overflow-hidden rounded-xl ${service.class} `}
                             >
-                              
+                                <div
+                                    style={{ backgroundColor: service.bgColor }}
+                                    className="w-full aspect-video md:h-[25vw] group-hover:brightness-[.4]  overflow-hidden transition-all duration-300"
+                                >
+
+                                </div>
+                                <div className=" absolute bottom-[-5rem] w-full  text-black group-hover:bottom-0 z-10  p-5 bg-[#eb5939] transition-all duration-300">
+                                    {/* <p className="font-thin uppercase pp_neue  mb-1  md:mb-2"></p> */}
+                                    <p className="uppercase font-medium text-2xl mb-1  md:mb-2">
+                                        {service.title}
+                                    </p>
+                                    <p className={`leading-tight w-[35rem]`}>{service.desc}</p>
+                                </div>
                             </div>
-                            <div className=" absolute bottom-[-5rem] w-full  text-black group-hover:bottom-0 z-10  p-5 bg-[#eb5939] transition-all duration-300">
-                                {/* <p className="font-thin uppercase pp_neue  mb-1  md:mb-2"></p> */}
-                                <p className="uppercase font-medium text-2xl mb-1  md:mb-2">
-                                  {service.title}
-                                </p>
-                                <p className={`leading-tight w-[35rem]`}>{service.desc}</p>
-                            </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
                 </div>
             </div>
 
@@ -195,7 +195,7 @@ const MaskHome = () => {
                         {TestimonialsData.map((item, i) => (
                             <div key={i} className='w-[90vw]! md:w-[40vw]!'>
                                 <div className="">
-                                    <img src={item.image} alt="" />
+                                    <img src={item.image} alt="loading img" />
                                 </div>
                                 <p className='text-2xl leading-tight'>{item.desc}</p>
                                 <div className=" pt-8">

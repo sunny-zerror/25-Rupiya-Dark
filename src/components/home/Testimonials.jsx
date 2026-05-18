@@ -44,7 +44,7 @@ const Testimonials = () => {
                             {TestimonialsData.map((item, i) => (
                                 <div key={i} className={`w-[95vw]!  shrink-0 text-black md:w-[40vw]!   p-5 md:p-8 pt-0 bg-[#D7CAB5] rounded-lg overflow-hidden `}>
                                     <div className="h-24">
-                                        <img src={item.image} alt="" className='h-full' />
+                                        <img src={item.image} alt="loading img" className='h-full' />
                                     </div>
                                     <p className=' text-lg md:text-2xl leading-tight'>{item.desc}</p>
                                     <div className=" pt-4 md:pt-8">

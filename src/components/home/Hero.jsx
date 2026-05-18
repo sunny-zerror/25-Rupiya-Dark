@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import SplitText from 'gsap/dist/SplitText';
 import React, { useEffect, useRef, useState } from 'react'
-import VideoPlayer from './VideoPlayer';
+import YoutubePlayer from '../common/YoutubePlayer';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -12,91 +12,91 @@ const HERO_GROUPS = [
     {
         term: "Knight on a Horse",
         images: [
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15a_knight-1.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15b_knight-8.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd157_knight-6.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd113_knight-3.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd116_knight-10.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd112_knight-5.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15c_knight-7.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd117_knight-9.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd114_knight-2.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd156_knight-4.avif",
+            "/images/home/heroanim/knight_on_a_horse_image1.avif",
+            "/images/home/heroanim/knight_on_a_horse_image8.avif",
+            "/images/home/heroanim/knight_on_a_horse_image6.avif",
+            "/images/home/heroanim/knight_on_a_horse_image3.avif",
+            "/images/home/heroanim/knight_on_a_horse_image10.avif",
+            "/images/home/heroanim/knight_on_a_horse_image5.avif",
+            "/images/home/heroanim/knight_on_a_horse_image7.avif",
+            "/images/home/heroanim/knight_on_a_horse_image9.avif",
+            "/images/home/heroanim/knight_on_a_horse_image2.avif",
+            "/images/home/heroanim/knight_on_a_horse_image4.avif",
         ],
     },
     {
         term: "Reflections on the Water",
         images: [
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15d_water-1.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd159_water-8.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15e_water-6.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd115_water-3.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd158_water-10.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd11b_water-5.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd11c_water-7.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd11a_water-9.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd118_water-2.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd119_water-4.avif",
+            "/images/home/heroanim/reflections_on_the_water_image1.avif",
+            "/images/home/heroanim/reflections_on_the_water_image8.avif",
+            "/images/home/heroanim/reflections_on_the_water_image6.avif",
+            "/images/home/heroanim/reflections_on_the_water_image3.avif",
+            "/images/home/heroanim/reflections_on_the_water_image10.avif",
+            "/images/home/heroanim/reflections_on_the_water_image5.avif",
+            "/images/home/heroanim/reflections_on_the_water_image7.avif",
+            "/images/home/heroanim/reflections_on_the_water_image9.avif",
+            "/images/home/heroanim/reflections_on_the_water_image2.avif",
+            "/images/home/heroanim/reflections_on_the_water_image4.avif",
         ],
     },
     {
         term: "Black and white film",
         images: [
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd175_film-1.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd13a_film-8.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd174_film-6.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd137_film-3.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd162_film-10.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd161_film-5.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd139_film-7.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd138_film-9.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd135_film-2.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd136_film-4.avif",
+            "/images/home/heroanim/black_and_white_film_image1.avif",
+            "/images/home/heroanim/black_and_white_film_image8.avif",
+            "/images/home/heroanim/black_and_white_film_image6.avif",
+            "/images/home/heroanim/black_and_white_film_image3.avif",
+            "/images/home/heroanim/black_and_white_film_image10.avif",
+            "/images/home/heroanim/black_and_white_film_image5.avif",
+            "/images/home/heroanim/black_and_white_film_image7.avif",
+            "/images/home/heroanim/black_and_white_film_image9.avif",
+            "/images/home/heroanim/black_and_white_film_image2.avif",
+            "/images/home/heroanim/black_and_white_film_image4.avif",
         ],
     },
     {
         term: "Quiet moments",
         images: [
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd160_quiet-1.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd133_quiet-8.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd132_quiet-6.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd11f_quiet-3.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd15f_quiet-10.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd11d_quiet-5.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd131_quiet-7.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd134_quiet-9.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd11e_quiet-2.avif",
-            "https://cdn.prod.website-files.com/68ad8a274502a69dfd5cd0aa/68ad8a274502a69dfd5cd120_quiet-4.avif",
+            "/images/home/heroanim/quiet_moments_image1.avif",
+            "/images/home/heroanim/quiet_moments_image8.avif",
+            "/images/home/heroanim/quiet_moments_image6.avif",
+            "/images/home/heroanim/quiet_moments_image3.avif",
+            "/images/home/heroanim/quiet_moments_image10.avif",
+            "/images/home/heroanim/quiet_moments_image5.avif",
+            "/images/home/heroanim/quiet_moments_image7.avif",
+            "/images/home/heroanim/quiet_moments_image9.avif",
+            "/images/home/heroanim/quiet_moments_image2.avif",
+            "/images/home/heroanim/quiet_moments_image4.avif",
         ],
     },
 ];
 
 const promptWork = [
-    {
-        id: 1,
-        title: "Generate a video for Rafi 100 Concert by Sonu Nigam.",
-        video: "/videos/showreel_compress.mp4",
-    },
-    {
-        id: 2,
-        title: "Generate a short video of Haunted Tales.",
-        video: "/videos/showreel_compress.mp4",
-    },
-    {
-        id: 3,
-        title: "An episode of born of vishnulok.",
-        video: "/videos/showreel_compress.mp4",
-    },
-    {
-        id: 4,
-        title: "A short movie of ramayan named as ramleela.",
-        video: "/videos/showreel_compress.mp4",
-    },
-    {
-        id: 5,
-        title: "Generate a short video against war of Kaju katli and soan papdi.",
-        video: "/videos/showreel_compress.mp4",
-    },
+  {
+    id: 1,
+    title: "Epic Shiva Tandava animation with glowing 108 Naam visuals",
+    video: "https://www.youtube.com/embed/fmmuhxx-IQA?si=WCEdFjnRzOviIjUf",
+  },
+  {
+    id: 2,
+    title: "Animated Jai Hanuman bhajan with divine cinematic visuals",
+    video: "https://www.youtube.com/embed/ycyXpW0aMGQ?si=mNUlQ3fyAshVjvA4",
+  },
+  {
+    id: 3,
+    title: "Cinematic Namaste Narasimhaya devotional animated music video",
+    video: "https://www.youtube.com/embed/0_ibtCxWVas?si=G9RARbp1cI0mOCj4",
+  },
+  {
+    id: 4,
+    title: "Epic Mahabharata battle animation between Arjuna and Karna",
+    video: "https://www.youtube.com/embed/adWLSgye8as?si=Plu9DKP3ODZzOAPk",
+  },
+  {
+    id: 5,
+    title: "Funny cinematic food war between Kaju Katli and Soan Papdi",
+    video: "https://www.youtube.com/embed/NvRSdbSUMlU?si=hRpmHI4iNZv8pPAh",
+  },
 ]
 
 const Hero = () => {
@@ -256,9 +256,9 @@ const Hero = () => {
             stagger: 0.08
         });
 
-        tl.to([ ".hero-search-background",".search_btn_paren"], {
+        tl.to([".hero-search-background", ".search_btn_paren"], {
             opacity: 1,
-            stagger:0.1,
+            stagger: 0.1,
             ease: "power3.out",
         }, "<+=4.0")
         tl.to(".sqre", {
@@ -278,7 +278,7 @@ const Hero = () => {
     return (
         <div ref={root} className='relative w-full'>
 
-            <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
+            <YoutubePlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
 
             <div className=" padding w-full pt-32! md:h-[40vh]  md:flex items-end justify-between">
                 <h1 className=' max-sm:w-full text-center  text_anim text-[18vw] whitespace-nowrap md:text-8xl font-semibold leading-0 uppercase '>
@@ -302,7 +302,7 @@ const Hero = () => {
                                     <div onClick={(e) => {
                                         handleWork(item)
                                     }} key={i} className=" cursor-pointer border w-fit px-4 leading-tight rounded-full text-xs  md:text-sm uppercase py-2 hover:bg-[#eb5939] transition-all duration-300 flex items-center gap-x-2">
-                                        <img className='w-4' src="https://cdn-icons-png.flaticon.com/512/12301/12301908.png" alt="" />
+                                        <img className='w-4' src="https://cdn-icons-png.flaticon.com/512/12301/12301908.png" alt="loading img" />
                                         <p className='font-medium'>{item.title}</p>
                                     </div>
                                 ))}
@@ -336,7 +336,7 @@ const Hero = () => {
                                     key={i}
                                     src={src}
                                     loading="eager"
-                                    alt=""
+                                    alt="hero anim img"
                                 />
                             ))}
                         </div>

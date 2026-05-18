@@ -56,7 +56,7 @@ const KeyProjects = () => {
                             className=" select-none group w-[20vw] ml-5 aspect-3/4 overflow-hidden rounded-lg  relative">
                             <img
                                 src={project.img}
-                                alt=""
+                                alt="loading img"
                                 draggable={false}
                                 className="w-full h-full object-cover rounded-lg group-hover:h-[85%] transition-all duration-300 select-none pointer-events-none" />
                             <div className="absolute flex justify-between items-end opacity-0 group-hover:opacity-100 duration-300 transition-all bottom-0 left-0 text-black w-full">

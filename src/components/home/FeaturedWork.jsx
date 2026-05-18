@@ -6,7 +6,7 @@ import gsap from "gsap";
 import Flip from "gsap/dist/Flip";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import React, { useEffect, useRef, useState } from "react";
-import VideoPlayer from "./VideoPlayer";
+import YoutubePlayer from "../common/YoutubePlayer";
 
 gsap.registerPlugin(Flip, ScrollTrigger);
 
@@ -103,7 +103,7 @@ const FeaturedWork = () => {
     return (
         <div ref={container} className=" max-sm:hidden relative w-full">
 
-            <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
+            <YoutubePlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
             {/* <div className={`w-full h-full z-10 absolute top-0 left-0 gradient_bg pointer-events-none  ${isVideoOpen ? "opacity-0" : "opacity-100"} `}></div> */}
 
             <div className="intro-platform-images relative w-full h-[30vh] my-20">

@@ -68,7 +68,7 @@ const OurTeam = () => {
                 {team.img && (
                   <img
                     src={team.img}
-                    alt=""
+                    alt="loading img"
                     className={`absolute top-0 left-0 w-full h-full transition-all duration-300 object-cover ${isDragging ? "scale-[1.02]" : "scale-100"
                       }`}
                   />

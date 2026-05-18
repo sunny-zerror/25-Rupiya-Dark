@@ -13,6 +13,7 @@ import React from 'react'
 import JoinCommunity from '../../components/home/JoinCommunity'
 import CustomCursor from '@/components/common/CustomCursor'
 import ServiceLottiePlayer from '@/components/home/ServiceLottiePlayer'
+import { createPageMetadata } from "@/lib/seo";
 
 const HomePage = () => {
 
@@ -40,3 +41,7 @@ const HomePage = () => {
 }
 
 export default HomePage
+
+export async function generateMetadata() {
+  return createPageMetadata("/");
+}

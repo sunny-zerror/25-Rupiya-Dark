@@ -2,59 +2,10 @@
 import { useGSAP } from "@gsap/react";
 import InfiniteParallax from "../effects/InfiniteParallax";
 import gsap from "gsap";
-import VideoPlayer from "../home/VideoPlayer";
 import { useEffect, useState } from "react";
-
-const worksData = [
-    {
-        id: 1,
-        title: "savoy",
-        year: "2015",
-        img: "/images/work/img1.webp",
-        video: "/videos/ai_contant.mp4",
-        tags: ["Video Editing", "Script Writing", "Art Direction"]
-    },
-    {
-        id: 2,
-        title: "Outsider freud",
-        year: "2016",
-        img: "/images/work/img2.webp",
-        video: "/videos/ai_social.mp4",
-        tags: ["Motion Design", "Storytelling"]
-    },
-    {
-        id: 3,
-        title: "Moon in the 12th House",
-        year: "2017",
-        img: "/images/work/img3.webp",
-        video: "/videos/brand_film.mp4",
-        tags: ["Art Direction", "Video Editing", "Brand Film"]
-    },
-    {
-        id: 4,
-        title: "Taboo",
-        year: "2018",
-        img: "/images/work/img4.webp",
-        video: "/videos/brief.mp4",
-        tags: ["Script Writing", "Storytelling"]
-    },
-    {
-        id: 5,
-        title: "Kafka's Revenge",
-        year: "2019",
-        img: "/images/work/img5.webp",
-        video: "/videos/deliver.mp4",
-        tags: ["Motion Design", "Art Direction"]
-    },
-    {
-        id: 6,
-        title: "Ana Maxim",
-        year: "2020",
-        img: "/images/work/img6.webp",
-        video: "/videos/music_vid.mp4",
-        tags: ["Video Editing", "Storytelling", "Color Grading"]
-    },
-];
+import YoutubePlayer from "../common/YoutubePlayer";
+import { works } from "@/app/utils/WorksData";
+import Image from "next/image";
 
 export default function WorkListing() {
 
@@ -80,12 +31,12 @@ export default function WorkListing() {
     return (
         <div className=" relative w-full h-screen center bg-[#0d0d0d]">
 
-            <VideoPlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
+            <YoutubePlayer isVideoOpen={isVideoOpen} work={selectedWork} setIsVideoOpen={setIsVideoOpen} />
 
             <div className={`w-full h-full z-10 absolute top-0 left-0 gradient_bg pointer-events-none  ${isVideoOpen ? "opacity-0" : "opacity-100"} `}></div>
             <InfiniteParallax>
                 <div className="w-full">
-                    {worksData.map((item, i) => (
+                    {works.map((item, i) => (
                         <div onClick={(e) => {
                             handleWork(item)
                         }} key={i} className="parallax-slide opacity-0  text-[#D7CAB5] relative w-[95vw] md:w-[90vw] mt-10 h-[70vh] overflow-hidden rounded-xl md:rounded-4xl  select-none">
@@ -93,7 +44,7 @@ export default function WorkListing() {
                                 <div className="h-full flex flex-col justify-between">
                                     <p className="font-medium text-2xl">{item.year}</p>
                                     <div className="">
-                                        <p className="pp_neue uppercase text-xs">category</p>
+                                        <p className="pp_neue uppercase text-xs">{item.category}</p>
                                         <h2 className="text-3xl md:text-4xl uppercase w-[25vw] font-semibold">{item.title}</h2>
                                     </div>
                                 </div>
@@ -155,7 +106,9 @@ export default function WorkListing() {
                                     </button>
                                 </div>
                             </div>
-                            <img data-parallax="0.4" className="parallax-img brightness-[10]" src={item.img} alt="" />
+                            <div data-parallax="0.4" className="parallax-img brightness-[10] relative">
+                                <Image fill className="cover" src={item.img} alt="loading img" />
+                            </div>
                         </div>
                     ))}
                 </div>
