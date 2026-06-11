@@ -169,6 +169,13 @@ const FeaturedWork = () => {
                                 <img src={item.img} className="w-full h-full object-cover " />
                             </div>
                         ))}
+                        <div className="col-span-2 row-span-2 bg-[#eb5939] text-black text-center center">
+                            <div className="text-center space-y-3">
+                                <h3 className="text-2xl md:text-3xl font-semibold">
+                                    More Projects <br /> Coming Soon
+                                </h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

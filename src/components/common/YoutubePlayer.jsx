@@ -33,14 +33,14 @@ const YoutubePlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
                     : "opacity-0 pointer-events-none invisible"
             }`}
         >
-            <div
+            {/* <div
                 onClick={() => setOpenDesc(false)}
                 className={`w-full h-full absolute top-0 left-0 bg-black/40 backdrop-blur-sm z-10 transition-all duration-300 ${
                     openDesc
                         ? "opacity-100 pointer-events-auto"
                         : "opacity-0 pointer-events-none"
                 }`}
-            />
+            /> */}
 
             <div className="w-full z-20 cursor-auto! absolute top-0 space-y-5 p-5 px-2 md:px-10 ">
                 <div className="w-full flex items-center max-sm:text-sm justify-end">
@@ -70,7 +70,7 @@ const YoutubePlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
                         <RiCloseLine />
                     </div>
                 </div>
-
+{/* 
                 <div
                     className={`w-full md:w-1/2 ${
                         openDesc
@@ -113,7 +113,7 @@ const YoutubePlayer = ({ isVideoOpen, work, setIsVideoOpen }) => {
                             <p>Visual Effects</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <iframe

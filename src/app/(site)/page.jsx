@@ -24,13 +24,13 @@ const HomePage = () => {
       <div className="front-view">
         <Hero />
         <About />
-        <ClientsMarquee />
+        {/* <ClientsMarquee /> */}
         <Showreel />
         <FeaturedWork />
         <MobileFeaturedWork />
         {/* <Services /> */}
         <ServiceLottiePlayer/>
-        <Testimonials />
+        {/* <Testimonials /> */}
         {/* <JoinCommunity /> */}
       </div>
       <MaskReveal>

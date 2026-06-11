@@ -12,7 +12,7 @@ const AboutClient = () => {
             <div className="front-view">
                 <PhysicsFall />
                 <StickyProcess />
-                <OurTeam />
+                {/* <OurTeam /> */}
             </div>
             {/* <MaskReveal>
                 <MaskAbout />

@@ -64,7 +64,7 @@ const MaskHome = () => {
             </div>
 
             {/* About */}
-            <div className=" text-center space-y-10 pt-44 ">
+            <div className=" text-center space-y-10 py-44 ">
                 <p className="font-thin uppercase pp_neue text-sm">About us</p>
 
                 <div className="  w-full flex-col px-5 leading-tight center   relative">
@@ -85,7 +85,7 @@ const MaskHome = () => {
                 </div>
             </div>
 
-            <ClientsMarquee />
+            {/* <ClientsMarquee /> */}
             <div className="w-full h-screen"></div>
 
             {/* our work */}
@@ -190,7 +190,7 @@ const MaskHome = () => {
                             <p className='text-lg font-medium pt-12 pl-3 leading-none'>Kind words from brands that trusted us with their stories.</p>
                         </div>
                     </div>
-                    <div
+                    {/* <div
                         className="mySwiper opacity-0 flex   overflow-x-scroll  scroller_none relative  mt-20">
                         {TestimonialsData.map((item, i) => (
                             <div key={i} className='w-[90vw]! md:w-[40vw]!'>
@@ -205,7 +205,7 @@ const MaskHome = () => {
                             </div>
                         ))}
 
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

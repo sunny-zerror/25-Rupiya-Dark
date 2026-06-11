@@ -28,7 +28,7 @@ const Introloader = () => {
                 <div className=" padding w-full pt-32! md:h-[40vh]  md:flex items-end justify-between">
                     <h1 className=' max-sm:w-full text-center  text_anim text-[18vw] whitespace-nowrap md:text-8xl font-semibold leading-0 uppercase '>
                         <span className='leading-[14vw] md:leading-[5rem]'>25 Rupiya</span> <br />
-                        <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
+                        <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Productions</span>
                     </h1>
                     <div className=" max-sm:mt-5 opacity-0 max-sm:w-full md:pr-36">
                         <p className=' text_anim mask-trigger text-xl font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>

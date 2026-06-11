@@ -149,7 +149,7 @@ const Footer = () => {
               </div>
 
             </div>
-            <div className=" max-sm:mt-10 col-span-2 md:col-span-1 space-y-5">
+            {/* <div className=" max-sm:mt-10 col-span-2 md:col-span-1 space-y-5">
               <p className="font-semibold uppercase pp_neue text-sm pl-1">Socials</p>
 
               <div className=" flex flex-col font-medium space-y-1 capitalize">
@@ -158,8 +158,8 @@ const Footer = () => {
                 <Link href={"/"} className='flex items-center cursor-pointer gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>Youtube</Link>
               </div>
 
-            </div>
-            <div className=" max-sm:mt-10  col-span-4 md:col-span-2 space-y-5">
+            </div> */}
+            {/* <div className=" max-sm:mt-10  col-span-4 md:col-span-2 space-y-5">
               <p className="font-semibold uppercase pp_neue text-sm pl-1">Contact</p>
               <div className=" flex flex-col font-medium space-y-1 capitalize">
                 <Link href={"/"} className='flex items-center cursor-pointer gap-x-1 group'> <span className='size-0 group-hover:size-1 transition-all duration-300 bg-black shrink-0 rounded-full'></span>+91 89898 98989</Link>
@@ -168,16 +168,16 @@ const Footer = () => {
               </div>
 
 
-            </div>
+            </div> */}
 
           </div>
 
           <div className="w-full ">
-            <p className="font-semibold uppercase pp_neue text-xs">© 25 Rupiya Production, all rights reserved, {new Date().getFullYear()}</p>
+            <p className="font-semibold uppercase pp_neue text-xs">© 25 Rupiya Productions, all rights reserved, {new Date().getFullYear()}</p>
           </div>
 
           <div className="w-full text-center pb-5">
-            <p className='text-[7.92vw]  whitespace-nowrap leading-none uppercase font-semibold'>25 Rupiya <span className='text-[#D7CAB5]'> Production</span></p>
+            <p className='text-[7.5vw]  whitespace-nowrap leading-none uppercase font-semibold'>25 Rupiya <span className='text-[#D7CAB5]'> Productions</span></p>
           </div>
 
         </div>

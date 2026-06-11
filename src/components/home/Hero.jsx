@@ -283,7 +283,7 @@ const Hero = () => {
             <div className=" padding w-full pt-32! md:h-[40vh]  md:flex items-end justify-between">
                 <h1 className=' max-sm:w-full text-center  text_anim text-[18vw] whitespace-nowrap md:text-8xl font-semibold leading-0 uppercase '>
                     <span className='leading-[14vw] md:leading-[5rem]'>25 Rupiya</span> <br />
-                    <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Production</span>
+                    <span className=' w-full flex justify-end text-[1.36rem] leading-5 text-[#eb5939] uppercase'>Productions</span>
                 </h1>
                 <div className=" max-sm:mt-5 max-sm:w-full md:pr-36">
                     <p className=' text_anim mask-trigger text-xl font-medium  leading-none'> AI powered cinematic production<br /> built different.</p>
@@ -293,7 +293,7 @@ const Hero = () => {
             <div className="w-full h-[70vh] md:h-screen relative">
                 <div className="hero-search-background  bg-pattern opacity-0">
 
-                    <div className="search_btn_paren  opacity-0 space-y-3  z-10 absolute top-1/2 left-1/2 w-[95%] md:w-[50%]  -translate-x-1/2 -translate-y-1/2">
+                    <div className="search_btn_paren  opacity-0 space-y-3  z-10 absolute bottom-20 md:top-1/2 left-1/2 w-[95%] md:w-[50%]  -translate-x-1/2 md:-translate-y-1/2">
 
                         <div className={`w-full absolute bottom-17 text-black  bg-[#D7CAB5] rounded-2xl overflow-hidden transition-all duration-300 px-4 ${openSearch ? "max-h-[40vh] p-4" : "max-h-0 p-0"} `}>
                             <p className='uppercase text-xs  md:text-sm pp_neue font-extrabold'> suggested Prompts for you:</p>

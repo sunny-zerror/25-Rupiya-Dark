@@ -9,42 +9,58 @@ gsap.registerPlugin(ScrollTrigger);
 const Services = [
     {
         id: "01",
-        title: "Film",
+        title: "AI Brand Films",
         class: "col-span-3",
         vid: "/videos/music_vid.mp4",
-        desc: "We make sure it’s the right one.",
-        descArray: ["We care about the details - because in the end,", "that is what matters the most.", "Every frame is a choice."],
-        tags: ["WEB/TV SPOTS", "BRAND VIDEOS", "PRODUCT videos"],
+        desc: "Cinematic brand stories built at internet speed.",
+        descArray: [
+            "We blend AI workflows with human storytelling.",
+            "Create campaign-ready films in days, not months.",
+            "Designed for culture, attention, and impact."
+        ],
+        tags: ["AI BRAND FILMS", "CAMPAIGN CONTENT", "SOCIAL-FIRST VIDEO"],
         lottie: "/lottie/film.json"
     },
     {
         id: "02",
-        title: "Photo",
+        title: "Culture-Led Photography",
         class: "col-span-2",
         vid: "/videos/brand_film.mp4",
-        desc: "We let it be remembered.",
-        descArray: ["There’s a story in every moment.", "Nothing added. Nothing lost.", "Each frame, carefully seen."],
-        tags: ["editorial", "action", "LIFESTYLE"],
+        desc: "Images engineered for relevance, not just aesthetics.",
+        descArray: [
+            "We capture moments that resonate with modern audiences.",
+            "Editorial craft meets data-informed creative direction.",
+            "Built for brands that want to stay culturally current."
+        ],
+        tags: ["EDITORIAL", "LIFESTYLE", "BRAND PHOTOGRAPHY"],
         lottie: "/lottie/photo.json"
     },
     {
         id: "03",
-        title: "CGI/VFX",
+        title: "AI CGI & Visual Worlds",
         class: "col-span-2",
         vid: "/videos/ai_contant.mp4",
-        desc: "We just bring any vision to life.",
-        descArray: ["Ideas made visible.", "Footage transformed.", "Creating what can’t be filmed."],
-        tags: ["ANIMATION", "VISUAL EFFECTS", "compositing"],
+        desc: "Create impossible visuals without impossible budgets.",
+        descArray: [
+            "From AI-generated environments to cinematic VFX.",
+            "Bring ambitious concepts to life faster than ever.",
+            "Turn imagination into scalable visual assets."
+        ],
+        tags: ["AI CGI", "VISUAL EFFECTS", "DIGITAL WORLDS"],
         lottie: "/lottie/vfx.json"
     },
     {
         id: "04",
-        title: "PRODUCTION",
+        title: "AI-Powered Production",
         class: "col-span-3",
         vid: "/videos/ai_social.mp4",
-        desc: " You can now focus on your story.",
-        descArray: ["Ideas need space to grow.", "From first shot to final frame,", "we handle the moving parts."],
-        tags: ["Art Buying", "CASTING", "location"],
+        desc: "Smarter production systems for modern content demands.",
+        descArray: [
+            "We automate workflows without sacrificing creativity.",
+            "Scale content creation across channels and campaigns.",
+            "From concept to delivery, optimized for speed."
+        ],
+        tags: ["CONTENT OPERATIONS", "CREATIVE PRODUCTION", "SCALABLE CONTENT"],
         lottie: "/lottie/production.json"
     }
 ];
